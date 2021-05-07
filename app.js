@@ -7,7 +7,8 @@ const nunjucks = require("nunjucks");
 const dotenv = require("dotenv");
 
 dotenv.config(); // 현재 디렉토리의 dotenv 파일을 환경변수로.
-pageRouter = require("./routes/page"); // 기본 root에 page를 연결.
+const pageRouter = require("./routes/page"); // 기본 root에 page를 연결.
+const authRouter = require("./routes/auth"); 
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -35,6 +36,7 @@ app.use(session({
 
 
 app.use("/", pageRouter); // 메인 페이지. routes의 page에 들어 있는 로직에 따라 결정. 중간에 모든 것을 적어주면 더러워져서 따로 빼준 것임.
+app.use("/auth", authRouter); // /auth로 연결되는 것들은 이 쪽으로 흐르도록 하라.
 
 
 app.listen(port, ()=>{
