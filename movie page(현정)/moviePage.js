@@ -31,6 +31,8 @@ const emptyBookMark = document.querySelector('.emptyBookMark');
 const fullWatchingEye = document.querySelector('.fullWatchingEye');
 const watchingEyeModal = document.querySelector('.watchingEyeModal');
 const fullWatchingEyeModal = document.querySelector('.fullWatchingEyeModal');
+const faBanModal = document.querySelector('.fa-ban-modal');
+const faBanMark = document.querySelector('.fa-ban-mark');
 
 //modal.button
 const markModal = document.querySelector('.markModal');
@@ -42,10 +44,14 @@ const modalBackGround = document.querySelector('.modalBackGround');
 const MDWantToSeeMore = document.querySelector('.MDWantToSeeMore');
 const MDNonMember = document.querySelector('.MDNonMember');
 const mdLeftIconBox = document.querySelector('.mdLeftIconBox');
+const mdRightIconBox = document.querySelector('.mdRightIconBox');
 const mdLeftIconText = document.querySelector('.mdLeftIconText');
 const mdRightIconText = document.querySelector('.mdRightIconText');
 const markWatchingText = document.querySelector('.markWatchingText');
 const markWantSeeText = document.querySelector('.markWantSeeText');
+const mdNoThanksText = document.querySelector('.mdNoThanksText');
+const mdNoThanks = document.querySelector('.mdNoThanks');
+const markNoThanksText = document.querySelector('.markNoThanksText');
 
 // button
 const similarSeeMore = document.querySelector('.similarSeeMore');
@@ -133,8 +139,8 @@ function onSimilarSeeMoreBtn(){
 
 // modal
 function onModalBtn(){
-    modalBackGround.style.display = 'block';
-    MDWantToSeeMore.style.display = 'block';
+    modalBackGround.style.display = 'block'
+    MDWantToSeeMore.style.display = 'block'
 }
 
 function onMdCancelBtn(){
@@ -142,12 +148,60 @@ function onMdCancelBtn(){
     MDWantToSeeMore.style.display = 'none';
 }
 
+function fabanCancel(){
+    noneFabanMark();
+    markBtnGrayToPinkColorChange();
+    markWantSeeText.style.display = 'inline';
+    plusFirst.style.display = 'inline';
+}
+
+function noneFabanMark(){
+    faBanModal.style.color = '#787878';
+    mdNoThanksText.style.color = 'black';
+    markNoThanksText.style.display = 'none';
+    faBanMark.style.display = 'none';
+}
+
+function showFabanMark(){
+    plusFirst.style.display = 'none';
+    plusLater.style.display = 'none';
+    fullWatchingEye.style.display = 'none';
+    emptyBookMark.style.display = 'none';
+    faBanMark.style.display = 'inline';
+    markWantSeeText.style.display = 'none';
+    markWatchingText.style.display = 'none';
+    markNoThanksText.style.display = 'inline';
+}
+
+function faBanModalColorChange(){
+    mark.style.backgroundColor = '#fd99b7';
+    mark.style.color = '#ffffff';
+    mark.style.border = 'inline';
+    mark.style.border = '1px #F8F8F8 solid';
+    markModal.style.backgroundColor = '#fd99b7';
+    markModal.style.color = '#ffffff';
+    markModal.style.border = '1px #F8F8F8 solid';
+    faCaretDown.style.color = '#ffffff';
+    faBanMark.style.color = '#ffffff';
+}
+
+function markBtnWatchingColorChange(){
+    mark.style.backgroundColor = '#D9D9D9';
+    mark.style.color = 'black';
+    mark.style.border = '1px #EBEBEB solid';
+    markModal.style.backgroundColor = '#D9D9D9';
+    markModal.style.color = 'black';
+    markModal.style.border = '1px #EBEBEB solid';
+    faCaretDown.style.color = '#F6F6F6';
+}
+
 function markBtnPinkToGrayColorChange(){
     mark.style.backgroundColor = '#F6F6F6';
     mark.style.color = 'black';
-    mark.style.border = 'none';
+    mark.style.border = '1px #EBEBEB solid';
     markModal.style.backgroundColor = '#F6F6F6';
     markModal.style.color = 'black';
+    markModal.style.border = '1px #EBEBEB solid';
     faCaretDown.style.color = '#D9D9D9';
 }
 
@@ -169,6 +223,7 @@ function markBtnGrayToPinkColorChange(){
 }
 
 function noneFullWatchingEyeModal() {
+    noneFabanMark();
     watchingEyeModal.style.display = 'inline';
     fullWatchingEyeModal.style.display = 'none';
     markWantSeeText.style.display = 'inline';
@@ -188,9 +243,10 @@ function eyeGrayToBlueColorChange(){
 
     markWantSeeText.style.display = 'none';
     markWatchingText.style.display = 'inline';
-
+    
+    noneFabanMark();
     fullToemptyBookMarkChange();
-    markBtnPinkToGrayColorChange();
+    markBtnWatchingColorChange();
     onMdCancelBtn();
 }
 
@@ -220,6 +276,7 @@ function showPlus(){
 }
 
 function onEmptyBookMarkModal(){
+    noneFabanMark();
     noneFullWatchingEyeModal();
     showBookMark();
     markBtnPinkToGrayColorChange();
@@ -237,6 +294,7 @@ function onMarkBtn(){
 }
 
 function onfullBookMarkModal(){
+    noneFabanMark();
     onMdCancelBtn();
     markBtnGrayToPinkColorChange();
     fullToemptyBookMarkChange();
@@ -244,6 +302,7 @@ function onfullBookMarkModal(){
 }
 
 function onWatchingEyeModal(){
+    noneFabanMark();
     eyeGrayToBlueColorChange();
 }
 
@@ -253,6 +312,22 @@ function onFullWatchingEyeModal(){
     onMdCancelBtn();
     fullWatchingEye.style.display = 'none';
     plusFirst.style.display = 'inline';
+}
+
+function onFaBanModal() {
+    if(mdNoThanksText.style.color == 'black'){
+        console.log('?');
+        faBanModal.style.color = '#ff2f6e';
+        mdNoThanksText.style.color = '#ff2f6e';
+        fullToemptyBookMarkChange();
+        faBanModalColorChange();
+        showFabanMark();
+        onMdCancelBtn();
+        return;
+    }
+    fabanCancel();
+    onMdCancelBtn();
+
 }
 
 // addEventListener
@@ -311,18 +386,38 @@ body.addEventListener('click', (e)=>{
             case 'markWatchingText':
                 onMarkBtn();
                 break;
-
             case 'fullBookMarkModal':
                 onfullBookMarkModal();
+                break;
+            case 'mdLeftIconBox':
+                onEmptyBookMarkModal();
                 break;
             case 'emptyBookMarkModal':
                 onEmptyBookMarkModal();
                 break;
+            case 'mdLeftIconText':
+                onEmptyBookMarkModal();
+                break;
+            case 'mdRightIconBox':
+                onWatchingEyeModal();
+                break;
             case 'watchingEyeModal':
+                onWatchingEyeModal();
+                break;
+            case 'mdRightIconText':
                 onWatchingEyeModal();
                 break;
             case 'fullWatchingEyeModal':
                 onFullWatchingEyeModal();
+                break;     
+            case 'mdNoThanks':
+                onFaBanModal();
+                break;
+            case 'mdNoThanksText':
+                onFaBanModal();
+                break;
+            case 'fa-ban-modal':
+                onFaBanModal();
                 break;
         }
     }
