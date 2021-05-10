@@ -233,13 +233,6 @@ function onMarkBtn(){
         onEmptyBookMarkModal();
         return;
     }
-<<<<<<< HEAD
-=======
-    if(fullWatchingEye.style.display !== 'none'){
-        onFullWatchingEyeModal();
-        return;
-    }
->>>>>>> 4062c5078541d01fd7c519ab77cc8014214eff7c
     onModalBtn();
 }
 
@@ -315,15 +308,10 @@ body.addEventListener('click', (e)=>{
             case 'markWantSeeText':
                 onMarkBtn();
                 break;
-<<<<<<< HEAD
             case 'markWatchingText':
                 onMarkBtn();
                 break;
-=======
-            // case 'markWatchingText':
-            //     onMarkBtn();
-            //     break;
->>>>>>> 4062c5078541d01fd7c519ab77cc8014214eff7c
+
             case 'fullBookMarkModal':
                 onfullBookMarkModal();
                 break;
