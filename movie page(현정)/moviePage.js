@@ -23,10 +23,14 @@ const collectionContentUl = document.querySelector('.collectionContentUl');
 
 // icon
 const faCaretDown = document.querySelector('.fa-caret-down');
-const faPlus = document.querySelector('.fa-plus');
+const plusFirst = document.querySelector('.plusFirst');
+const plusLater = document.querySelector('.plusLater');
 const emptyBookMarkModal = document.querySelector('.emptyBookMarkModal');
-const fullBookMark = document.querySelector('.fullBookMark');
+const fullBookMarkModal = document.querySelector('.fullBookMarkModal');
 const emptyBookMark = document.querySelector('.emptyBookMark');
+const fullWatchingEye = document.querySelector('.fullWatchingEye');
+const watchingEyeModal = document.querySelector('.watchingEyeModal');
+const fullWatchingEyeModal = document.querySelector('.fullWatchingEyeModal');
 
 //modal.button
 const markModal = document.querySelector('.markModal');
@@ -38,6 +42,10 @@ const modalBackGround = document.querySelector('.modalBackGround');
 const MDWantToSeeMore = document.querySelector('.MDWantToSeeMore');
 const MDNonMember = document.querySelector('.MDNonMember');
 const mdLeftIconBox = document.querySelector('.mdLeftIconBox');
+const mdLeftIconText = document.querySelector('.mdLeftIconText');
+const mdRightIconText = document.querySelector('.mdRightIconText');
+const markWatchingText = document.querySelector('.markWatchingText');
+const markWantSeeText = document.querySelector('.markWantSeeText');
 
 // button
 const similarSeeMore = document.querySelector('.similarSeeMore');
@@ -132,10 +140,9 @@ function onModalBtn(){
 function onMdCancelBtn(){
     modalBackGround.style.display = 'none';
     MDWantToSeeMore.style.display = 'none';
-    onFullBookMarkModal();
 }
 
-function markBtnColorChange(){
+function markBtnPinkToGrayColorChange(){
     mark.style.backgroundColor = '#F6F6F6';
     mark.style.color = 'black';
     mark.style.border = 'none';
@@ -144,52 +151,113 @@ function markBtnColorChange(){
     faCaretDown.style.color = '#D9D9D9';
 }
 
+function markBtnGrayToPinkColorChange(){
+    mark.style.backgroundColor = '#ff2f6e';
+    mark.style.color = '#ffffff';
+    mark.style.border = 'inline';
+    mark.style.borderRight = '1px #e71252 solid';
+    markModal.style.backgroundColor = '#ff2f6e';
+    markModal.style.color = '#ffffff';
+    faCaretDown.style.color = '#ffffff';
+    // mark.addEventListener('mouseover', ()=>{
+    //     console.log('?');
+    //     plusLater.style.transform = 'rotate(0.25turn)';
+    // })
+    // mark.addEventListener('mouseout', ()=>{
+    //     plusLater.style.transform = 'rotate(0)';
+    // })
+}
+
+function noneFullWatchingEyeModal() {
+    watchingEyeModal.style.display = 'inline';
+    fullWatchingEyeModal.style.display = 'none';
+    markWantSeeText.style.display = 'inline';
+    markWatchingText.style.display = 'none';
+    mdRightIconText.style.color = 'black';
+}
+
+// 보는 중 눈모양 아이콘 누르면(파란색 아니고 회색일 때)
+function eyeGrayToBlueColorChange(){
+    watchingEyeModal.style.display = 'none';
+    fullWatchingEyeModal.style.display = 'inline';
+    mdRightIconText.style.color = '#00A0FF';
+    plusFirst.style.display = 'none';
+    plusLater.style.display = 'none';
+    emptyBookMark.style.display = 'none';
+    fullWatchingEye.style.display = 'inline';
+
+    markWantSeeText.style.display = 'none';
+    markWatchingText.style.display = 'inline';
+
+    fullToemptyBookMarkChange();
+    markBtnPinkToGrayColorChange();
+    onMdCancelBtn();
+}
+
 function emptyToFullBookMarkChange(){
     emptyBookMarkModal.style.display = 'none';
-    fullBookMark.style.display = 'inline';
+    fullBookMarkModal.style.display = 'inline';
+    mdLeftIconText.style.color = '#ff2f6e';
 }
 
 function fullToemptyBookMarkChange(){
-    fullBookMark.style.display = 'none';
+    fullBookMarkModal.style.display = 'none';
     emptyBookMarkModal.style.display = 'inline';
+    mdLeftIconText.style.color = 'black';
 }
 
-function plusToBookMark(){
-    faPlus.style.display = 'none';
+function showBookMark(){
+    fullWatchingEye.style.display = 'none';
+    plusFirst.style.display = 'none';
+    plusLater.style.display = 'none';
     emptyBookMark.style.display = 'inline';
 }
 
-function bookMarkToPlus(){
+function showPlus(){
+    fullWatchingEye.style.display = 'none';
     emptyBookMark.style.display = 'none';
-    faPlus.style.display = 'inline';
+    plusLater.style.display = 'inline';
 }
 
 function onEmptyBookMarkModal(){
-    plusToBookMark();
+    noneFullWatchingEyeModal();
+    showBookMark();
+    markBtnPinkToGrayColorChange();
     emptyToFullBookMarkChange();
+    onMdCancelBtn();
 }
 
-function onFullBookMarkModal(){
-    bookMarkToPlus();
-    fullToemptyBookMarkChange();
-}
 
 function onMarkBtn(){
-    if(faPlus.style.display == 'none'){
-        onModalBtn();
+    if(emptyBookMark.style.display == 'none' & fullWatchingEye.style.display == 'none'){
+        onEmptyBookMarkModal();
         return;
     }
-    markBtnColorChange();
-    onEmptyBookMarkModal();
+    if(fullWatchingEye.style.display !== 'none'){
+        onFullWatchingEyeModal();
+        return;
+    }
+    onModalBtn();
 }
 
-function onfullBookMark(){
+function onfullBookMarkModal(){
     onMdCancelBtn();
+    markBtnGrayToPinkColorChange();
     fullToemptyBookMarkChange();
-    bookMarkToPlus();
+    showPlus();
 }
 
+function onWatchingEyeModal(){
+    eyeGrayToBlueColorChange();
+}
 
+function onFullWatchingEyeModal(){
+    noneFullWatchingEyeModal();
+    markBtnGrayToPinkColorChange();
+    onMdCancelBtn();
+    fullWatchingEye.style.display = 'none';
+    plusFirst.style.display = 'inline';
+}
 
 // addEventListener
 body.addEventListener('click', (e)=>{
@@ -241,11 +309,23 @@ body.addEventListener('click', (e)=>{
             case 'mark':
                 onMarkBtn();
                 break;
-            case 'fullBookMark':
-                onfullBookMark();
+            case 'markWantSeeText':
+                onMarkBtn();
+                break;
+            // case 'markWatchingText':
+            //     onMarkBtn();
+            //     break;
+            case 'fullBookMarkModal':
+                onfullBookMarkModal();
                 break;
             case 'emptyBookMarkModal':
                 onEmptyBookMarkModal();
+                break;
+            case 'watchingEyeModal':
+                onWatchingEyeModal();
+                break;
+            case 'fullWatchingEyeModal':
+                onFullWatchingEyeModal();
                 break;
         }
     }

@@ -29,6 +29,16 @@ body {
 }
 
 /* ------------------modal------------------ */
+.mark,
+.markModal,
+.fa-caret-down,
+.fa-plus,
+.emptyBookMark,
+.fullWatchingEye,
+.markWatchingText {
+  transition: all 300ms ease-in-out;
+}
+
 .modalBackGround {
   position: fixed;
   width: 100%;
@@ -289,7 +299,8 @@ body {
   border-right: 1px #e71252 solid;
 }
 
-.mark:hover > .fa-plus {
+.mark:hover > .plusFirst,
+.mark:hover > .plusLater {
   transform: rotate(0.25turn);
 }
 
@@ -305,27 +316,48 @@ body {
 }
 
 .fa-plus {
+  color: #ffffff;
   padding: 0 1rem;
-  transition: all 200ms ease-in-out;
+}
+
+.plusLater {
+  display: none;
 }
 
 .emptyBookMark {
   color: #ff2f6e;
   padding: 0 1rem;
-  transition: all 200ms ease-in-out;
   display: none;
 }
 
-.fullBookMark {
+.fullBookMarkModal {
   font-size: 4rem;
   color: #ff2f6e;
   display: none;
 }
 
+.fullWatchingEyeModal {
+  font-size: 4rem;
+  color: #00a0ff;
+  display: none;
+}
+
+.fullWatchingEye {
+  /* font-size: 4rem; */
+  padding: 0 1rem;
+  color: #00a0ff;
+  display: none;
+}
+
 .emptyBookMarkModal,
-.watchingEye {
+.watchingEyeModal {
   font-size: 4rem;
   color: #787878;
+}
+
+.markWatchingText {
+  color: black;
+  display: none;
 }
 
 .fa-caret-down {
