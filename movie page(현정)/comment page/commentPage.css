@@ -1,0 +1,170 @@
+﻿@import url("/movie page(현정)/default.css");
+
+.fa-arrow-left {
+  font-size: 2rem;
+  color: #ff2f6e;
+  transition: all 100ms ease-in-out;
+}
+
+.fa-arrow-left:hover {
+  font-weight: bold;
+  transform: scale(1.1);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentTop {
+  height: 7rem;
+  border-bottom: 1px solid #e3e3e3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 1rem 2rem 0 2rem;
+}
+
+.commentTopText {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.allComments {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.commentBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  width: 60rem;
+}
+
+.commentUl {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 95%;
+}
+
+li {
+  width: 95%;
+  height: 4rem;
+  padding: 0.5rem 0;
+  display: flex;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.firstLi {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.connetToMypage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: black;
+}
+
+.photoAndName {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.photo {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 1.5rem;
+}
+
+.rate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e3e3e3;
+  width: 5rem;
+  height: 2.5rem;
+  border-radius: 20px;
+}
+
+.secondLi {
+  font-size: 1.5rem;
+  height: auto;
+}
+
+.commentText {
+  margin-bottom: 1rem;
+}
+
+.thirdLi {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.3rem;
+  color: #787878;
+}
+
+.fa-thumbs-up,
+.fa-comment {
+  margin-right: 0.5rem;
+  transition: transform 200ms ease-in-out;
+}
+
+.fa-thumbs-up:hover,
+.fa-comment:hover {
+  transform: scale(1.1);
+}
+
+.numOfLikes,
+.numOfComments {
+  margin-right: 1.5rem;
+}
+
+/* .fourthLi {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+}
+
+.like {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff2f6e;
+  font-size: 1.5rem;
+  background-color: #f2f2f2;
+  padding: 0.2rem 0.7rem;
+  border-radius: 10px;
+  transition: transform(scale) 100ms ease-in-out;
+}
+
+.like:hover {
+  transform: scale(1.05);
+} */

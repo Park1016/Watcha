@@ -38,6 +38,7 @@ const faBanMark = document.querySelector('.fa-ban-mark');
 const markModal = document.querySelector('.markModal');
 const mark = document.querySelector('.mark');
 const mdCancel = document.querySelector('.mdCancel');
+const topLeftCommentBtn = document.querySelector('.topLeftComment');
 
 // modal
 const modalBackGround = document.querySelector('.modalBackGround');
@@ -61,17 +62,18 @@ const button = document.querySelectorAll('button');
 const similarWork = document.querySelector('.similarWork');
 const similarContentUl = document.querySelector('.similarContentUl');
 
-
-
 const section2LeftContainer = document.querySelector('.section2LeftContainer');
 const productionLi = document.querySelector('.productionList');
 const body = document.querySelector('body');
 
 
+// 전역변수
 const leftSideWidth = 60.4;
 const rightSideWidth = 25;
 const similarContentUlWidth = 85.2;
 let count = 0;
+
+
 
 
 // function
@@ -276,6 +278,10 @@ function showPlus(){
 }
 
 function onEmptyBookMarkModal(){
+    if(emptyBookMarkModal.style.display == 'none'){
+        onfullBookMarkModal();
+        return;
+    }
     noneFabanMark();
     noneFullWatchingEyeModal();
     showBookMark();
@@ -286,7 +292,9 @@ function onEmptyBookMarkModal(){
 
 
 function onMarkBtn(){
-    if(emptyBookMark.style.display == 'none' & fullWatchingEye.style.display == 'none'){
+    if(emptyBookMark.style.display == 'none'
+    & fullWatchingEye.style.display == 'none'
+    & markNoThanksText.style.display == 'none'){
         onEmptyBookMarkModal();
         return;
     }
@@ -302,6 +310,10 @@ function onfullBookMarkModal(){
 }
 
 function onWatchingEyeModal(){
+    if(watchingEyeModal.style.display == 'none'){
+        onFullWatchingEyeModal();
+        return;
+    }
     noneFabanMark();
     eyeGrayToBlueColorChange();
 }
@@ -324,9 +336,14 @@ function onFaBanModal() {
         showFabanMark();
         onMdCancelBtn();
         return;
+    }else{
+        mdNoThanksText.style.color = 'black';
     }
     fabanCancel();
     onMdCancelBtn();
+}
+
+function onTopLeftCommentBtn(){
 
 }
 
@@ -374,6 +391,9 @@ body.addEventListener('click', (e)=>{
             case 'markModal':
                 onModalBtn();
                 break;
+            case 'markNoThanksText':
+                onModalBtn();
+                break;
             case 'mdCancel':
                 onMdCancelBtn();
                 break;
@@ -384,6 +404,9 @@ body.addEventListener('click', (e)=>{
                 onMarkBtn();
                 break;
             case 'markWatchingText':
+                onMarkBtn();
+                break;
+            case 'fa-ban-mark':
                 onMarkBtn();
                 break;
             case 'fullBookMarkModal':
@@ -418,6 +441,18 @@ body.addEventListener('click', (e)=>{
                 break;
             case 'fa-ban-modal':
                 onFaBanModal();
+                break;
+            case 'topLeftCommentBtn':
+                onTopLeftCommentBtn();
+                break;
+            case 'mdWriteComment':
+                onTopLeftCommentBtn();
+                break;
+            case 'mdCommentText':
+                onTopLeftCommentBtn();
+                break;
+            case 'faComment':
+                onTopLeftCommentBtn();
                 break;
         }
     }
