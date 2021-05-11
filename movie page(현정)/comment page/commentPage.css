@@ -1,8 +1,9 @@
-﻿@import url("/movie page(현정)/default.css");
+﻿@import url("/movie page(현정)/css/default.css");
+@import url("/movie page(현정)/css/color.css");
 
 .fa-arrow-left {
   font-size: 2rem;
-  color: #ff2f6e;
+  color: var(--hot-Pink);
   transition: all 100ms ease-in-out;
 }
 
@@ -57,7 +58,8 @@
   height: 95%;
 }
 
-li {
+li,
+.thirdLi {
   width: 95%;
   height: 4rem;
   padding: 0.5rem 0;
@@ -127,13 +129,13 @@ li {
   align-items: center;
   justify-content: flex-start;
   font-size: 1.3rem;
-  color: #787878;
 }
 
 .fa-thumbs-up,
 .fa-comment {
   margin-right: 0.5rem;
   transition: transform 200ms ease-in-out;
+  color: var(--dark-Gray);
 }
 
 .fa-thumbs-up:hover,
@@ -144,6 +146,8 @@ li {
 .numOfLikes,
 .numOfComments {
   margin-right: 1.5rem;
+  cursor: pointer;
+  color: var(--dark-Gray);
 }
 
 /* .fourthLi {

@@ -8,15 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="moviePage.css">
-    <script defer src="moviePage.js"></script>
+    <script defer type="module" src="moviePage.js"></script>
     <title>영화 페이지</title>
 </head>
 <body>
     <div class="container">
         <!-- 모달창 -->
         <div class="modalBackGround">
-            <div class="modalContainer">
-                <section class="MDWantToSeeMore">
+            <div class="mdWantToSeeMoreContainer">
+                <section class="mdWantToSeeMore">
                     <div class="mdMovieInfo">
                         <img class="mdPoster" src="https://picsum.photos/400/200/" alt="이미지가 없습니다">
                         <div class="mdMovieText">
@@ -46,7 +46,9 @@
                     </div>
                     <button class="mdCancel">취소</button>
                 </section>
-                <section class="MDNonMember">
+            </div>
+            <div class="mdNonMemberContainer">
+                <section class="mdNonMember">
                     <i class="fas fa-times"></i>
                     <div class="mdNonMemberTop">
                         <i class="far fa-bookmark"></i>
@@ -59,6 +61,11 @@
                         <a href="#" class="mdNonMemberSignUp">회원가입</a>
                         <a href="#" class="mdNonMemberLogIn">로그인</a>
                     </div>
+                </section>
+            </div>
+            <div class="mdCommentContainer">
+                <section class="MDComment">
+
                 </section>
             </div>
         </div>
@@ -309,11 +316,45 @@
                                         </div>
                                         <div class="ccNumOfLikeComment">
                                             <span class="ccNumOfLike">
-                                                <i class="fas fa-thumbs-up cci"></i>
+                                                <i class="fas fa-thumbs-up ccThumb"></i>
                                                 <span class="numOfthumbsUp">182</span>
                                             </span>
                                             <span class="ccNumOfComment">
-                                                <i class="fas fa-comment cci"></i>
+                                                <i class="fas fa-comment ccNum"></i>
+                                                <span class="ccComment">2</span>
+                                            </span>
+                                        </div>
+                                        <div class="cccComent">
+                                            보류
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="commentContentList">
+                                    <div class="commentContent">
+                                        <div class="ccTop">
+                                            <span class="ccTopLeft">
+                                                <img class="ccTopImg" src="https://picsum.photos/200/200/" alt="이미지가 없습니다">
+                                                <span class="ccTopName">이름</span>
+                                            </span>
+                                            <span class="ccTopRight">
+                                                <i class="fas fa-star"></i>
+                                                <span class="starScope">3.0</span>
+                                            </span>
+                                        </div>
+                                        <div class="ccText">
+                                            <div class="ccTextInner">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                A modi possimus consectetur veritatis placeat inventore
+                                                id maxime quia adipisci quaerat. Lorem ipsum dolor sit,
+                                            </div>
+                                        </div>
+                                        <div class="ccNumOfLikeComment">
+                                            <span class="ccNumOfLike">
+                                                <i class="fas fa-thumbs-up ccThumb"></i>
+                                                <span class="numOfthumbsUp">182</span>
+                                            </span>
+                                            <span class="ccNumOfComment">
+                                                <i class="fas fa-comment ccNum"></i>
                                                 <span class="ccComment">2</span>
                                             </span>
                                         </div>
@@ -343,11 +384,11 @@
                                         </div>
                                         <div class="ccNumOfLikeComment">
                                             <span class="ccNumOfLike">
-                                                <i class="fas fa-thumbs-up cci"></i>
+                                                <i class="fas fa-thumbs-up ccThumb"></i>
                                                 <span class="numOfthumbsUp">182</span>
                                             </span>
                                             <span class="ccNumOfComment">
-                                                <i class="fas fa-comment cci"></i>
+                                                <i class="fas fa-comment ccNum"></i>
                                                 <span class="ccComment">2</span>
                                             </span>
                                         </div>
@@ -377,11 +418,11 @@
                                         </div>
                                         <div class="ccNumOfLikeComment">
                                             <span class="ccNumOfLike">
-                                                <i class="fas fa-thumbs-up cci"></i>
+                                                <i class="fas fa-thumbs-up ccThumb"></i>
                                                 <span class="numOfthumbsUp">182</span>
                                             </span>
                                             <span class="ccNumOfComment">
-                                                <i class="fas fa-comment cci"></i>
+                                                <i class="fas fa-comment ccNum"></i>
                                                 <span class="ccComment">2</span>
                                             </span>
                                         </div>
@@ -411,11 +452,11 @@
                                         </div>
                                         <div class="ccNumOfLikeComment">
                                             <span class="ccNumOfLike">
-                                                <i class="fas fa-thumbs-up cci"></i>
+                                                <i class="fas fa-thumbs-up ccThumb"></i>
                                                 <span class="numOfthumbsUp">182</span>
                                             </span>
                                             <span class="ccNumOfComment">
-                                                <i class="fas fa-comment cci"></i>
+                                                <i class="fas fa-comment ccNum"></i>
                                                 <span class="ccComment">2</span>
                                             </span>
                                         </div>

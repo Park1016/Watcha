@@ -1,86 +1,37 @@
-﻿// const likes = document.querySelectorAll('.like');
+﻿'use strict';
+import * as srcLike from '/movie page(현정)/src/like.js';
+
 let thumbsUp = document.querySelectorAll('.fa-thumbs-up');
-let faComments = document.querySelector('.fa-comment');
-let numOfLikes = document.querySelector('.numOfLikes');
-let numOfComments = document.querySelector('.numOfComments');
-
-const whiteColor = 'rgb(242, 242, 242)';
-const pinkColor = 'rgb(255, 47, 110)';
-const grayColor = 'rgb(120, 120, 120)';
-
-for(const thumb of thumbsUp){
-    // function
-    function onLikeBtn(e){
-        const target = e.target;
-        if(target.style.color == pinkColor){
-            target.style.color = grayColor;
-            let likeNumbers = parseInt(target.nextElementSibling.innerText)-1;
-            target.nextElementSibling.innerText = likeNumbers;      
-            return;
-        }else{
-            thumb.style.color == pinkColor;
-        }   
-        target.style.color = pinkColor;
-        let likeNumbers = parseInt(target.nextElementSibling.innerText)+1;
-        target.nextElementSibling.innerText = likeNumbers;
-    }
-}
-
-// for(const faComment of faComments){
-//     function commentBtnGrayToPinkColorChange(){ 
-//         faComment.style.color = pinkColor; 
-//     }
-    
-//     function commentBtnPinkToGrayColorChange(){
-//         faComment.style.color = grayColor;
-//     }
-
-//     function onCommentBtn(e){
-//         const target = e.target;
-//         if(comment.style.color == pinkColor){
-//             commentBtnPinkToGrayColorChange();
-//             console.log(e.target.nextElementSibling.innerText);
-//             let commentNumbers = parseInt(e.target.nextElementSibling.innerText)-1;
-//             e.target.nextElementSibling.innerText = commentNumbers;
-//             console.log(commentNumbers);
-            
-//             return;
-//         }else{
-//             comment.style.color == pinkColor;
-//         }
-//         console.log('?');
-//         commentBtnGrayToPinkColorChange();
-//         let commentNumbers = parseInt(e.target.nextElementSibling.innerText)+1;
-//         e.target.nextElementSibling.innerText = commentNumbers;    
-//     }
-// }
-
-
-        
+let faComments = document.querySelectorAll('.fa-comment');
+let numOfLikes = document.querySelectorAll('.numOfLikes');
+let numOfComments = document.querySelectorAll('.numOfComments');
+       
 // addEventListener
 for(const thumb of thumbsUp){
     thumb.addEventListener('click', (e)=>{
-        onLikeBtn(e)}
+        srcLike.onLikeBtn(e)}
     ); 
 }
 
-for(const numOfLike of numOfLikes){
-    numOfLike.addEventListener('click', (e)=>{
-        onLikeBtn(e);
+for(const like of numOfLikes){
+    like.addEventListener('click', (e) =>{
+        srcLike.onNumOfLikes(e)}
+    );
+}
+
+for(const comment of faComments){
+    comment.addEventListener('click', (e)=>{
+        srcLike.onCommentBtn(e);
     })
 }
 
-// for(const faComment of faComments){
-//     faComment.addEventListener('click', (e)=>{
-//         onCommentBtn(e);
-//     })
-// }
+for(const numOfComment of numOfComments){
+    numOfComment.addEventListener('click', (e)=>{
+        srcLike.onNumOfComment(e);
+    })
+}
 
-// for(const numOfComment of numOfComments){
-//     numOfComment.addEventListener('click', (e)=>{
-//         onCommentBtn(e);
-//     })
-// }
+
 
 
 

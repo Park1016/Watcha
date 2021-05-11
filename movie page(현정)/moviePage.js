@@ -1,4 +1,6 @@
-﻿// chevron
+﻿'use strict';
+import * as srcLike from '/movie page(현정)/src/like.js';
+// chevron
 const rightArrow = document.querySelectorAll('.fa-chevron-right');
 const leftArrow = document.querySelectorAll('.fa-chevron-left');
 const apchRight = document.querySelector('.apchRight');
@@ -33,6 +35,7 @@ const watchingEyeModal = document.querySelector('.watchingEyeModal');
 const fullWatchingEyeModal = document.querySelector('.fullWatchingEyeModal');
 const faBanModal = document.querySelector('.fa-ban-modal');
 const faBanMark = document.querySelector('.fa-ban-mark');
+const ccThumbs = document.querySelectorAll('.ccThumb');
 
 //modal.button
 const markModal = document.querySelector('.markModal');
@@ -42,8 +45,8 @@ const topLeftCommentBtn = document.querySelector('.topLeftComment');
 
 // modal
 const modalBackGround = document.querySelector('.modalBackGround');
-const MDWantToSeeMore = document.querySelector('.MDWantToSeeMore');
-const MDNonMember = document.querySelector('.MDNonMember');
+const mdWantToSeeMore = document.querySelector('.mdWantToSeeMore');
+const mdNonMember = document.querySelector('.mdNonMember');
 const mdLeftIconBox = document.querySelector('.mdLeftIconBox');
 const mdRightIconBox = document.querySelector('.mdRightIconBox');
 const mdLeftIconText = document.querySelector('.mdLeftIconText');
@@ -64,6 +67,9 @@ const similarContentUl = document.querySelector('.similarContentUl');
 
 const section2LeftContainer = document.querySelector('.section2LeftContainer');
 const productionLi = document.querySelector('.productionList');
+const numOfthumbsUp = document.querySelectorAll('.numOfthumbsUp');
+const ccNums = document.querySelectorAll('.ccNum');
+const ccComments = document.querySelectorAll('.ccComment');
 const body = document.querySelector('body');
 
 
@@ -78,55 +84,36 @@ let count = 0;
 
 // function
 // 슬라이드
-function onProductionRightChevron() {
+function onLeftSideRightChevron(ul) {
     count = count - leftSideWidth;
-    productionUl.style.transform = `translateX(${count}rem)`;
+    ul.style.transform = `translateX(${count}rem)`;
 }
 
-function onProductionLeftChevron() {
+function onLeftSideLeftChevron(ul) {
     count = count + leftSideWidth;
-    productionUl.style.transform = `translateX(${count}rem)`;
+    ul.style.transform = `translateX(${count}rem)`;
 }
 
-function onCommentRightChevron() {
-    count = count - leftSideWidth;
-    commentUl.style.transform = `translateX(${count}rem)`;
+function onCommentRightChevron(ul) {
+    count = count - leftSideWidth + 2;
+    ul.style.transform = `translateX(${count}rem)`;
 }
 
-function onCommentLeftChevron() {
-    count = count + leftSideWidth;
-    commentUl.style.transform = `translateX(${count}rem)`;
+function onCommentLeftChevron(ul) {
+    count = count + (leftSideWidth - 2);
+    ul.style.transform = `translateX(${count}rem)`;
 }
 
-function onGRightChevron() {
+function onRightSideRightChevron(ul) {
     count = count - rightSideWidth;
-    galleryImages.style.transform = `translateX(${count}rem)`;
+    ul.style.transform = `translateX(${count}rem)`;
 }
 
-function onGLeftChevron() {
+function onRightSideLeftChevron(ul) {
     count = count + rightSideWidth;
-    galleryImages.style.transform = `translateX(${count}rem)`;
+    ul.style.transform = `translateX(${count}rem)`;
 }
 
-function onVRightChevron() {
-    count = count - rightSideWidth;
-    videos.style.transform = `translateX(${count}rem)`;
-}
-
-function onVLeftChevron() {
-    count = count + rightSideWidth;
-    videos.style.transform = `translateX(${count}rem)`;
-}
-
-function onClRightChevron() {
-    count = count - leftSideWidth;
-    collectionContentUl.style.transform = `translateX(${count}rem)`;
-}
-
-function onClLightChevron() {
-    count = count + leftSideWidth;
-    collectionContentUl.style.transform = `translateX(${count}rem)`;
-}
 
 // 더보기 버튼
 function onSimilarSeeMoreBtn(){
@@ -142,12 +129,12 @@ function onSimilarSeeMoreBtn(){
 // modal
 function onModalBtn(){
     modalBackGround.style.display = 'block'
-    MDWantToSeeMore.style.display = 'block'
+    mdWantToSeeMore.style.display = 'block'
 }
 
 function onMdCancelBtn(){
     modalBackGround.style.display = 'none';
-    MDWantToSeeMore.style.display = 'none';
+    mdWantToSeeMore.style.display = 'none';
 }
 
 function fabanCancel(){
@@ -353,35 +340,37 @@ body.addEventListener('click', (e)=>{
     for(const target of targets){
         switch(target){
             case 'apchRight':
-                onProductionRightChevron();
+                onLeftSideRightChevron(productionUl);
                 break;
             case 'apchLeft':
-                onProductionLeftChevron();
+                onLeftSideLeftChevron(productionUl);
                 break;
             case 'ccchRight':
-                onCommentRightChevron();
+                onCommentRightChevron(commentUl);
                 break;
             case 'ccchLeft':
-                onCommentLeftChevron();
-                break;
-            case 'gchRight':
-                onGRightChevron();
-                break;
-            case 'gchLeft':
-                onGLeftChevron();
-                break;
-            case 'vchRight':
-                onVRightChevron();
-                break;
-            case 'vchLeft':
-                onVLeftChevron();
+                onCommentLeftChevron(commentUl);
                 break;
             case 'clchRight':
-                onClRightChevron();
+                onLeftSideRightChevron(collectionContentUl);
                 break;
             case 'clchLeft':
-                onClLightChevron();
+                onLeftSideLeftChevron(collectionContentUl);
                 break;
+            case 'gchRight':
+                onRightSideRightChevron(galleryImages);
+                break;
+            case 'gchLeft':
+                onRightSideLeftChevron(galleryImages);
+                break;
+            case 'vchRight':
+                onRightSideRightChevron(videos);
+                break;
+            case 'vchLeft':
+                onRightSideLeftChevron(videos);
+                break;
+
+            
             case 'similarSeeMore':
                 onSimilarSeeMoreBtn();
                 break;
@@ -458,5 +447,28 @@ body.addEventListener('click', (e)=>{
     }
 })
 
+// comment
+for(const ccThumb of ccThumbs){
+    ccThumb.addEventListener('click', (e)=>{
+        srcLike.onLikeBtn(e)}
+    ); 
+}
 
+for(const numOfthumbUp of numOfthumbsUp){
+    numOfthumbUp.addEventListener('click', (e) =>{
+        srcLike.onNumOfLikes(e)}
+    );
+}
+
+for(const ccNum of ccNums){
+    ccNum.addEventListener('click', (e)=>{
+        srcLike.onCommentBtn(e);
+    })
+}
+
+for(const ccComment of ccComments){
+    ccComment.addEventListener('click', (e)=>{
+        srcLike.onNumOfComment(e);
+    })
+}
 
