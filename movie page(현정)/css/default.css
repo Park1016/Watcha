@@ -23,6 +23,12 @@ a {
   text-decoration: none;
 }
 
+input,
+textarea {
+  outline: none;
+  border: none;
+}
+
 body {
   background-color: #f8f8f8;
   width: 100%;

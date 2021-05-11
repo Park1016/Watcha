@@ -36,10 +36,6 @@
   transition: all 300ms ease-in-out;
 }
 
-/* .mdWantToSeeMore {
-  transition: opacity 1000ms ease-in-out;
-} */
-
 .modalBackGround {
   position: fixed;
   width: 100%;
@@ -58,12 +54,12 @@
   background-color: var(--pure-White);
   top: 20rem;
   left: 35%;
-  display: flex;
   align-items: center;
   justify-content: center;
   border: 1px var(--line-Gray) solid;
   border-radius: 10px;
   z-index: 11;
+  display: none;
 }
 
 .mdWantToSeeMore {
@@ -170,18 +166,192 @@
   font-weight: bold;
 }
 
-.mdNonMember {
-  width: 31rem;
-  height: 36rem;
+/* mdNonMember */
+.mdNonMemberContainer {
+  transform: translateY(-7rem);
+  position: fixed;
+  width: 35rem;
+  height: 50rem;
+  background-color: var(--pure-White);
+  top: 20rem;
+  left: 35%;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px var(--line-Gray) solid;
+  border-radius: 10px;
+  z-index: 11;
+  /* display: flex; */
   display: none;
 }
 
-.mdNonMember > .fa-times {
+.mdNonMember {
+  width: 90%;
+  height: 100%;
+}
+
+.noneMembetFatimes {
   color: var(--medium-Pink);
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.mdNonMemberTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 24rem;
+  margin: 1rem 0 7rem 0;
+}
+
+.nonMemberBookMark {
+  font-size: 7rem;
+  color: var(--dark-Gray);
+}
+
+.mdNonMemberTopText {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 4rem;
+}
+
+.mdNonMemberBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mdNonMemberSignUp,
+.mdNonMemberLogIn {
+  width: 100%;
+  height: 4.5rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mdNonMemberSignUp:hover {
+  transform: scale(1.01);
+}
+
+.mdNonMemberLogIn:hover {
+  transform: scale(1.1);
+}
+
+.mdNonMemberSignUp {
+  background-color: var(--hot-Pink);
+  color: var(--pure-White);
+}
+
+.mdNonMemberLogIn {
+  color: var(--hot-Pink);
+  background-color: var(--pure-White);
+}
+
+/* mdCommentContainer */
+.mdCommentContainer {
+  transform: translate(-8.5rem, -8rem);
+  position: fixed;
+  width: 59.5rem;
+  height: 50rem;
+  background-color: var(--pure-White);
+  top: 20rem;
+  left: 35%;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px var(--line-Gray) solid;
+  border-radius: 10px;
+  z-index: 11;
+  /* display: flex; */
+  display: none;
 }
 
 .mdComment {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mdCommentTop {
+  width: 100%;
+  height: 4rem;
+  border-bottom: 1px solid var(--line-Gray);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mdCommentFaTimes {
+  color: var(--hot-Pink);
+  font-size: 1.8rem;
+  margin-left: 1.5rem;
+}
+
+.mdCommentMovieName {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.mdCommentTopText {
+  margin-right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--medium-Gray);
+}
+
+.mdCommentSns {
+  width: 95%;
+  height: 4rem;
+  border-bottom: 1px solid var(--line-Gray);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sns {
+  font-size: 1.5rem;
+  color: var(--dark-Gray);
+}
+
+.fa-twitter {
+  font-size: 2rem;
+  color: var(--hot-Blue);
+  padding: 0.5rem;
+  border: 0.1px solid var(--medium-Gray);
+  border-radius: 10px;
+}
+
+.commentTextarea {
+  width: 95%;
+  height: 35rem;
+  resize: none;
+  caret-color: auto;
+  font-size: 1.5rem;
+  margin-top: 3.5rem;
+  overflow-y: scroll;
+}
+
+.commentTextarea {
+  -ms-overflow-style: none;
+}
+.commentTextarea::-webkit-scrollbar {
   display: none;
+}
+
+.commentTextarea::placeholder {
+  font-size: 1.5rem;
+  letter-spacing: 0.8px;
+  color: var(--medium-dark-Gray);
 }
 
 /* ------------------section1------------------ */

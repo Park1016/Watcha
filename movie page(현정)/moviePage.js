@@ -1,5 +1,6 @@
 ﻿'use strict';
 import * as srcLike from '/movie page(현정)/src/like.js';
+import * as srcColor from '/movie page(현정)/src/color.js';
 // chevron
 const rightArrow = document.querySelectorAll('.fa-chevron-right');
 const leftArrow = document.querySelectorAll('.fa-chevron-left');
@@ -36,6 +37,7 @@ const fullWatchingEyeModal = document.querySelector('.fullWatchingEyeModal');
 const faBanModal = document.querySelector('.fa-ban-modal');
 const faBanMark = document.querySelector('.fa-ban-mark');
 const ccThumbs = document.querySelectorAll('.ccThumb');
+const noneMembetFatimes = document.querySelector('noneMembetFatimes');
 
 //modal.button
 const markModal = document.querySelector('.markModal');
@@ -44,6 +46,7 @@ const mdCancel = document.querySelector('.mdCancel');
 const topLeftCommentBtn = document.querySelector('.topLeftComment');
 
 // modal
+const mdWantToSeeMoreContainer = document.querySelector('.mdWantToSeeMoreContainer');
 const modalBackGround = document.querySelector('.modalBackGround');
 const mdWantToSeeMore = document.querySelector('.mdWantToSeeMore');
 const mdNonMember = document.querySelector('.mdNonMember');
@@ -56,6 +59,11 @@ const markWantSeeText = document.querySelector('.markWantSeeText');
 const mdNoThanksText = document.querySelector('.mdNoThanksText');
 const mdNoThanks = document.querySelector('.mdNoThanks');
 const markNoThanksText = document.querySelector('.markNoThanksText');
+const mdNonMemberContainer = document.querySelector('.mdNonMemberContainer');
+const mdCommentContainer = document.querySelector('.mdCommentContainer');
+const mdCommentTopText = document.querySelector('.mdCommentTopText');
+const commentInput = document.querySelector('.commentInput');
+const mdComment = document.querySelector('.mdComment');
 
 // button
 const similarSeeMore = document.querySelector('.similarSeeMore');
@@ -130,11 +138,16 @@ function onSimilarSeeMoreBtn(){
 function onModalBtn(){
     modalBackGround.style.display = 'block'
     mdWantToSeeMore.style.display = 'block'
+    mdWantToSeeMoreContainer.style.display = 'flex';
 }
 
 function onMdCancelBtn(){
     modalBackGround.style.display = 'none';
     mdWantToSeeMore.style.display = 'none';
+    mdWantToSeeMoreContainer.style.display = 'none';
+    mdNonMemberContainer.style.display = 'none';
+    mdCommentContainer.style.display = 'none';
+    mdCommentTopText.style.color = srcColor.mediumGray;
 }
 
 function fabanCancel(){
@@ -315,7 +328,6 @@ function onFullWatchingEyeModal(){
 
 function onFaBanModal() {
     if(mdNoThanksText.style.color == 'black'){
-        console.log('?');
         faBanModal.style.color = '#ff2f6e';
         mdNoThanksText.style.color = '#ff2f6e';
         fullToemptyBookMarkChange();
@@ -331,7 +343,34 @@ function onFaBanModal() {
 }
 
 function onTopLeftCommentBtn(){
+    modalBackGround.style.display = 'block';
+    mdCommentContainer.style.display = 'flex';
+}
 
+function onCommentModal(e){
+    const target = e.target;
+    const text = target.parentElement.parentElement.lastElementChild.value;
+    // if(text !== ''){
+    //     console.log('?');
+    //     mdCommentTopText.style.color = srcColor.hotPink;
+    // }
+    // if(text == ''){
+    //     console.log('!');
+    //     mdCommentTopText.style.color = srcColor.mediumGray;
+    // }
+}
+
+function onCommentTextarea(e){
+    const target = e.target;
+    mdCommentContainer.addEventListener('keyup',()=>{
+        if(target.placeholder !== ''){
+            mdCommentTopText.style.color = srcColor.hotPink;
+        }
+        if(target.value == ''){
+            // console.log('!');
+            mdCommentTopText.style.color = srcColor.mediumGray;
+        }
+    })
 }
 
 // addEventListener
@@ -431,7 +470,7 @@ body.addEventListener('click', (e)=>{
             case 'fa-ban-modal':
                 onFaBanModal();
                 break;
-            case 'topLeftCommentBtn':
+            case 'topLeftComment':
                 onTopLeftCommentBtn();
                 break;
             case 'mdWriteComment':
@@ -442,6 +481,18 @@ body.addEventListener('click', (e)=>{
                 break;
             case 'faComment':
                 onTopLeftCommentBtn();
+                break;
+            case 'noneMembetFatimes':
+                onMdCancelBtn();
+                break;
+            case 'mdCommentFaTimes':
+                onMdCancelBtn();
+                break;
+            case 'mdCommentTopText':
+                onCommentModal(e);
+                break;
+            case 'commentTextarea':
+                onCommentTextarea(e);
                 break;
         }
     }
