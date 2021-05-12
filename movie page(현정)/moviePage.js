@@ -19,7 +19,7 @@ const chevron = document.querySelectorAll('.chevron');
 // 슬라이드 container
 const appearanceProductionUl = document.querySelector('.appearanceProduction');
 const productionUl = document.querySelector('.production');
-const commentUl = document.querySelector('.commentContentSpace');
+const commentContentSpace = document.querySelector('.commentContentSpace');
 const galleryImages = document.querySelector('.galleryImages');
 const videos = document.querySelector('.videos');
 const collectionContentUl = document.querySelector('.collectionContentUl');
@@ -64,6 +64,7 @@ const mdCommentContainer = document.querySelector('.mdCommentContainer');
 const mdCommentTopText = document.querySelector('.mdCommentTopText');
 const commentInput = document.querySelector('.commentInput');
 const mdComment = document.querySelector('.mdComment');
+const mdCommentText = document.querySelector('.mdCommentText');
 
 // button
 const similarSeeMore = document.querySelector('.similarSeeMore');
@@ -80,6 +81,13 @@ const ccNums = document.querySelectorAll('.ccNum');
 const ccComments = document.querySelectorAll('.ccComment');
 const body = document.querySelector('body');
 
+
+// 코멘트
+const afterTrash = document.querySelector('.afterTrash');
+const section2LeftTopContainer = document.querySelector('.section2LeftTopContainer');
+const afterCommentContainer = document.querySelector('.afterCommentContainer');
+let afterCommentText = document.querySelector('.afterCommentText');
+const commentTextarea = document.querySelector('.commentTextarea');
 
 // 전역변수
 const leftSideWidth = 60.4;
@@ -330,6 +338,9 @@ function onFaBanModal() {
     if(mdNoThanksText.style.color == 'black'){
         faBanModal.style.color = '#ff2f6e';
         mdNoThanksText.style.color = '#ff2f6e';
+        fullWatchingEyeModal.style.display = 'none';
+        watchingEyeModal.style.display = 'inline';
+        mdRightIconText.style.color = 'black';
         fullToemptyBookMarkChange();
         faBanModalColorChange();
         showFabanMark();
@@ -347,18 +358,53 @@ function onTopLeftCommentBtn(){
     mdCommentContainer.style.display = 'flex';
 }
 
+// comment
+
 function onCommentModal(e){
     const target = e.target;
-    const text = target.parentElement.parentElement.lastElementChild.value;
-    // if(text !== ''){
-    //     console.log('?');
-    //     mdCommentTopText.style.color = srcColor.hotPink;
-    // }
-    // if(text == ''){
-    //     console.log('!');
-    //     mdCommentTopText.style.color = srcColor.mediumGray;
-    // }
+    let text = target.parentElement.parentElement.lastElementChild.value;
+    afterCommentText.innerText = text;
+    const commentContentList = `<li class="commentContentList">
+                                    <div class="commentContent">
+                                        <div class="ccTop">
+                                            <span class="ccTopLeft">
+                                                <img class="ccTopImg" src="https://picsum.photos/200/200/" alt="이미지가 없습니다">
+                                                <span class="ccTopName">이름</span>
+                                            </span>
+                                            <span class="ccTopRight">
+                                                <i class="fas fa-star"></i>
+                                                <span class="starScope">3.0</span>
+                                            </span>
+                                        </div>
+                                        <div class="ccText">
+                                            <div class="ccTextInner">
+                                                ${text}
+                                            </div>
+                                        </div>
+                                        <div class="ccNumOfLikeComment">
+                                            <span class="ccNumOfLike">
+                                                <i class="fas fa-thumbs-up ccThumb"></i>
+                                                <span class="numOfthumbsUp">0</span>
+                                            </span>
+                                            <span class="ccNumOfComment">
+                                                <i class="fas fa-comment ccNum"></i>
+                                                <span class="ccComment">0</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>`;
+    commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
+    console.log(text);
+    commentTextarea.value = '';
+    text = '';
+    console.log(text);
+    mdCommentText.innerText = '코멘트 수정하기';
+    modalBackGround.style.display = 'none';
+    mdCommentContainer.style.display = 'none';
+    section2LeftTopContainer.style.display = 'none';
+    afterCommentContainer.style.display = 'flex';
 }
+
 
 function onCommentTextarea(e){
     const target = e.target;
@@ -367,11 +413,21 @@ function onCommentTextarea(e){
             mdCommentTopText.style.color = srcColor.hotPink;
         }
         if(target.value == ''){
-            // console.log('!');
             mdCommentTopText.style.color = srcColor.mediumGray;
         }
     })
 }
+
+function onDeleteComment(e){
+    mdCommentText.innerText = '코멘트 작성하기';
+    afterCommentContainer.style.display = 'none';
+    section2LeftTopContainer.style.display = 'flex';
+    const target = e.target.parentElement;
+    let text = target.parentElement.previousElementSibling.lastElementChild;
+    text = '';
+    console.log(text);
+}
+
 
 // addEventListener
 body.addEventListener('click', (e)=>{
@@ -385,10 +441,10 @@ body.addEventListener('click', (e)=>{
                 onLeftSideLeftChevron(productionUl);
                 break;
             case 'ccchRight':
-                onCommentRightChevron(commentUl);
+                onCommentRightChevron(commentContentSpace);
                 break;
             case 'ccchLeft':
-                onCommentLeftChevron(commentUl);
+                onCommentLeftChevron(commentContentSpace);
                 break;
             case 'clchRight':
                 onLeftSideRightChevron(collectionContentUl);
@@ -494,32 +550,42 @@ body.addEventListener('click', (e)=>{
             case 'commentTextarea':
                 onCommentTextarea(e);
                 break;
+            case 'fa-trash-alt':
+                onDeleteComment(e);
+                break;
+            case 'afterTrashText':
+                onDeleteComment(e);
+                break;
+            case 'ccThumb':
+                srcLike.onLikeBtn(e);
+                break;
+            case 'numOfthumbsUp':
+                srcLike.onNumOfLikes(e);
+                break;
+            case 'ccNum':
+                srcLike.onCommentBtn(e);
+                break;
+            case 'ccComment':
+                srcLike.onNumOfComment(e);
+                break;
         }
     }
 })
 
 // comment
-for(const ccThumb of ccThumbs){
-    ccThumb.addEventListener('click', (e)=>{
-        srcLike.onLikeBtn(e)}
-    ); 
-}
-
-for(const numOfthumbUp of numOfthumbsUp){
-    numOfthumbUp.addEventListener('click', (e) =>{
-        srcLike.onNumOfLikes(e)}
-    );
-}
-
-for(const ccNum of ccNums){
-    ccNum.addEventListener('click', (e)=>{
-        srcLike.onCommentBtn(e);
-    })
-}
-
-for(const ccComment of ccComments){
-    ccComment.addEventListener('click', (e)=>{
-        srcLike.onNumOfComment(e);
-    })
-}
+// for(const numOfthumbUp of numOfthumbsUp){
+//     numOfthumbUp.addEventListener('click', (e) =>{
+//         srcLike.onNumOfLikes(e)}
+//     );
+// }
+// for(const ccNum of ccNums){
+//     ccNum.addEventListener('click', (e)=>{
+//         srcLike.onCommentBtn(e);
+//     })
+// }
+// for(const ccComment of ccComments){
+//     ccComment.addEventListener('click', (e)=>{
+//         srcLike.onNumOfComment(e);
+//     })
+// }
 
