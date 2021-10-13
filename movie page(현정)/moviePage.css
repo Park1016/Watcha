@@ -2,10 +2,9 @@
 @import url("/movie page(현정)/css/color.css");
 
 /* common */
-/* * {
-  width: 67%;
-  height: 67%;
-} */
+html {
+  font-size: 67%;
+}
 
 /* ------------------modal------------------ */
 @-webkit-keyframes fadeIn {
@@ -49,8 +48,10 @@
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  z-index: 100;
   display: none;
+  align-items: center;
+  justify-content: center;
 }
 
 .mdWantToSeeMoreContainer {
@@ -58,8 +59,6 @@
   width: 35rem;
   height: 36rem;
   background-color: var(--pure-White);
-  top: 20rem;
-  left: 35%;
   align-items: center;
   justify-content: center;
   border: 1px var(--line-Gray) solid;
@@ -179,8 +178,6 @@
   width: 35rem;
   height: 50rem;
   background-color: var(--pure-White);
-  top: 20rem;
-  left: 35%;
   align-items: flex-start;
   justify-content: center;
   border: 1px var(--line-Gray) solid;
@@ -261,18 +258,17 @@
 
 /* mdCommentContainer */
 .mdCommentContainer {
-  transform: translate(-8.5rem, -8rem);
+  /* transform: translate(-8.5rem, -8rem); */
   position: fixed;
   width: 59.5rem;
   height: 50rem;
   background-color: var(--pure-White);
-  top: 20rem;
-  left: 35%;
+  /* top: 20rem;
+  left: 35%; */
   align-items: flex-start;
   justify-content: center;
   border: 1px var(--line-Gray) solid;
   border-radius: 10px;
-  z-index: 11;
   /* display: flex; */
   display: none;
 }
@@ -723,7 +719,7 @@
 }
 
 .topLeftComment {
-  width: 40%;
+  width: 24rem;
   height: 4rem;
   font-size: 1.6rem;
   font-weight: bold;
@@ -1058,6 +1054,12 @@
   height: 22rem;
   transition: transform 500ms ease-in-out;
   transform-origin: right;
+  transform: translateX(-1.2rem);
+}
+
+.production li:nth-child(3n-2) {
+  border: none;
+  /* background: red; */
 }
 
 .productionTitle {
@@ -1069,15 +1071,24 @@
 }
 
 .productionList {
+  /* width: 10rem; */
   height: 7rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   padding-right: 1rem;
+  border-top: 1px var(--line-Gray) solid;
 }
 
-.productionList > img {
+.liDiv {
+  width: 5rem;
+  height: 5rem;
+  background: #fff;
+  padding: 2rem 1rem;
+}
+
+.productionList > div > img {
   width: 5rem;
   height: 5rem;
   border-radius: 10px;
@@ -1085,8 +1096,8 @@
 }
 
 .liText {
-  border-top: 1px var(--line-Gray) solid;
-  width: 22rem;
+  /* border-top: 1px var(--line-Gray) solid; */
+  width: 19.7rem;
   height: 7rem;
   display: flex;
   flex-direction: column;
@@ -1436,7 +1447,7 @@
   width: 5.75rem;
   height: 9rem;
   border-radius: 7px;
-  margin-bottom: 0.5rem;
+  margin: 0.25rem 0;
 }
 
 .clchRight,
@@ -1705,7 +1716,7 @@
 
 /* 반응형 */
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1000px) {
   .section2RightContainer {
     display: none;
   }
@@ -1723,5 +1734,245 @@
   }
   .basket {
     width: 20rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .section1 {
+    height: 48rem;
+  }
+  .empty {
+    display: none;
+  }
+  .posterAndInfo {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translate(0, -10.5rem);
+  }
+  .poster {
+    width: 10rem;
+    height: 15rem;
+    transform: translate(0, 0);
+  }
+  .rankingInfo {
+    margin: 0;
+    transform: translate(0, 1rem);
+  }
+  .movieInfo {
+    padding: 0.5rem 0 1rem 0;
+  }
+  .movieTitle {
+    font-size: 2.7rem;
+  }
+  .movieInfoRateBasketEstimate {
+    transform: translate(0, 0);
+    height: 25em;
+  }
+  .basketEstimate {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+  }
+  .topUl {
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .movieInfo {
+    align-items: center;
+  }
+  .rate {
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 0.5rem 0;
+  }
+  .basket {
+    width: 23.5rem;
+  }
+  .estimate {
+    align-items: center;
+    transform: translateY(1.5rem);
+  }
+  .estimateText {
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+  .stars {
+    font-size: 3rem;
+    padding: 0;
+  }
+  .topImg {
+    height: 23rem;
+  }
+  .section2LeftTopContainer {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    height: 12rem;
+  }
+  .section2TopLeftContents {
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 12rem;
+  }
+  .topLeftText {
+    margin-bottom: 0.5rem;
+  }
+  .topLeftComment {
+    margin-top: 0.5rem;
+    border: 1px solid var(--medium-Gray);
+  }
+  .section2LeftContainer {
+    border: none;
+    border-radius: 0;
+    width: 100vw;
+  }
+  .productionList,
+  .commentContent {
+    width: 100%;
+  }
+  .liText {
+    width: calc(100% - 5rem);
+  }
+  .mdCommentContainer {
+    width: 100vw;
+    height: 100vh;
+  }
+  .section2LeftContents {
+    width: 92vw;
+  }
+  .commentContentList {
+    width: 86vw;
+  }
+  .commentContentSpace {
+    width: 1000rem;
+  }
+  .apchRight {
+    transform: translate(0, 12.5rem);
+    right: 1rem;
+  }
+  .ccchRight {
+    transform: translate(0, 19rem);
+    right: 1rem;
+  }
+  .RgvchRight {
+    transform: translate(0, 6.5rem);
+    right: -1rem;
+  }
+  .clchRight {
+    transform: translate(0, 16rem);
+    right: 1rem;
+  }
+  .Rsection2AdContainer {
+    width: 100vw;
+    transform: translateX(-4vw);
+  }
+  .RBox {
+    width: 100vw;
+    height: 69vw;
+    border-radius: 0;
+  }
+  .RadContent {
+    width: 100vw;
+    height: 56vw;
+  }
+  .RadTextContentInner {
+    width: 100vw;
+    height: 13vw;
+  }
+  .RgalleryImages,
+  .Rvideos {
+    height: 35vw;
+  }
+  .RgalleryImg,
+  .RvideoVideo {
+    width: 45vw;
+    height: 30.5vw;
+  }
+  .collection {
+    height: 85vw;
+  }
+  .collectionContentUl {
+    width: 1000rem;
+    height: 75vw;
+  }
+  .collectContent {
+    width: 45vw;
+    height: 70vw;
+    margin-right: 1rem;
+  }
+  .collectionImgs {
+    width: 45vw;
+    height: 65vw;
+  }
+  .collectImgBox {
+    width: 43vw;
+    height: 57.5vw;
+  }
+  .collectImg {
+    width: 48.5%;
+    height: 48.5%;
+  }
+  /* .collectionText {
+    height: 12vw;
+  } */
+  .collectionTextTitle {
+    font-weight: 700;
+    width: 45vw;
+    /* height: 6vw; */
+  }
+  .similarContent {
+    width: 30vw;
+    height: 62vw;
+  }
+
+  .similarContent > img {
+    width: 28vw;
+    height: 50vw;
+  }
+
+  .similarWork {
+    height: 270vw;
+  }
+
+  .similarContentUl {
+    height: 260vw;
+    overflow: visible;
+  }
+
+  .similarSeeMore {
+    display: none;
+  }
+
+  .Rsimilar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .similarWork {
+    height: 280vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .similarWork {
+    height: 290vw;
+  }
+
+  .collection {
+    height: 100vw;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .similarWork {
+    height: 300vw;
+  }
+
+  .collection {
+    height: 110vw;
   }
 }

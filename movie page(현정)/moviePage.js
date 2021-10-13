@@ -323,7 +323,7 @@ function onStarClick(e){
 
 // modal
 function onModalBtn(){
-    modalBackGround.style.display = 'block'
+    modalBackGround.style.display = 'flex'
     mdWantToSeeMore.style.display = 'block'
     mdWantToSeeMoreContainer.style.display = 'flex';
 }
@@ -534,7 +534,7 @@ function onFaBanModal() {
 }
 
 function onTopLeftCommentBtn(){
-    modalBackGround.style.display = 'block';
+    modalBackGround.style.display = 'flex';
     mdCommentContainer.style.display = 'flex';
 }
 
