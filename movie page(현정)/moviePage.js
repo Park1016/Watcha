@@ -38,6 +38,7 @@ const faBanModal = document.querySelector('.fa-ban-modal');
 const faBanMark = document.querySelector('.fa-ban-mark');
 const ccThumbs = document.querySelectorAll('.ccThumb');
 const noneMembetFatimes = document.querySelector('noneMembetFatimes');
+const star = document.querySelectorAll('.fa-star');
 
 //modal.button
 const markModal = document.querySelector('.markModal');
@@ -70,6 +71,15 @@ const mdCommentText = document.querySelector('.mdCommentText');
 const similarSeeMore = document.querySelector('.similarSeeMore');
 const button = document.querySelectorAll('button');
 
+// star
+const star1 = document.querySelector('.star1');
+const star2 = document.querySelector('.star2');
+const star3 = document.querySelector('.star3');
+const star4 = document.querySelector('.star4');
+const star5 = document.querySelector('.star5');
+const starText = document.querySelector('.estimateText');
+const cancelStar = document.querySelector('.cancelStar');
+
 // 비슷한 작품
 const similarWork = document.querySelector('.similarWork');
 const similarContentUl = document.querySelector('.similarContentUl');
@@ -101,31 +111,37 @@ let count = 0;
 // function
 // 슬라이드
 function onLeftSideRightChevron(ul) {
+    console.log('오');
     count = count - leftSideWidth;
     ul.style.transform = `translateX(${count}rem)`;
 }
 
 function onLeftSideLeftChevron(ul) {
+    console.log('왼');
     count = count + leftSideWidth;
     ul.style.transform = `translateX(${count}rem)`;
 }
 
 function onCommentRightChevron(ul) {
+    console.log('오');
     count = count - leftSideWidth + 2;
     ul.style.transform = `translateX(${count}rem)`;
 }
 
 function onCommentLeftChevron(ul) {
+    console.log('왼');
     count = count + (leftSideWidth - 2);
     ul.style.transform = `translateX(${count}rem)`;
 }
 
 function onRightSideRightChevron(ul) {
+    console.log('오');
     count = count - rightSideWidth;
     ul.style.transform = `translateX(${count}rem)`;
 }
 
 function onRightSideLeftChevron(ul) {
+    console.log('오');
     count = count + rightSideWidth;
     ul.style.transform = `translateX(${count}rem)`;
 }
@@ -139,6 +155,167 @@ function onSimilarSeeMoreBtn(){
     count = count + similarContentUlWidth;
     similarContentUl.style.height = `calc(85.2rem + ${count}rem)`;
     similarWork.style.height = `calc(97.5rem + ${count}rem)`;
+}
+
+// 별점
+function onStar(e, t){
+    if(star1.classList.contains('fix')){
+        cancelStar.style.display = 'block';
+        if(star1.classList.contains('two')){
+            cancelStar.style.left = '4rem';
+            return;
+        }
+        if(star1.classList.contains('three')){
+            cancelStar.style.left = '8.5rem';
+            return;
+        }
+        if(star1.classList.contains('four')){
+            cancelStar.style.left = '13rem';
+            return;
+        }
+        if(star1.classList.contains('five')){
+            cancelStar.style.left = '17.5rem';
+            return;
+        }
+    }
+    const target = e.target.lastElementChild;
+    if(target.className === 'star1'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        if(t){
+            star1.classList.add('one');
+            starText.innerHTML = '싫어요';
+        }
+    }
+    if(target.className === 'star2'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        star2.parentElement.classList.remove('far');
+        star2.parentElement.classList.add('fas');
+        if(t){
+            star1.classList.add('two');
+            starText.innerHTML = '별로예요';
+        }
+    }
+    if(target.className === 'star3'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        star2.parentElement.classList.remove('far');
+        star2.parentElement.classList.add('fas');
+        star3.parentElement.classList.remove('far');
+        star3.parentElement.classList.add('fas');
+        if(t){
+            star1.classList.add('three');
+            starText.innerHTML = '보통이에요';
+        }
+    }
+    if(target.className === 'star4'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        star2.parentElement.classList.remove('far');
+        star2.parentElement.classList.add('fas');
+        star3.parentElement.classList.remove('far');
+        star3.parentElement.classList.add('fas');
+        star4.parentElement.classList.remove('far');
+        star4.parentElement.classList.add('fas');
+        if(t){
+            star1.classList.add('four');
+            starText.innerHTML = '재밌어요';
+        }
+    }
+    if(target.className === 'star5'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        star2.parentElement.classList.remove('far');
+        star2.parentElement.classList.add('fas');
+        star3.parentElement.classList.remove('far');
+        star3.parentElement.classList.add('fas');
+        star4.parentElement.classList.remove('far');
+        star4.parentElement.classList.add('fas');
+        star5.parentElement.classList.remove('far');
+        star5.parentElement.classList.add('fas');
+        if(t){
+            star1.classList.add('five');
+            starText.innerHTML = '최고예요!';
+        }
+    }
+}
+
+function onStarLeave(e){
+    if(star1.classList.contains('fix')){
+        cancelStar.style.display = 'none';
+        return;
+    }
+    const star = e.target;
+    const target = e.target.lastElementChild;
+    if(target.className === 'star1'){
+        star.classList.remove('fas');
+        star.classList.add('far');
+    }
+    if(target.className === 'star2'){
+        star1.parentElement.classList.remove('fas');
+        star1.parentElement.classList.add('far');
+        star2.parentElement.classList.remove('fas');
+        star2.parentElement.classList.add('far');
+    }
+    if(target.className === 'star3'){
+        star1.parentElement.classList.remove('fas');
+        star1.parentElement.classList.add('far');
+        star2.parentElement.classList.remove('fas');
+        star2.parentElement.classList.add('far');
+        star3.parentElement.classList.remove('fas');
+        star3.parentElement.classList.add('far');
+    }
+    if(target.className === 'star4'){
+        star1.parentElement.classList.remove('fas');
+        star1.parentElement.classList.add('far');
+        star2.parentElement.classList.remove('fas');
+        star2.parentElement.classList.add('far');
+        star3.parentElement.classList.remove('fas');
+        star3.parentElement.classList.add('far');
+        star4.parentElement.classList.remove('fas');
+        star4.parentElement.classList.add('far');
+    }
+    if(target.className === 'star5'){
+        star1.parentElement.classList.remove('fas');
+        star1.parentElement.classList.add('far');
+        star2.parentElement.classList.remove('fas');
+        star2.parentElement.classList.add('far');
+        star3.parentElement.classList.remove('fas');
+        star3.parentElement.classList.add('far');
+        star4.parentElement.classList.remove('fas');
+        star4.parentElement.classList.add('far');
+        star5.parentElement.classList.remove('fas');
+        star5.parentElement.classList.add('far');
+    }
+}
+
+function onStarClick(e){
+    if(star1.classList.contains('fix')){
+        star1.classList.remove('fix');
+        star1.classList.remove('one');
+        star1.classList.remove('two');
+        star1.classList.remove('three');
+        star1.classList.remove('four');
+        star1.classList.remove('five');
+        cancelStar.style.left = '-0.5rem';
+        cancelStar.style.display = 'none';
+        starText.innerHTML = '평가하기';
+        star1.parentElement.classList.remove('fas');
+        star1.parentElement.classList.add('far');
+        star2.parentElement.classList.remove('fas');
+        star2.parentElement.classList.add('far');
+        star3.parentElement.classList.remove('fas');
+        star3.parentElement.classList.add('far');
+        star4.parentElement.classList.remove('fas');
+        star4.parentElement.classList.add('far');
+        star5.parentElement.classList.remove('fas');
+        star5.parentElement.classList.add('far');
+        return;
+    }
+    onStar(e, true);
+    star1.classList.add('fix');
+    // starText.innerHTML = '별점 취소하기';
 }
 
 
@@ -156,6 +333,7 @@ function onMdCancelBtn(){
     mdNonMemberContainer.style.display = 'none';
     mdCommentContainer.style.display = 'none';
     mdCommentTopText.style.color = srcColor.mediumGray;
+    commentTextarea.value = '';
 }
 
 function fabanCancel(){
@@ -377,9 +555,9 @@ function onCommentModal(e){
                                             </span>
                                         </div>
                                         <div class="ccText">
-                                            <div class="ccTextInner">
+                                            <a href="comment page/commentPage.html" class="ccTextInner">
                                                 ${text}
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="ccNumOfLikeComment">
                                             <span class="ccNumOfLike">
@@ -469,6 +647,7 @@ body.addEventListener('click', (e)=>{
             case 'similarSeeMore':
                 onSimilarSeeMoreBtn();
                 break;
+
             case 'fa-caret-down':
                 onModalBtn();
                 break;
@@ -478,9 +657,11 @@ body.addEventListener('click', (e)=>{
             case 'markNoThanksText':
                 onModalBtn();
                 break;
+
             case 'mdCancel':
                 onMdCancelBtn();
                 break;
+
             case 'mark':
                 onMarkBtn();
                 break;
@@ -493,9 +674,11 @@ body.addEventListener('click', (e)=>{
             case 'fa-ban-mark':
                 onMarkBtn();
                 break;
+
             case 'fullBookMarkModal':
                 onfullBookMarkModal();
                 break;
+
             case 'mdLeftIconBox':
                 onEmptyBookMarkModal();
                 break;
@@ -505,6 +688,7 @@ body.addEventListener('click', (e)=>{
             case 'mdLeftIconText':
                 onEmptyBookMarkModal();
                 break;
+
             case 'mdRightIconBox':
                 onWatchingEyeModal();
                 break;
@@ -514,9 +698,11 @@ body.addEventListener('click', (e)=>{
             case 'mdRightIconText':
                 onWatchingEyeModal();
                 break;
+
             case 'fullWatchingEyeModal':
                 onFullWatchingEyeModal();
                 break;     
+
             case 'mdNoThanks':
                 onFaBanModal();
                 break;
@@ -526,6 +712,7 @@ body.addEventListener('click', (e)=>{
             case 'fa-ban-modal':
                 onFaBanModal();
                 break;
+
             case 'topLeftComment':
                 onTopLeftCommentBtn();
                 break;
@@ -538,24 +725,29 @@ body.addEventListener('click', (e)=>{
             case 'faComment':
                 onTopLeftCommentBtn();
                 break;
+
             case 'noneMembetFatimes':
                 onMdCancelBtn();
                 break;
             case 'mdCommentFaTimes':
                 onMdCancelBtn();
                 break;
+
             case 'mdCommentTopText':
                 onCommentModal(e);
                 break;
+
             case 'commentTextarea':
                 onCommentTextarea(e);
                 break;
+
             case 'fa-trash-alt':
                 onDeleteComment(e);
                 break;
             case 'afterTrashText':
                 onDeleteComment(e);
                 break;
+
             case 'ccThumb':
                 srcLike.onLikeBtn(e);
                 break;
@@ -568,9 +760,31 @@ body.addEventListener('click', (e)=>{
             case 'ccComment':
                 srcLike.onNumOfComment(e);
                 break;
+
+            case 'star1':
+                onStar(e);
+                break;
+            case 'star2':
+                onStar(e);
+                break;
+            case 'star3':
+                onStar(e);
+                break;
+            case 'star4':
+                onStar(e);
+                break;
+            case 'star5':
+                onStar(e);
+                break;
         }
     }
 })
+
+for(let item of star){
+    item.addEventListener('click', (e)=>{onStarClick(e)});
+    item.addEventListener('mouseenter', (e)=>{onStar(e)});
+    item.addEventListener('mouseleave', (e)=>{onStarLeave(e)})
+}
 
 // comment
 // for(const numOfthumbUp of numOfthumbsUp){
