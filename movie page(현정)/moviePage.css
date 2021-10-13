@@ -1,6 +1,12 @@
 ﻿@import url("/movie page(현정)/css/default.css");
 @import url("/movie page(현정)/css/color.css");
 
+/* common */
+/* * {
+  width: 67%;
+  height: 67%;
+} */
+
 /* ------------------modal------------------ */
 @-webkit-keyframes fadeIn {
   from {
@@ -366,7 +372,7 @@
 
 .section1 {
   width: 100%;
-  height: 78vh;
+  height: 55rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -377,7 +383,7 @@
 
 .topImg {
   width: 100%;
-  height: 47vh;
+  height: 33rem;
 }
 
 .posterAndInfo {
@@ -417,7 +423,7 @@
 
 .movieInfoRateBasketEstimate {
   width: 91rem;
-  height: 31vh;
+  height: 20rem;
   display: flex;
   flex-direction: row;
   align-items: center;
