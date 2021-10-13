@@ -23,6 +23,8 @@ const commentContentSpace = document.querySelector('.commentContentSpace');
 const galleryImages = document.querySelector('.galleryImages');
 const videos = document.querySelector('.videos');
 const collectionContentUl = document.querySelector('.collectionContentUl');
+const RgalleryImages = document.querySelector('.RgalleryImages');
+
 
 // icon
 const faCaretDown = document.querySelector('.fa-caret-down');
@@ -642,7 +644,12 @@ body.addEventListener('click', (e)=>{
             case 'vchLeft':
                 onRightSideLeftChevron(videos);
                 break;
-
+            case 'RgvchRight':
+                onLeftSideRightChevron(RgalleryImages);
+                break;
+            case 'RgvchLeft':
+                onLeftSideLeftChevron(RgalleryImages);
+                break;
             
             case 'similarSeeMore':
                 onSimilarSeeMoreBtn();

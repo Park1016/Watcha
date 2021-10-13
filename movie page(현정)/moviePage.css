@@ -400,9 +400,19 @@
 
 .rankingInfo {
   margin-left: 2rem;
-  color: white;
-  font-size: 1.5rem;
-  visibility: hidden;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 3px black;
+  /* background: rgb(0, 0, 0, 0.3); */
+  /* visibility: hidden; */
+}
+
+.riGray {
+  color: #858674;
+}
+
+.riWhite {
+  color: #cfd0d1;
+  margin-right: 0.5rem;
 }
 
 .movieInfoRateBasketEstimate {
@@ -1548,4 +1558,164 @@
 
 .similarSeeMore:hover {
   transform: translateY(0.1rem);
+}
+
+/* 반응형 오른쪽 content */
+.Rsection2AdContainer,
+.Rgallery,
+.Rvideo {
+  display: none;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.Rsection2AdContainer {
+  border: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.RBox {
+  border: 1px solid #e3e3e3;
+  width: 40rem;
+  height: 30rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  margin: 2.5rem 0;
+}
+
+.RadContent {
+  width: 40rem;
+  height: 23rem;
+}
+
+.RadDiscription {
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+  color: #7878a3;
+}
+
+.Rdisc {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.RGoingToSee {
+  font-size: 1.2rem;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  margin-right: 1.5rem;
+  background: #ff2f6e;
+  color: #fff;
+}
+
+.RadTextContentInner {
+  display: flex;
+  width: 40rem;
+  height: 7rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Rgallery,
+.Rvideo {
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.RgalleryTitle,
+.RvideoTitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.RvBox {
+  margin: 1.5rem 0;
+}
+
+.RgvchLeft,
+.RgvchRight,
+.RgvRight,
+.RgvLeft {
+  position: absolute;
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 2rem;
+  color: rgb(185, 184, 184);
+  border-radius: 50%;
+  box-shadow: 0px 1px 10px var(--line-Gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--pure-White);
+  cursor: pointer;
+  z-index: 1;
+  transition: all 100ms ease-in-out;
+}
+
+.RgvchRight {
+  transform: translate(56.7rem, 6.5rem);
+}
+
+.RgvchLeft {
+  transform: translate(-1rem, 6.5rem);
+}
+
+.RgvRight {
+  transform: translate(56.7rem, 6.5rem);
+}
+
+.RgvLeft {
+  transform: translate(-1rem, 6.5rem);
+}
+
+.RgalleryImages,
+.Rvideos {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 11.5rem;
+  flex-flow: row nowrap;
+  transition: all 500ms ease-in-out;
+}
+
+.RgalleryImg,
+.RvideoVideo {
+  margin-right: 1rem;
+  width: 13rem;
+  height: 9rem;
+}
+
+.RvideoDiscription {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+/* 반응형 */
+
+@media screen and (max-width: 1500px) {
+  .section2RightContainer {
+    display: none;
+  }
+  .Rsection2AdContainer,
+  .Rgallery,
+  .Rvideo {
+    display: flex;
+  }
+  .posterAndInfo {
+    transform: translate(14.5rem, -3rem);
+    z-index: 10;
+  }
+  .movieInfoRateBasketEstimate {
+    transform: translateX(14.5rem);
+  }
+  .basket {
+    width: 20rem;
+  }
 }
