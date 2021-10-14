@@ -25,6 +25,73 @@ html {
   }
 }
 
+/* alert */
+.cancelAlert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 35;
+}
+
+.alertBox {
+  width: 27rem;
+  height: 13rem;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.alertTop {
+  width: 85%;
+  height: 67%;
+  border-bottom: 1px solid #d2d2d2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.alertTop p:nth-child(1) {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.alertTop p:nth-child(2) {
+  font-size: 1.4rem;
+}
+
+.alertBottom {
+  width: 70%;
+  height: 33%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.alertBottom > button {
+  color: #ff3170;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+}
+
+.alertBottom > button:nth-child(1) {
+  border-right: 1px solid #d2d2d2;
+  padding-bottom: 0.2rem;
+  padding-right: 4.5rem;
+}
+
 /* nav */
 .nav {
   width: 100vw;
@@ -93,6 +160,10 @@ html {
   font-size: 1.4rem;
   text-shadow: 1px 1px 1px black;
   width: 5rem;
+}
+
+.navEst:hover {
+  cursor: pointer;
 }
 
 .navProfile {
@@ -190,6 +261,10 @@ html {
 .scrollText {
   text-shadow: none;
   color: #7e7e7e;
+}
+
+.scrollText p:hover {
+  color: #ff2f6e;
 }
 
 .scrollBox {
@@ -640,6 +715,7 @@ html {
 .mdCommentMovieName {
   font-size: 1.8rem;
   font-weight: bold;
+  transform: translateX(2.5rem);
 }
 
 .mdCommentTopText {
@@ -1829,6 +1905,7 @@ html {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: space-between;
+  transform: translateY(-0.3rem);
 }
 
 .collectImg {
@@ -2375,6 +2452,7 @@ html {
   .collectImgBox {
     width: 43vw;
     height: 57.5vw;
+    transform: translateY(0);
   }
   .collectImg {
     width: 48.5%;
