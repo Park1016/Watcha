@@ -894,12 +894,12 @@ html {
   margin-bottom: 1rem;
   width: 100%;
   height: 6rem;
-  /* display: none; */
+  display: none;
 }
 
-.section2LeftContainer {
-  margin-top: 1rem;
-}
+/* .section2LeftContainer {
+  margin-top: 4rem;
+} */
 
 .section2LeftContents {
   width: 59rem;

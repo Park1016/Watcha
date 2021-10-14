@@ -122,7 +122,7 @@ const leftSideWidth = 60.4;
 const rightSideWidth = 25;
 const similarContentUlWidth = 85.2;
 let count = 0;
-
+let check = false;
 
 
 
@@ -339,6 +339,8 @@ function onStarLeave(e){
 
 function onStarClick(e){
     if(star1.classList.contains('fix')){
+        section2LeftTopContainer.style.display = 'none';
+        section2LeftContainer.style.marginTop = '4rem';
         star1.classList.remove('fix');
         star1.classList.remove('one');
         star1.classList.remove('two');
@@ -360,9 +362,10 @@ function onStarClick(e){
         star5.parentElement.classList.add('far');
         return;
     }
+    section2LeftTopContainer.style.display = 'flex';
+    section2LeftContainer.style.marginTop = '1rem';
     onStar(e, true);
     star1.classList.add('fix');
-    // starText.innerHTML = '별점 취소하기';
 }
 
 //footer
@@ -592,9 +595,12 @@ function onFaBanModal() {
     onMdCancelBtn();
 }
 
-function onTopLeftCommentBtn(){
+function onTopLeftCommentBtn(edit){
     modalBackGround.style.display = 'flex';
     mdCommentContainer.style.display = 'flex';
+    if(edit){
+        commentTextarea.value = localStorage.getItem('text');
+    }
 }
 
 // comment
@@ -603,36 +609,43 @@ function onCommentModal(e){
     const target = e.target;
     let text = target.parentElement.parentElement.lastElementChild.value;
     afterCommentText.innerText = text;
-    const commentContentList = `<li class="commentContentList">
-                                    <div class="commentContent">
-                                        <div class="ccTop">
-                                            <span class="ccTopLeft">
-                                                <img class="ccTopImg" src="https://picsum.photos/200/200/" alt="이미지가 없습니다">
-                                                <span class="ccTopName">이름</span>
-                                            </span>
-                                            <span class="ccTopRight">
-                                                <i class="fas fa-star"></i>
-                                                <span class="starScope">3.0</span>
-                                            </span>
+    localStorage.setItem('text', text);
+    if(!check){
+        const commentContentList = `<li class="commentContentList">
+                                        <div class="commentContent">
+                                            <div class="ccTop">
+                                                <span class="ccTopLeft">
+                                                    <img class="ccTopImg" src="https://picsum.photos/200/200/" alt="이미지가 없습니다">
+                                                    <span class="ccTopName">이름</span>
+                                                </span>
+                                                <span class="ccTopRight">
+                                                    <i class="fas fa-star"></i>
+                                                    <span class="starScope">3.0</span>
+                                                </span>
+                                            </div>
+                                            <div class="ccText">
+                                                <a href="comment page/commentPage.html" class="ccTextInner">
+                                                    ${text}
+                                                </a>
+                                            </div>
+                                            <div class="ccNumOfLikeComment">
+                                                <span class="ccNumOfLike">
+                                                    <i class="fas fa-thumbs-up ccThumb"></i>
+                                                    <span class="numOfthumbsUp">0</span>
+                                                </span>
+                                                <span class="ccNumOfComment">
+                                                    <i class="fas fa-comment ccNum"></i>
+                                                    <span class="ccComment">0</span>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="ccText">
-                                            <a href="comment page/commentPage.html" class="ccTextInner">
-                                                ${text}
-                                            </a>
-                                        </div>
-                                        <div class="ccNumOfLikeComment">
-                                            <span class="ccNumOfLike">
-                                                <i class="fas fa-thumbs-up ccThumb"></i>
-                                                <span class="numOfthumbsUp">0</span>
-                                            </span>
-                                            <span class="ccNumOfComment">
-                                                <i class="fas fa-comment ccNum"></i>
-                                                <span class="ccComment">0</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>`;
-    commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
+                                    </li>`;
+        commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
+    }
+    if(check){
+        check = false;
+        commentContentSpace.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = text;
+    }
     commentTextarea.value = '';
     text = '';
     mdCommentText.innerText = '코멘트 수정하기';
@@ -669,7 +682,12 @@ function onDeleteComment(e){
     const target = e.target.parentElement;
     let text = target.parentElement.previousElementSibling.lastElementChild;
     text = '';
-    console.log(text);
+    commentContentSpace.firstElementChild.remove();
+}
+
+function onEditComment(e){
+    onTopLeftCommentBtn(true);
+    check = true;
 }
 
 
@@ -817,6 +835,13 @@ body.addEventListener('click', (e)=>{
                 break;
             case 'afterTrashText':
                 onDeleteComment(e);
+                break;
+
+            case 'afterEditText':
+                onEditComment(e);
+                break;
+            case 'fa-pencil-alt':
+                onEditComment(e);
                 break;
 
             case 'ccThumb':
