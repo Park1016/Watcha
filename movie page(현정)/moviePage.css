@@ -156,8 +156,14 @@ html {
   color: #bbc2c3;
 }
 
-.searchBox > span {
+.searchBox > input {
+  width: 25rem;
   letter-spacing: 0;
+  background: transparent;
+  caret-color: black;
+}
+
+.searchBox > input::placeholder {
   color: #bbc2c3;
 }
 
@@ -191,7 +197,7 @@ html {
   border: none;
 }
 
-.scrollBox > span {
+.scrollBox > input::placeholder {
   color: #78787e;
 }
 
@@ -242,6 +248,119 @@ html {
 
 .active {
   color: black;
+}
+
+/* real footer */
+.f {
+  width: 100vw;
+  height: 28rem;
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+}
+
+.ftop {
+  width: 100%;
+  height: 6rem;
+  background: #101113;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+.ftop span:nth-child(1) {
+  color: #d1d1d2;
+}
+.ftop span:nth-child(2) {
+  color: #ff0558;
+  margin: 0 0.5rem;
+}
+.ftop span:nth-child(3) {
+  color: #d1d1d2;
+}
+
+.fbox {
+  width: calc(100% - 5rem);
+  height: 18rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #1c1d1f;
+}
+
+.fText {
+  font-size: 1.2rem;
+  color: #a5a5a7;
+  letter-spacing: 0.6px;
+}
+
+.fText span:nth-child(2) {
+  color: #848485;
+}
+
+.fbottom {
+  width: 100%;
+  height: 22rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #1c1d1f;
+}
+
+.fbottomRight {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.fBtn {
+  width: 10.5rem;
+  height: 2.8rem;
+  padding: 0 0.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  color: #a5a5a7;
+  border: 0.5px solid #848485;
+  border-radius: 3px;
+}
+
+.fBtn > span {
+  font-size: 1.4rem;
+  transform: translateY(-0.1rem);
+  font-weight: bold;
+}
+
+.fBtn > i {
+  transform: translateY(-0.1rem);
+}
+
+.fIcons {
+  transform: translateY(-3.5rem);
+}
+
+.fIcons > i {
+  font-size: 2.2rem;
+  text-align: center;
+  color: #848485;
+}
+
+.fIcons > i:nth-child(2) {
+  margin: 0 1.5rem;
+}
+
+.fIcons > i:hover {
+  color: #acacac;
 }
 
 /* .mdWantToSeeMore, */
@@ -2267,6 +2386,10 @@ html {
   }
 
   .nav {
+    display: none;
+  }
+
+  .f {
     display: none;
   }
 

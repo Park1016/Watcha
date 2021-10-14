@@ -111,7 +111,11 @@ const ccComments = document.querySelectorAll('.ccComment');
 
 const container = document.querySelector('.container');
 const body = document.querySelector('body');
-// let scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+const Rgallery = document.querySelector('.Rgallery');
+const collection = document.querySelector('.collection');
+const gallery = document.querySelector('.gallery');
+const video = document.querySelector('.video');
 
 
 // 코멘트
@@ -120,6 +124,7 @@ const section2LeftTopContainer = document.querySelector('.section2LeftTopContain
 const afterCommentContainer = document.querySelector('.afterCommentContainer');
 let afterCommentText = document.querySelector('.afterCommentText');
 const commentTextarea = document.querySelector('.commentTextarea');
+const comment = document.querySelector('.comment');
 
 // 전역변수
 const leftSideWidth = 60.4;
@@ -127,33 +132,71 @@ const rightSideWidth = 25;
 const similarContentUlWidth = 85.2;
 let count = 0;
 let check = false;
-
+let productCount = 0;
+let comCount = 0;
+let lchCount = 0;
 
 
 // function
 // 슬라이드
 function onLeftSideRightChevron(ul) {
+    if(ul == productionUl && productCount === 2){
+        return;
+    }
+    if(ul == RgalleryImages && lchCount == 1){
+        return;
+    }
     console.log('오');
     count = count - leftSideWidth;
     ul.style.transform = `translateX(${count}rem)`;
+    if(ul == productionUl){
+        productCount++;
+        return;
+    }
+    if(ul == RgalleryImages){
+        lchCount++;
+        return;
+    }
 }
 
 function onLeftSideLeftChevron(ul) {
+    if(ul == productionUl && productCount === 0){
+        return;
+    }
+    if(ul == RgalleryImages && lchCount == 0){
+        return;
+    }
     console.log('왼');
     count = count + leftSideWidth;
     ul.style.transform = `translateX(${count}rem)`;
+    if(ul == productionUl){
+        productCount--;
+        return;
+    }
+    if(ul == RgalleryImages){
+        lchCount--;
+        return;
+    }
 }
 
 function onCommentRightChevron(ul) {
+    if(comCount === 1){
+        return;
+    }
     console.log('오');
     count = count - leftSideWidth + 2;
     ul.style.transform = `translateX(${count}rem)`;
+    comCount++;
 }
 
 function onCommentLeftChevron(ul) {
+    if(comCount === 0){
+        return;
+    }
     console.log('왼');
     count = count + (leftSideWidth - 2);
     ul.style.transform = `translateX(${count}rem)`;
+    comCount--;
 }
 
 function onRightSideRightChevron(ul) {
@@ -934,20 +977,23 @@ body.addEventListener('click', (e)=>{
 
 // arrow
 // productionUl.addEventListener('mouseenter', (e)=>{
-//     if(window.getComputedStyle(productionUl.firstElementChild).visibility === "visible"){
+//     console.log(window.getComputedStyle(productionUl.firstElementChild).visibility);
+//     if(window.getComputedStyle(productionUl).visibility === "visible"){
+//         console.log(productionUl.scrollWidth, productionUl.clientWidth);
 //         apchRight.style.display = 'flex';
 //         apchLeft.style.display = 'none';
 //     }
 //     if(window.getComputedStyle(productionUl.lastElementChild).visibility === "visible"){
+//         console.log(window.getComputedStyle(productionUl.lastElementChild).visibility);
 //         apchLeft.style.display = 'flex';
 //         apchRight.style.display = 'none';
 //     }
-//     if(window.getComputedStyle(productionUl.firstElementChild).visibility !== "visible" ||
+//     if(window.getComputedStyle(productionUl.firstElementChild).visibility !== "visible" &&
 //     window.getComputedStyle(productionUl.lastElementChild).visibility !== "visible"){
 //         apchRight.style.display = 'flex';
 //         apchLeft.style.display = 'flex';
 //     }
-//     if(window.getComputedStyle(productionUl.firstElementChild).visibility === "visible" ||
+//     if(window.getComputedStyle(productionUl.firstElementChild).visibility === "visible" &&
 //     window.getComputedStyle(productionUl.lastElementChild).visibility === "visible"){
 //         apchRight.style.display = 'none';
 //         apchLeft.style.display = 'none';
@@ -955,8 +1001,16 @@ body.addEventListener('click', (e)=>{
 // });
 
 productionUl.addEventListener('mouseenter', (e)=>{
-    apchRight.style.display = 'flex';
-    apchLeft.style.display = 'flex';
+    if(productCount === 0){
+        apchLeft.style.display = 'none';
+    }else{
+        apchLeft.style.display = 'flex';
+    }
+    if(productCount === 2){
+        apchRight.style.display = 'none';
+    }else{
+        apchRight.style.display = 'flex';
+    }
 });
 
 productionUl.addEventListener('mouseleave', (e)=>{
@@ -965,8 +1019,16 @@ productionUl.addEventListener('mouseleave', (e)=>{
 });
 
 apchRight.addEventListener('mouseenter', (e)=>{
-    apchRight.style.display = 'flex';
-    apchLeft.style.display = 'flex';
+    if(productCount === 0){
+        apchLeft.style.display = 'none';
+    }else{
+        apchLeft.style.display = 'flex';
+    }
+    if(productCount === 2){
+        apchRight.style.display = 'none';
+    }else{
+        apchRight.style.display = 'flex';
+    }
 });
 
 apchRight.addEventListener('mouseleave', (e)=>{
@@ -975,8 +1037,16 @@ apchRight.addEventListener('mouseleave', (e)=>{
 });
 
 apchLeft.addEventListener('mouseenter', (e)=>{
-    apchRight.style.display = 'flex';
-    apchLeft.style.display = 'flex';
+    if(productCount === 0){
+        apchLeft.style.display = 'none';
+    }else{
+        apchLeft.style.display = 'flex';
+    }
+    if(productCount === 2){
+        apchRight.style.display = 'none';
+    }else{
+        apchRight.style.display = 'flex';
+    }
 });
 
 apchLeft.addEventListener('mouseleave', (e)=>{
@@ -985,8 +1055,19 @@ apchLeft.addEventListener('mouseleave', (e)=>{
 });
 
 commentContentSpace.addEventListener('mouseenter', (e)=>{
-    ccchRight.style.display = 'flex';
-    ccchLeft.style.display = 'flex';
+    if(commentContentSpace.childElementCount === 2){
+        return;
+    }
+    if(comCount === 1){
+        ccchRight.style.display = 'none';
+    }else{
+        ccchRight.style.display = 'flex';
+    }
+    if(comCount === 0){
+        ccchLeft.style.display = 'none';
+    }else{
+        ccchLeft.style.display = 'flex';
+    }
 });
 
 commentContentSpace.addEventListener('mouseleave', (e)=>{
@@ -995,8 +1076,16 @@ commentContentSpace.addEventListener('mouseleave', (e)=>{
 });
 
 ccchRight.addEventListener('mouseenter', (e)=>{
-    ccchRight.style.display = 'flex';
-    ccchLeft.style.display = 'flex';
+    if(comCount === 1){
+        ccchRight.style.display = 'none';
+    }else{
+        ccchRight.style.display = 'flex';
+    }
+    if(comCount === 0){
+        ccchLeft.style.display = 'none';
+    }else{
+        ccchLeft.style.display = 'flex';
+    }
 });
 
 ccchRight.addEventListener('mouseleave', (e)=>{
@@ -1005,8 +1094,16 @@ ccchRight.addEventListener('mouseleave', (e)=>{
 });
 
 ccchLeft.addEventListener('mouseenter', (e)=>{
-    ccchRight.style.display = 'flex';
-    ccchLeft.style.display = 'flex';
+    if(comCount === 1){
+        ccchRight.style.display = 'none';
+    }else{
+        ccchRight.style.display = 'flex';
+    }
+    if(comCount === 0){
+        ccchLeft.style.display = 'none';
+    }else{
+        ccchLeft.style.display = 'flex';
+    }
 });
 
 ccchLeft.addEventListener('mouseleave', (e)=>{
@@ -1015,8 +1112,13 @@ ccchLeft.addEventListener('mouseleave', (e)=>{
 });
 
 RgalleryImages.addEventListener('mouseenter', (e)=>{
-    RgvchRight.style.display = 'flex';
-    RgvchLeft.style.display = 'flex';
+    if(lchCount === 0){
+        RgvchLeft.style.display = 'none';
+        RgvchRight.style.display = 'flex';
+    }else{
+        RgvchRight.style.display = 'none';
+        RgvchLeft.style.display = 'flex';
+    }
 });
 
 RgalleryImages.addEventListener('mouseleave', (e)=>{
@@ -1025,8 +1127,13 @@ RgalleryImages.addEventListener('mouseleave', (e)=>{
 });
 
 RgvchRight.addEventListener('mouseenter', (e)=>{
-    RgvchRight.style.display = 'flex';
-    RgvchLeft.style.display = 'flex';
+    if(lchCount === 0){
+        RgvchLeft.style.display = 'none';
+        RgvchRight.style.display = 'flex';
+    }else{
+        RgvchRight.style.display = 'none';
+        RgvchLeft.style.display = 'flex';
+    }
 });
 
 RgvchRight.addEventListener('mouseleave', (e)=>{
@@ -1035,8 +1142,13 @@ RgvchRight.addEventListener('mouseleave', (e)=>{
 });
 
 RgvchLeft.addEventListener('mouseenter', (e)=>{
-    RgvchRight.style.display = 'flex';
-    RgvchLeft.style.display = 'flex';
+    if(lchCount === 0){
+        RgvchLeft.style.display = 'none';
+        RgvchRight.style.display = 'flex';
+    }else{
+        RgvchRight.style.display = 'none';
+        RgvchLeft.style.display = 'flex';
+    }
 });
 
 RgvchLeft.addEventListener('mouseleave', (e)=>{
@@ -1044,12 +1156,12 @@ RgvchLeft.addEventListener('mouseleave', (e)=>{
     RgvchLeft.style.display = 'none';
 });
 
-collectionContentUl.addEventListener('mouseenter', (e)=>{
+collection.addEventListener('mouseenter', (e)=>{
     clchRight.style.display = 'flex';
     clchLeft.style.display = 'flex';
 });
 
-collectionContentUl.addEventListener('mouseleave', (e)=>{
+collection.addEventListener('mouseleave', (e)=>{
     clchRight.style.display = 'none';
     clchLeft.style.display = 'none';
 });
@@ -1074,12 +1186,12 @@ clchLeft.addEventListener('mouseleave', (e)=>{
     clchLeft.style.display = 'none';
 });
 
-galleryImages.addEventListener('mouseenter', (e)=>{
+gallery.addEventListener('mouseenter', (e)=>{
     gchRight.style.display = 'flex';
     gchLeft.style.display = 'flex';
 });
 
-galleryImages.addEventListener('mouseleave', (e)=>{
+gallery.addEventListener('mouseleave', (e)=>{
     gchRight.style.display = 'none';
     gchLeft.style.display = 'none';
 });
@@ -1104,12 +1216,12 @@ gchLeft.addEventListener('mouseleave', (e)=>{
     gchLeft.style.display = 'none';
 });
 
-videos.addEventListener('mouseenter', (e)=>{
+video.addEventListener('mouseenter', (e)=>{
     vchRight.style.display = 'flex';
     vchLeft.style.display = 'flex';
 });
 
-videos.addEventListener('mouseleave', (e)=>{
+video.addEventListener('mouseleave', (e)=>{
     vchRight.style.display = 'none';
     vchLeft.style.display = 'none';
 });

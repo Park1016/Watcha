@@ -43,6 +43,10 @@ html {
   align-items: center;
 }
 
+.allComments div:nth-child(3) {
+  margin-bottom: 3rem;
+}
+
 .commentBox {
   display: flex;
   justify-content: center;
