@@ -13,6 +13,15 @@ const footer1 = document.querySelector('.footer1');
 const footer2 = document.querySelector('.footer2');
 const footer3 = document.querySelector('.footer3');
 const footer4 = document.querySelector('.footer4');
+const footerHome = document.querySelector('.footerHome');
+const footerSearch = document.querySelector('.footerSearch');
+const footerStar = document.querySelector('.footerStar');
+const footerUser = document.querySelector('.footerUser');
+const footerText1 = document.querySelector('.footerText1');
+const footerText2 = document.querySelector('.footerText2');
+const footerText3 = document.querySelector('.footerText3');
+const footerText4 = document.querySelector('.footerText4');
+
 
 // chevron
 const rightArrow = document.querySelectorAll('.fa-chevron-right');
@@ -200,6 +209,7 @@ function onStar(e, t){
         }
     }
     const target = e.target.lastElementChild;
+    if(!target){return};
     if(target.className === 'star1'){
         star1.parentElement.classList.remove('far');
         star1.parentElement.classList.add('fas');
@@ -269,6 +279,7 @@ function onStarLeave(e){
     }
     const star = e.target;
     const target = e.target.lastElementChild;
+    if(!target){return};
     if(target.className === 'star1'){
         star.classList.remove('fas');
         star.classList.add('far');
@@ -342,13 +353,68 @@ function onStarClick(e){
 //footer
 function onFooter(e){
     const target = e.target;
-    if(target.classList.contains(footer1) || target.classList.contains(footer2) || target.classList.contains(footer3) || target.classList.contains(footer4)){
+    if(target.classList.contains(footer1)){
         removeActive();
-        target.classList.add('active');
+        footer1.classList.add('active');
         return;
     }
-    removeActive();
-    target.parentElement.classList.add('active');
+    if(target.classList.contains(footer2)){
+        removeActive();
+        footer2.classList.add('active');
+        return;
+    }
+    if(target.classList.contains(footer3)){
+        removeActive();
+        footer3.classList.add('active');
+        return;
+    }
+    if(target.classList.contains(footer4)){
+        removeActive();
+        footer4.classList.add('active');
+        return;
+    }
+
+    if(target.classList.contains(footerHome)){
+        removeActive();
+        target.parentElement.classList.add('active');
+        return;
+    }
+    if(target.classList.contains(footerSearch)){
+        removeActive();
+        target.parentElement.classList.add('active');
+        return;
+    }
+    if(target.classList.contains(footerStar)){
+        removeActive();
+        target.parentElement.classList.add('active');
+        return;
+    }
+    if(target.classList.contains(footerUser)){
+        removeActive();
+        target.parentElement.classList.add('active');
+        return;
+    }
+
+    if(target.classList.contains(footerText1)){
+        removeActive();
+        target.parentElement.classList.add('active');
+        return;
+    }
+    if(target.classList.contains(footerText2)){
+        removeActive();
+        target.parentElement.classList.add('active');
+        return;
+    }
+    if(target.classList.contains(footerText3)){
+        removeActive();
+        target.parentElement.classList.add('active');
+        return;
+    }
+    if(target.classList.contains(footerText4)){
+        removeActive();
+        target.parentElement.classList.add('active');
+        return;
+    }
 }
 
 function removeActive(){
@@ -902,9 +968,7 @@ for(let item of star){
 }
 
 window.onload = function() {
-    setTimeout (function () {
-        scrollTo(0,0);
-    },100);
+    scrollTo(0,0);
 }
 
 // comment
