@@ -149,124 +149,136 @@ let countV = 0;
 // function
 // 슬라이드
 function onLeftSideRightChevron(ul) {
-    console.log('오');
-    if(ul == productionUl && productCount === 2){
-        return;
-    }
-    if(ul == RgalleryImages && lchCount == 1){
-        return;
-    }
-    if(ul == collectionContentUl && colCount == 1){
-        return;
-    }
-    if(ul == productionUl){
-        countPro = countPro - leftSideWidth;
-        ul.style.transform = `translateX(${countPro}rem)`;
-        productCount++;
-        return;
-    }
-    if(ul == RgalleryImages){
-        countGal = countGal - leftSideWidth;
-        ul.style.transform = `translateX(${countGal}rem)`;
-        lchCount++;
-        return;
-    }
-    if(ul == collectionContentUl){
-        countCol = countCol - leftSideWidth;
-        ul.style.transform = `translateX(${countCol}rem)`;
-        colCount++;
-        return;
-    }
+    if(body.clientWidth > 696){
+        console.log('오');
+        if(ul == productionUl && productCount === 2){
+            return;
+        }
+        if(ul == RgalleryImages && lchCount == 1){
+            return;
+        }
+        if(ul == collectionContentUl && colCount == 1){
+            return;
+        }
+        if(ul == productionUl){
+            countPro = countPro - leftSideWidth;
+            ul.style.transform = `translateX(${countPro}rem)`;
+            productCount++;
+            return;
+        }
+        if(ul == RgalleryImages){
+            countGal = countGal - leftSideWidth;
+            ul.style.transform = `translateX(${countGal}rem)`;
+            lchCount++;
+            return;
+        }
+        if(ul == collectionContentUl){
+            countCol = countCol - leftSideWidth;
+            ul.style.transform = `translateX(${countCol}rem)`;
+            colCount++;
+            return;
+        }
+    };
 }
 
 function onLeftSideLeftChevron(ul) {
-    console.log('왼');
-    if(ul == productionUl && productCount === 0){
-        return;
-    }
-    if(ul == RgalleryImages && lchCount == 0){
-        return;
-    }
-    if(ul == collectionContentUl && colCount == 0){
-        return;
-    }
-    if(ul == productionUl){
-        countPro = countPro + leftSideWidth;
-        ul.style.transform = `translateX(${countPro}rem)`;
-        productCount--;
-        return;
-    }
-    if(ul == RgalleryImages){
-        countGal = countGal + leftSideWidth;
-        ul.style.transform = `translateX(${countGal}rem)`;
-        lchCount--;
-        return;
-    }
-    if(ul == collectionContentUl){
-        countCol = countCol + leftSideWidth;
-        ul.style.transform = `translateX(${countCol}rem)`;
-        colCount--;
-        return;
+    if(body.clientWidth > 696){
+        console.log('왼');
+        if(ul == productionUl && productCount === 0){
+            return;
+        }
+        if(ul == RgalleryImages && lchCount == 0){
+            return;
+        }
+        if(ul == collectionContentUl && colCount == 0){
+            return;
+        }
+        if(ul == productionUl){
+            countPro = countPro + leftSideWidth;
+            ul.style.transform = `translateX(${countPro}rem)`;
+            productCount--;
+            return;
+        }
+        if(ul == RgalleryImages){
+            countGal = countGal + leftSideWidth;
+            ul.style.transform = `translateX(${countGal}rem)`;
+            lchCount--;
+            return;
+        }
+        if(ul == collectionContentUl){
+            countCol = countCol + leftSideWidth;
+            ul.style.transform = `translateX(${countCol}rem)`;
+            colCount--;
+            return;
+        }
     }
 }
 
 function onCommentRightChevron(ul) {
-    if(comCount === 1){
-        return;
+    if(body.clientWidth > 696){
+        if(comCount === 1){
+            return;
+        }
+        console.log('오');
+        count = count - leftSideWidth + 2;
+        ul.style.transform = `translateX(${count}rem)`;
+        comCount++;
     }
-    console.log('오');
-    count = count - leftSideWidth + 2;
-    ul.style.transform = `translateX(${count}rem)`;
-    comCount++;
 }
 
 function onCommentLeftChevron(ul) {
-    if(comCount === 0){
-        return;
+    if(body.clientWidth > 696){
+        if(comCount === 0){
+            return;
+        }
+        console.log('왼');
+        count = count + (leftSideWidth - 2);
+        ul.style.transform = `translateX(${count}rem)`;
+        comCount--;
     }
-    console.log('왼');
-    count = count + (leftSideWidth - 2);
-    ul.style.transform = `translateX(${count}rem)`;
-    comCount--;
 }
 
 function onRightSideRightChevron(ul) {
-    console.log('오');
-    if(ul == galleryImages && galCount === 2){
-        return;
-    }
-    if(ul == videos && vidCount === 1){
-        return;
-    }
-    if(ul == galleryImages){
-        countG = countG - rightSideWidth;
-        ul.style.transform = `translateX(${countG}rem)`;
-        galCount++;
-    }
-    if(ul == videos){
-        countV = countV - rightSideWidth;
-        ul.style.transform = `translateX(${countV}rem)`;
-        vidCount++;
+    if(body.clientWidth > 696){
+        console.log('오');
+        if(ul == galleryImages && galCount === 2){
+            return;
+        }
+        if(ul == videos && vidCount === 1){
+            return;
+        }
+        if(ul == galleryImages){
+            countG = countG - rightSideWidth;
+            ul.style.transform = `translateX(${countG}rem)`;
+            galCount++;
+        }
+        if(ul == videos){
+            countV = countV - rightSideWidth;
+            ul.style.transform = `translateX(${countV}rem)`;
+            vidCount++;
+        }
     }
 }
 
 function onRightSideLeftChevron(ul) {
-    console.log('오');
-    if(ul == galleryImages && galCount === 0){
-        return;
-    }
-    if(ul == videos && vidCount === 0){
-        return;
-    }
-    if(ul == galleryImages){
-        countG = countG + rightSideWidth;
-        ul.style.transform = `translateX(${countG}rem)`;
-        galCount--;
-    }
-    if(ul == videos){
-        countV = countV + rightSideWidth;
-        ul.style.transform = `translateX(${countV}rem)`;
-        vidCount--;
+    if(body.clientWidth > 696){
+        console.log('오');
+        if(ul == galleryImages && galCount === 0){
+            return;
+        }
+        if(ul == videos && vidCount === 0){
+            return;
+        }
+        if(ul == galleryImages){
+            countG = countG + rightSideWidth;
+            ul.style.transform = `translateX(${countG}rem)`;
+            galCount--;
+        }
+        if(ul == videos){
+            countV = countV + rightSideWidth;
+            ul.style.transform = `translateX(${countV}rem)`;
+            vidCount--;
+        }
     }
 }
 
@@ -1059,6 +1071,7 @@ body.addEventListener('click', (e)=>{
 //     }
 // });
 
+
 productionUl.addEventListener('mouseenter', (e)=>{
     if(productCount === 0){
         apchLeft.style.display = 'none';
@@ -1114,7 +1127,7 @@ apchLeft.addEventListener('mouseleave', (e)=>{
 });
 
 commentContentSpace.addEventListener('mouseenter', (e)=>{
-    if(commentContentSpace.childElementCount === 2){
+    if(commentContentSpace.childElementCount === 3){
         return;
     }
     if(comCount === 1){
@@ -1399,21 +1412,4 @@ for(let item of star){
 window.onload = function() {
     scrollTo(0,0);
 }
-
-// comment
-// for(const numOfthumbUp of numOfthumbsUp){
-//     numOfthumbUp.addEventListener('click', (e) =>{
-//         srcLike.onNumOfLikes(e)}
-//     );
-// }
-// for(const ccNum of ccNums){
-//     ccNum.addEventListener('click', (e)=>{
-//         srcLike.onCommentBtn(e);
-//     })
-// }
-// for(const ccComment of ccComments){
-//     ccComment.addEventListener('click', (e)=>{
-//         srcLike.onNumOfComment(e);
-//     })
-// }
 

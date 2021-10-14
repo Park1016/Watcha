@@ -1322,6 +1322,16 @@ html {
   height: 13rem;
 }
 
+.videoNone {
+  width: 24rem;
+  height: 13rem;
+  background: transparent;
+}
+
+.vNone {
+  visibility: hidden;
+}
+
 .videoVideo {
   width: 11.5rem;
   height: 8rem;
@@ -1439,6 +1449,12 @@ html {
   justify-content: flex-start;
   padding-right: 1rem;
   border-top: 1px var(--line-Gray) solid;
+}
+
+.proNone {
+  background: transparent;
+  width: 30rem;
+  height: 7rem;
 }
 
 .liDiv {
@@ -1624,6 +1640,14 @@ html {
   border-radius: 10px;
   margin-right: 1rem;
   padding: 0 1.7rem;
+}
+
+.comNone {
+  background: transparent;
+}
+
+.comNoneContent {
+  visibility: hidden;
 }
 
 .commentContent {
@@ -2080,6 +2104,12 @@ html {
   margin-right: 1rem;
   width: 13rem;
   height: 9rem;
+}
+
+.RgalNone {
+  width: 13rem;
+  height: 9rem;
+  background: transparent;
 }
 
 .RvideoDiscription {
