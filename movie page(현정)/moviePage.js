@@ -13,14 +13,6 @@ const footer1 = document.querySelector('.footer1');
 const footer2 = document.querySelector('.footer2');
 const footer3 = document.querySelector('.footer3');
 const footer4 = document.querySelector('.footer4');
-const footerHome = document.querySelector('.footerHome');
-const footerSearch = document.querySelector('.footerSearch');
-const footerStar = document.querySelector('.footerStar');
-const footerUser = document.querySelector('.footerUser');
-const footerText1 = document.querySelector('.footerText1');
-const footerText2 = document.querySelector('.footerText2');
-const footerText3 = document.querySelector('.footerText3');
-const footerText4 = document.querySelector('.footerText4');
 
 
 // chevron
@@ -187,25 +179,48 @@ function onSimilarSeeMoreBtn(){
 function onStar(e, t){
     if(star1.classList.contains('fix')){
         cancelStar.style.display = 'block';
-        if(star1.classList.contains('one')){
-            cancelStar.style.left = '0';
-            return;
-        }
-        if(star1.classList.contains('two')){
-            cancelStar.style.left = '4rem';
-            return;
-        }
-        if(star1.classList.contains('three')){
-            cancelStar.style.left = '8.5rem';
-            return;
-        }
-        if(star1.classList.contains('four')){
-            cancelStar.style.left = '13rem';
-            return;
-        }
-        if(star1.classList.contains('five')){
-            cancelStar.style.left = '17.5rem';
-            return;
+        if(body.clientWidth < 696){
+            if(star1.classList.contains('one')){
+                cancelStar.style.left = '0.9rem';
+                return;
+            }
+            if(star1.classList.contains('two')){
+                cancelStar.style.left = '4.2rem';
+                return;
+            }
+            if(star1.classList.contains('three')){
+                cancelStar.style.left = '7.4rem';
+                return;
+            }
+            if(star1.classList.contains('four')){
+                cancelStar.style.left = '10.7rem';
+                return;
+            }
+            if(star1.classList.contains('five')){
+                cancelStar.style.left = '13.9rem';
+                return;
+            }
+        } else {
+            if(star1.classList.contains('one')){
+                cancelStar.style.left = '0';
+                return;
+            }
+            if(star1.classList.contains('two')){
+                cancelStar.style.left = '4rem';
+                return;
+            }
+            if(star1.classList.contains('three')){
+                cancelStar.style.left = '8.5rem';
+                return;
+            }
+            if(star1.classList.contains('four')){
+                cancelStar.style.left = '13rem';
+                return;
+            }
+            if(star1.classList.contains('five')){
+                cancelStar.style.left = '17.5rem';
+                return;
+            }
         }
     }
     const target = e.target.lastElementChild;
@@ -353,68 +368,8 @@ function onStarClick(e){
 //footer
 function onFooter(e){
     const target = e.target;
-    if(target.classList.contains(footer1)){
-        removeActive();
-        footer1.classList.add('active');
-        return;
-    }
-    if(target.classList.contains(footer2)){
-        removeActive();
-        footer2.classList.add('active');
-        return;
-    }
-    if(target.classList.contains(footer3)){
-        removeActive();
-        footer3.classList.add('active');
-        return;
-    }
-    if(target.classList.contains(footer4)){
-        removeActive();
-        footer4.classList.add('active');
-        return;
-    }
-
-    if(target.classList.contains(footerHome)){
-        removeActive();
-        target.parentElement.classList.add('active');
-        return;
-    }
-    if(target.classList.contains(footerSearch)){
-        removeActive();
-        target.parentElement.classList.add('active');
-        return;
-    }
-    if(target.classList.contains(footerStar)){
-        removeActive();
-        target.parentElement.classList.add('active');
-        return;
-    }
-    if(target.classList.contains(footerUser)){
-        removeActive();
-        target.parentElement.classList.add('active');
-        return;
-    }
-
-    if(target.classList.contains(footerText1)){
-        removeActive();
-        target.parentElement.classList.add('active');
-        return;
-    }
-    if(target.classList.contains(footerText2)){
-        removeActive();
-        target.parentElement.classList.add('active');
-        return;
-    }
-    if(target.classList.contains(footerText3)){
-        removeActive();
-        target.parentElement.classList.add('active');
-        return;
-    }
-    if(target.classList.contains(footerText4)){
-        removeActive();
-        target.parentElement.classList.add('active');
-        return;
-    }
+    removeActive();
+    target.parentElement.classList.add('active');
 }
 
 function removeActive(){
@@ -893,18 +848,6 @@ body.addEventListener('click', (e)=>{
                 onStar(e);
                 break;
 
-            case 'footer1':
-                onFooter(e);
-                break;
-            case 'footer2':
-                onFooter(e);
-                break;
-            case 'footer3':
-                onFooter(e);
-                break;
-            case 'footer4':
-                onFooter(e);
-                break;
             case 'footerText1':
                 onFooter(e);
                 break;

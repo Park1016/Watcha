@@ -217,11 +217,13 @@ html {
 
 .footer div > i {
   font-size: 2rem;
-  margin-bottom: 0.5rem;
+  padding: 0 2rem 0.5rem 2rem;
 }
 
 .footer div > p {
   font-size: 1.2rem;
+  width: 5rem;
+  text-align: center;
 }
 
 .active {
@@ -2079,14 +2081,17 @@ html {
   .estimate {
     align-items: center;
     transform: translateY(1.5rem);
+    width: 20rem;
   }
   .estimateText {
     font-size: 1.2rem;
     font-weight: normal;
   }
   .stars {
+    width: 20rem;
     font-size: 3rem;
     padding: 0;
+    justify-content: center;
   }
   .topImg {
     height: 23rem;
