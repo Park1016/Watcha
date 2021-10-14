@@ -1,5 +1,6 @@
 ﻿@import url("/movie page(현정)/css/default.css");
 @import url("/movie page(현정)/css/color.css");
+@import url("https://fonts.googleapis.com/css2?family=Andada+Pro:wght@800&display=swap");
 
 /* common */
 html {
@@ -22,6 +23,157 @@ html {
   to {
     opacity: 1;
   }
+}
+
+/* nav */
+.nav {
+  width: 100vw;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
+
+.nav1,
+.nav2,
+.logoText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.nav1 {
+  margin-left: 9rem;
+  width: 50vw;
+}
+
+.logo {
+  font-size: 2.5rem;
+  color: white;
+  margin-right: 3rem;
+}
+.nav2 {
+  margin-right: 9rem;
+  justify-content: flex-end;
+  color: #fff;
+}
+
+.nav2 > i {
+  margin-left: 2rem;
+  font-size: 3rem;
+}
+
+.nav2 > p {
+  margin-left: 2rem;
+}
+
+.navSearch {
+  color: #babac3;
+  display: none;
+}
+
+.navStar {
+  color: #babac3;
+  display: none;
+}
+
+.navEst {
+  color: #babac3;
+  font-size: 1.4rem;
+  text-shadow: 1px 1px 1px black;
+  width: 5rem;
+}
+
+.navProfile {
+  background: #babac3;
+  border-radius: 50%;
+}
+
+.logo span:nth-child(1) {
+  margin-right: 0.5rem;
+  font-weight: bold;
+  font-family: "Andada Pro", serif;
+  text-shadow: 1px 1px 3px black;
+}
+
+.logo span:nth-child(2) {
+  letter-spacing: -2px;
+  text-shadow: 1px 1px 3px black;
+}
+
+.logoText {
+  color: #bec1c0;
+  text-shadow: 1px 1px 1px black;
+  font-size: 1.4rem;
+}
+
+.logoText p {
+  margin-right: 2rem;
+}
+
+.logoText p:nth-child(1) {
+  width: 3rem;
+}
+
+.logoText p:nth-child(2) {
+  width: 7rem;
+}
+
+.logoText p:nth-child(3) {
+  width: 2rem;
+  margin: 0;
+}
+
+.searchBox {
+  width: 28rem;
+  height: 3.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #babac3;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.searchBox > i {
+  margin: 0 1rem;
+  color: #bbc2c3;
+}
+
+.searchBox > span {
+  letter-spacing: 0;
+  color: #bbc2c3;
+}
+
+.scrollNav {
+  background: #fff;
+}
+
+.scrollLogo span:nth-child(1) {
+  color: #ff2f6e;
+  text-shadow: none;
+}
+
+.scrollLogo span:nth-child(2) {
+  color: black;
+  text-shadow: none;
+}
+
+.scrollPro {
+  color: #f8f8f8;
+  border: 0.5px solid #f8f8f8;
+}
+
+.scrollText {
+  text-shadow: none;
+  color: #7e7e7e;
 }
 
 /* .mdWantToSeeMore, */
@@ -379,7 +531,7 @@ html {
 
 .topImg {
   width: 100%;
-  height: 33rem;
+  height: 31rem;
 }
 
 .posterAndInfo {
@@ -403,18 +555,20 @@ html {
 .rankingInfo {
   margin-left: 2rem;
   font-size: 1.2rem;
-  text-shadow: 1px 1px 3px black;
+  /* text-shadow: 1px 1px 3px black; */
   /* background: rgb(0, 0, 0, 0.3); */
   /* visibility: hidden; */
 }
 
 .riGray {
   color: #858674;
+  text-shadow: 1px 1px 1px black;
 }
 
 .riWhite {
   color: #cfd0d1;
   margin-right: 0.5rem;
+  text-shadow: 1px 1px 3px black;
 }
 
 .movieInfoRateBasketEstimate {
@@ -763,16 +917,33 @@ html {
 
 .afterCommentText {
   width: 40rem;
-  height: 7rem;
+  height: 6.8rem;
   display: flex;
-  align-items: center;
+  /* align-items: center;
+  justify-content: center; */
   margin: 0 1.5rem;
-  /* line-height: 7rem; */
-
-  display: -Webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  position: relative;
   overflow: hidden;
+}
+
+.beforeAfter:before {
+  content: "";
+  position: absolute;
+  /* right: 0; */
+  left: 9.5rem;
+  bottom: 0;
+  width: 90%;
+  height: 2.5rem;
+  margin-top: 0.2rem;
+  background: #fff;
+}
+
+.beforeAfter:after {
+  content: "...";
+  position: absolute;
+  /* right: 0.2rem; */
+  left: 10rem;
+  bottom: 0.45rem;
 }
 
 .afterCommentRight {
@@ -1599,6 +1770,10 @@ html {
   overflow: hidden;
   background: #fff;
   margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .RadContent {
@@ -1618,8 +1793,9 @@ html {
 }
 
 .RGoingToSee {
+  min-width: 7rem;
   font-size: 1.2rem;
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 0;
   border-radius: 5px;
   margin-right: 1.5rem;
   background: #ff2f6e;
@@ -1715,7 +1891,14 @@ html {
 }
 
 /* 반응형 */
-
+@media screen and (max-width: 1080px) {
+  .nav1 {
+    margin-left: 3rem;
+  }
+  .nav2 {
+    margin-right: 3rem;
+  }
+}
 @media screen and (max-width: 1000px) {
   .section2RightContainer {
     display: none;
@@ -1737,7 +1920,58 @@ html {
   }
 }
 
+@media screen and (max-width: 880px) {
+  .searchBox,
+  .navEst {
+    display: none;
+  }
+  .navSearch,
+  .navStar {
+    display: block;
+  }
+  .nav2 > i {
+    font-size: 2rem;
+  }
+}
+
 @media screen and (max-width: 700px) {
+  .afterCommentContainer {
+    width: 100vw;
+    max-height: 18rem;
+    min-height: 18rem;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+  .afterCommentContents,
+  .afterCommentLeft {
+    flex-direction: column;
+  }
+  .afterCommentContents {
+    max-height: 18rem;
+    min-height: 18rem;
+    justify-content: center;
+  }
+  /* .afterCommentRight {
+    padding-bottom: 1rem;
+  } */
+  .afterCommentText {
+    width: 80vw;
+    text-align: center;
+    justify-content: center;
+  }
+  .beforeAfter:before {
+    bottom: 0;
+  }
+
+  .beforeAfter:after {
+    bottom: 0;
+  }
+  .afterCommentRight {
+    justify-content: center;
+    width: 30vw;
+    margin: 1rem 0;
+  }
   .section1 {
     height: 48rem;
   }
@@ -1872,6 +2106,7 @@ html {
   .RBox {
     width: 100vw;
     height: 69vw;
+    min-height: 25rem;
     border-radius: 0;
   }
   .RadContent {
@@ -1949,6 +2184,10 @@ html {
   .Rsimilar {
     display: none;
   }
+
+  .nav {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 520px) {
@@ -1961,9 +2200,14 @@ html {
   .similarWork {
     height: 290vw;
   }
-
   .collection {
     height: 100vw;
+  }
+  .RBox {
+    min-height: 30rem;
+  }
+  .RadTextContent {
+    transform: translateY(1rem);
   }
 }
 
@@ -1971,8 +2215,10 @@ html {
   .similarWork {
     height: 300vw;
   }
-
   .collection {
     height: 110vw;
+  }
+  .RadTextContent {
+    transform: translateY(2rem);
   }
 }

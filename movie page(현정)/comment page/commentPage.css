@@ -1,6 +1,10 @@
 ﻿@import url("/movie page(현정)/css/default.css");
 @import url("/movie page(현정)/css/color.css");
 
+html {
+  font-size: 67%;
+}
+
 .fa-arrow-left {
   font-size: 2rem;
   color: var(--hot-Pink);

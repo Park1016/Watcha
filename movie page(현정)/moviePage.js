@@ -1,6 +1,13 @@
 ﻿'use strict';
 import * as srcLike from '/movie page(현정)/src/like.js';
 import * as srcColor from '/movie page(현정)/src/color.js';
+
+//nav
+const nav = document.querySelector('.nav')
+const logo = document.querySelector('.logo')
+const navProfile = document.querySelector('.navProfile');
+const logoText = document.querySelector('.logoText');
+
 // chevron
 const rightArrow = document.querySelectorAll('.fa-chevron-right');
 const leftArrow = document.querySelectorAll('.fa-chevron-left');
@@ -24,7 +31,6 @@ const galleryImages = document.querySelector('.galleryImages');
 const videos = document.querySelector('.videos');
 const collectionContentUl = document.querySelector('.collectionContentUl');
 const RgalleryImages = document.querySelector('.RgalleryImages');
-
 
 // icon
 const faCaretDown = document.querySelector('.fa-caret-down');
@@ -91,7 +97,10 @@ const productionLi = document.querySelector('.productionList');
 const numOfthumbsUp = document.querySelectorAll('.numOfthumbsUp');
 const ccNums = document.querySelectorAll('.ccNum');
 const ccComments = document.querySelectorAll('.ccComment');
+
+const container = document.querySelector('.container');
 const body = document.querySelector('body');
+let scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
 
 // 코멘트
@@ -163,6 +172,10 @@ function onSimilarSeeMoreBtn(){
 function onStar(e, t){
     if(star1.classList.contains('fix')){
         cancelStar.style.display = 'block';
+        if(star1.classList.contains('one')){
+            cancelStar.style.left = '0';
+            return;
+        }
         if(star1.classList.contains('two')){
             cancelStar.style.left = '4rem';
             return;
@@ -574,15 +587,20 @@ function onCommentModal(e){
                                     </div>
                                 </li>`;
     commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
-    console.log(text);
     commentTextarea.value = '';
     text = '';
-    console.log(text);
     mdCommentText.innerText = '코멘트 수정하기';
     modalBackGround.style.display = 'none';
     mdCommentContainer.style.display = 'none';
     section2LeftTopContainer.style.display = 'none';
     afterCommentContainer.style.display = 'flex';
+    if(afterCommentText.childNodes[0].parentElement.scrollHeight > 74){
+        afterCommentText.classList.add('beforeAfter');
+        afterCommentText.style.alignItems = 'flex-start';
+    }else{
+        afterCommentText.classList.remove('beforeAfter');
+        afterCommentText.style.alignItems = 'center';
+    }
 }
 
 
@@ -787,10 +805,44 @@ body.addEventListener('click', (e)=>{
     }
 })
 
+// window.addEventListener('resize', () => {
+//     console.log(body.clientWidth);
+//     if(body.clientWidth < 700){
+//         afterCommentText.style.alignItems = 'center';
+//     }
+// })
+
+window.addEventListener('scroll', ()=>{
+    if(window.scrollY !== 0){
+        if(nav.classList.contains('scrollNav')){
+            return;
+        }
+        setTimeout(()=>{
+            nav.classList.add('scrollNav');
+            logo.classList.add('scrollLogo');
+            navProfile.classList.add('scrollPro');
+            logoText.classList.add('scrollText');
+        }, 200);
+    } else {
+        setTimeout(()=>{
+            nav.classList.remove('scrollNav');
+            logo.classList.remove('scrollLogo');
+            navProfile.classList.remove('scrollPro');
+            logoText.classList.remove('scrollText');
+        }, 200);
+    }
+})
+
 for(let item of star){
     item.addEventListener('click', (e)=>{onStarClick(e)});
     item.addEventListener('mouseenter', (e)=>{onStar(e)});
     item.addEventListener('mouseleave', (e)=>{onStarLeave(e)})
+}
+
+window.onload = function() {
+    setTimeout (function () {
+        scrollTo(0,0);
+    },100);
 }
 
 // comment
