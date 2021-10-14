@@ -186,6 +186,20 @@ html {
   color: #7e7e7e;
 }
 
+.scrollBox {
+  background: #f5f5f7;
+  border: none;
+}
+
+.scrollBox > span {
+  color: #78787e;
+}
+
+.scrollEst {
+  text-shadow: none;
+  color: #78787e;
+}
+
 /* footer */
 .footer {
   position: fixed;
@@ -1050,10 +1064,12 @@ html {
 
 .gvchLeft {
   transform: translate(-1rem, 6.5rem);
+  display: none;
 }
 
 .gvchRight {
   transform: translate(21.5rem, 6.5rem);
+  display: none;
 }
 
 .gvchLeft:hover,
@@ -1358,6 +1374,8 @@ html {
   cursor: pointer;
   z-index: 1;
   transition: all 100ms ease-in-out;
+
+  display: none;
 }
 
 .apchLeft {
@@ -1461,6 +1479,8 @@ html {
   cursor: pointer;
   z-index: 1;
   transition: all 100ms ease-in-out;
+
+  display: none;
 }
 
 .ccchLeft {
@@ -1691,6 +1711,8 @@ html {
   cursor: pointer;
   z-index: 1;
   transition: all 100ms ease-in-out;
+
+  display: none;
 }
 
 .clchLeft {
@@ -1907,10 +1929,12 @@ html {
 
 .RgvchRight {
   transform: translate(56.7rem, 6.5rem);
+  display: none;
 }
 
 .RgvchLeft {
   transform: translate(-1rem, 6.5rem);
+  display: none;
 }
 
 .RgvRight {

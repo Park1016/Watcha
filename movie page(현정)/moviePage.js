@@ -7,6 +7,8 @@ const nav = document.querySelector('.nav')
 const logo = document.querySelector('.logo')
 const navProfile = document.querySelector('.navProfile');
 const logoText = document.querySelector('.logoText');
+const searchBox = document.querySelector('.searchBox');
+const navEst = document.querySelector('.navEst');
 
 //footer
 const footer1 = document.querySelector('.footer1');
@@ -29,6 +31,8 @@ const vchLeft = document.querySelector('.vchLeft');
 const clchRight = document.querySelector('.clchRight');
 const clchLeft = document.querySelector('.clchLeft');
 const chevron = document.querySelectorAll('.chevron');
+const RgvchRight = document.querySelector('.RgvchRight');
+const RgvchLeft = document.querySelector('.RgvchLeft');
 
 // 슬라이드 container
 const appearanceProductionUl = document.querySelector('.appearanceProduction');
@@ -107,7 +111,7 @@ const ccComments = document.querySelectorAll('.ccComment');
 
 const container = document.querySelector('.container');
 const body = document.querySelector('body');
-let scrollPosition = window.scrollY || document.documentElement.scrollTop;
+// let scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
 
 // 코멘트
@@ -690,6 +694,10 @@ function onEditComment(e){
     check = true;
 }
 
+function onCommentHover(e){
+    console.log(e.target);
+}
+
 
 // addEventListener
 body.addEventListener('click', (e)=>{
@@ -908,6 +916,224 @@ body.addEventListener('click', (e)=>{
 //     }
 // })
 
+// window.addEventListener('mouseenter', (e)=>{
+//     const targets = e.target.classList.value.split(" ");
+//     console.log(targets);
+//     for(const target of targets){
+//         switch(target){
+//             case 'commentContentSpace':
+//                 onCommentHover(e);
+//                 break;
+//             case 'commentContentList':
+//                 onCommentHover(e);
+//                 break;
+//         }
+//     }
+// })
+
+
+// arrow
+// productionUl.addEventListener('mouseenter', (e)=>{
+//     if(window.getComputedStyle(productionUl.firstElementChild).visibility === "visible"){
+//         apchRight.style.display = 'flex';
+//         apchLeft.style.display = 'none';
+//     }
+//     if(window.getComputedStyle(productionUl.lastElementChild).visibility === "visible"){
+//         apchLeft.style.display = 'flex';
+//         apchRight.style.display = 'none';
+//     }
+//     if(window.getComputedStyle(productionUl.firstElementChild).visibility !== "visible" ||
+//     window.getComputedStyle(productionUl.lastElementChild).visibility !== "visible"){
+//         apchRight.style.display = 'flex';
+//         apchLeft.style.display = 'flex';
+//     }
+//     if(window.getComputedStyle(productionUl.firstElementChild).visibility === "visible" ||
+//     window.getComputedStyle(productionUl.lastElementChild).visibility === "visible"){
+//         apchRight.style.display = 'none';
+//         apchLeft.style.display = 'none';
+//     }
+// });
+
+productionUl.addEventListener('mouseenter', (e)=>{
+    apchRight.style.display = 'flex';
+    apchLeft.style.display = 'flex';
+});
+
+productionUl.addEventListener('mouseleave', (e)=>{
+    apchRight.style.display = 'none';
+    apchLeft.style.display = 'none';
+});
+
+apchRight.addEventListener('mouseenter', (e)=>{
+    apchRight.style.display = 'flex';
+    apchLeft.style.display = 'flex';
+});
+
+apchRight.addEventListener('mouseleave', (e)=>{
+    apchRight.style.display = 'none';
+    apchLeft.style.display = 'none';
+});
+
+apchLeft.addEventListener('mouseenter', (e)=>{
+    apchRight.style.display = 'flex';
+    apchLeft.style.display = 'flex';
+});
+
+apchLeft.addEventListener('mouseleave', (e)=>{
+    apchRight.style.display = 'none';
+    apchLeft.style.display = 'none';
+});
+
+commentContentSpace.addEventListener('mouseenter', (e)=>{
+    ccchRight.style.display = 'flex';
+    ccchLeft.style.display = 'flex';
+});
+
+commentContentSpace.addEventListener('mouseleave', (e)=>{
+    ccchRight.style.display = 'none';
+    ccchLeft.style.display = 'none';
+});
+
+ccchRight.addEventListener('mouseenter', (e)=>{
+    ccchRight.style.display = 'flex';
+    ccchLeft.style.display = 'flex';
+});
+
+ccchRight.addEventListener('mouseleave', (e)=>{
+    ccchRight.style.display = 'none';
+    ccchLeft.style.display = 'none';
+});
+
+ccchLeft.addEventListener('mouseenter', (e)=>{
+    ccchRight.style.display = 'flex';
+    ccchLeft.style.display = 'flex';
+});
+
+ccchLeft.addEventListener('mouseleave', (e)=>{
+    ccchRight.style.display = 'none';
+    ccchLeft.style.display = 'none';
+});
+
+RgalleryImages.addEventListener('mouseenter', (e)=>{
+    RgvchRight.style.display = 'flex';
+    RgvchLeft.style.display = 'flex';
+});
+
+RgalleryImages.addEventListener('mouseleave', (e)=>{
+    RgvchRight.style.display = 'none';
+    RgvchLeft.style.display = 'none';
+});
+
+RgvchRight.addEventListener('mouseenter', (e)=>{
+    RgvchRight.style.display = 'flex';
+    RgvchLeft.style.display = 'flex';
+});
+
+RgvchRight.addEventListener('mouseleave', (e)=>{
+    RgvchRight.style.display = 'none';
+    RgvchLeft.style.display = 'none';
+});
+
+RgvchLeft.addEventListener('mouseenter', (e)=>{
+    RgvchRight.style.display = 'flex';
+    RgvchLeft.style.display = 'flex';
+});
+
+RgvchLeft.addEventListener('mouseleave', (e)=>{
+    RgvchRight.style.display = 'none';
+    RgvchLeft.style.display = 'none';
+});
+
+collectionContentUl.addEventListener('mouseenter', (e)=>{
+    clchRight.style.display = 'flex';
+    clchLeft.style.display = 'flex';
+});
+
+collectionContentUl.addEventListener('mouseleave', (e)=>{
+    clchRight.style.display = 'none';
+    clchLeft.style.display = 'none';
+});
+
+clchRight.addEventListener('mouseenter', (e)=>{
+    clchRight.style.display = 'flex';
+    clchLeft.style.display = 'flex';
+});
+
+clchRight.addEventListener('mouseleave', (e)=>{
+    clchRight.style.display = 'none';
+    clchLeft.style.display = 'none';
+});
+
+clchLeft.addEventListener('mouseenter', (e)=>{
+    clchRight.style.display = 'flex';
+    clchLeft.style.display = 'flex';
+});
+
+clchLeft.addEventListener('mouseleave', (e)=>{
+    clchRight.style.display = 'none';
+    clchLeft.style.display = 'none';
+});
+
+galleryImages.addEventListener('mouseenter', (e)=>{
+    gchRight.style.display = 'flex';
+    gchLeft.style.display = 'flex';
+});
+
+galleryImages.addEventListener('mouseleave', (e)=>{
+    gchRight.style.display = 'none';
+    gchLeft.style.display = 'none';
+});
+
+gchRight.addEventListener('mouseenter', (e)=>{
+    gchRight.style.display = 'flex';
+    gchLeft.style.display = 'flex';
+});
+
+gchRight.addEventListener('mouseleave', (e)=>{
+    gchRight.style.display = 'none';
+    gchLeft.style.display = 'none';
+});
+
+gchLeft.addEventListener('mouseenter', (e)=>{
+    gchRight.style.display = 'flex';
+    gchLeft.style.display = 'flex';
+});
+
+gchLeft.addEventListener('mouseleave', (e)=>{
+    gchRight.style.display = 'none';
+    gchLeft.style.display = 'none';
+});
+
+videos.addEventListener('mouseenter', (e)=>{
+    vchRight.style.display = 'flex';
+    vchLeft.style.display = 'flex';
+});
+
+videos.addEventListener('mouseleave', (e)=>{
+    vchRight.style.display = 'none';
+    vchLeft.style.display = 'none';
+});
+
+vchRight.addEventListener('mouseenter', (e)=>{
+    vchRight.style.display = 'flex';
+    vchLeft.style.display = 'flex';
+});
+
+vchRight.addEventListener('mouseleave', (e)=>{
+    vchRight.style.display = 'none';
+    vchLeft.style.display = 'none';
+});
+
+vchLeft.addEventListener('mouseenter', (e)=>{
+    vchRight.style.display = 'flex';
+    vchLeft.style.display = 'flex';
+});
+
+vchLeft.addEventListener('mouseleave', (e)=>{
+    vchRight.style.display = 'none';
+    vchLeft.style.display = 'none';
+});
+
 window.addEventListener('scroll', ()=>{
     if(window.scrollY !== 0){
         if(nav.classList.contains('scrollNav')){
@@ -918,6 +1144,8 @@ window.addEventListener('scroll', ()=>{
             logo.classList.add('scrollLogo');
             navProfile.classList.add('scrollPro');
             logoText.classList.add('scrollText');
+            searchBox.classList.add('scrollBox');
+            navEst.classList.add('scrollEst');
         }, 200);
     } else {
         setTimeout(()=>{
@@ -925,6 +1153,8 @@ window.addEventListener('scroll', ()=>{
             logo.classList.remove('scrollLogo');
             navProfile.classList.remove('scrollPro');
             logoText.classList.remove('scrollText');
+            searchBox.classList.remove('scrollBox');
+            navEst.classList.remove('scrollEst');
         }, 200);
     }
 })
