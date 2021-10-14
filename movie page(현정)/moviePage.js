@@ -135,46 +135,77 @@ let check = false;
 let productCount = 0;
 let comCount = 0;
 let lchCount = 0;
+let colCount = 0;
+let galCount = 0;
+let vidCount = 0;
+
+let countPro = 0;
+let countGal = 0;
+let countCol = 0;
+let countG = 0;
+let countV = 0;
 
 
 // function
 // 슬라이드
 function onLeftSideRightChevron(ul) {
+    console.log('오');
     if(ul == productionUl && productCount === 2){
         return;
     }
     if(ul == RgalleryImages && lchCount == 1){
         return;
     }
-    console.log('오');
-    count = count - leftSideWidth;
-    ul.style.transform = `translateX(${count}rem)`;
+    if(ul == collectionContentUl && colCount == 1){
+        return;
+    }
     if(ul == productionUl){
+        countPro = countPro - leftSideWidth;
+        ul.style.transform = `translateX(${countPro}rem)`;
         productCount++;
         return;
     }
     if(ul == RgalleryImages){
+        countGal = countGal - leftSideWidth;
+        ul.style.transform = `translateX(${countGal}rem)`;
         lchCount++;
+        return;
+    }
+    if(ul == collectionContentUl){
+        countCol = countCol - leftSideWidth;
+        ul.style.transform = `translateX(${countCol}rem)`;
+        colCount++;
         return;
     }
 }
 
 function onLeftSideLeftChevron(ul) {
+    console.log('왼');
     if(ul == productionUl && productCount === 0){
         return;
     }
     if(ul == RgalleryImages && lchCount == 0){
         return;
     }
-    console.log('왼');
-    count = count + leftSideWidth;
-    ul.style.transform = `translateX(${count}rem)`;
+    if(ul == collectionContentUl && colCount == 0){
+        return;
+    }
     if(ul == productionUl){
+        countPro = countPro + leftSideWidth;
+        ul.style.transform = `translateX(${countPro}rem)`;
         productCount--;
         return;
     }
     if(ul == RgalleryImages){
+        countGal = countGal + leftSideWidth;
+        ul.style.transform = `translateX(${countGal}rem)`;
         lchCount--;
+        return;
+    }
+    if(ul == collectionContentUl){
+        countCol = countCol + leftSideWidth;
+        ul.style.transform = `translateX(${countCol}rem)`;
+        colCount--;
         return;
     }
 }
@@ -201,14 +232,42 @@ function onCommentLeftChevron(ul) {
 
 function onRightSideRightChevron(ul) {
     console.log('오');
-    count = count - rightSideWidth;
-    ul.style.transform = `translateX(${count}rem)`;
+    if(ul == galleryImages && galCount === 2){
+        return;
+    }
+    if(ul == videos && vidCount === 1){
+        return;
+    }
+    if(ul == galleryImages){
+        countG = countG - rightSideWidth;
+        ul.style.transform = `translateX(${countG}rem)`;
+        galCount++;
+    }
+    if(ul == videos){
+        countV = countV - rightSideWidth;
+        ul.style.transform = `translateX(${countV}rem)`;
+        vidCount++;
+    }
 }
 
 function onRightSideLeftChevron(ul) {
     console.log('오');
-    count = count + rightSideWidth;
-    ul.style.transform = `translateX(${count}rem)`;
+    if(ul == galleryImages && galCount === 0){
+        return;
+    }
+    if(ul == videos && vidCount === 0){
+        return;
+    }
+    if(ul == galleryImages){
+        countG = countG + rightSideWidth;
+        ul.style.transform = `translateX(${countG}rem)`;
+        galCount--;
+    }
+    if(ul == videos){
+        countV = countV + rightSideWidth;
+        ul.style.transform = `translateX(${countV}rem)`;
+        vidCount--;
+    }
 }
 
 
@@ -1156,19 +1215,29 @@ RgvchLeft.addEventListener('mouseleave', (e)=>{
     RgvchLeft.style.display = 'none';
 });
 
-collection.addEventListener('mouseenter', (e)=>{
-    clchRight.style.display = 'flex';
-    clchLeft.style.display = 'flex';
+collectionContentUl.addEventListener('mouseenter', (e)=>{
+    if(countCol === 0){
+        clchLeft.style.display = 'none';
+        clchRight.style.display = 'flex';
+    } else {
+        clchRight.style.display = 'none';
+        clchLeft.style.display = 'flex';
+    }
 });
 
-collection.addEventListener('mouseleave', (e)=>{
+collectionContentUl.addEventListener('mouseleave', (e)=>{
     clchRight.style.display = 'none';
     clchLeft.style.display = 'none';
 });
 
 clchRight.addEventListener('mouseenter', (e)=>{
-    clchRight.style.display = 'flex';
-    clchLeft.style.display = 'flex';
+    if(countCol === 0){
+        clchLeft.style.display = 'none';
+        clchRight.style.display = 'flex';
+    } else {
+        clchRight.style.display = 'none';
+        clchLeft.style.display = 'flex';
+    }
 });
 
 clchRight.addEventListener('mouseleave', (e)=>{
@@ -1177,8 +1246,13 @@ clchRight.addEventListener('mouseleave', (e)=>{
 });
 
 clchLeft.addEventListener('mouseenter', (e)=>{
-    clchRight.style.display = 'flex';
-    clchLeft.style.display = 'flex';
+    if(countCol === 0){
+        clchLeft.style.display = 'none';
+        clchRight.style.display = 'flex';
+    } else {
+        clchRight.style.display = 'none';
+        clchLeft.style.display = 'flex';
+    }
 });
 
 clchLeft.addEventListener('mouseleave', (e)=>{
@@ -1186,19 +1260,39 @@ clchLeft.addEventListener('mouseleave', (e)=>{
     clchLeft.style.display = 'none';
 });
 
-gallery.addEventListener('mouseenter', (e)=>{
-    gchRight.style.display = 'flex';
-    gchLeft.style.display = 'flex';
+galleryImages.addEventListener('mouseenter', (e)=>{
+    if(galCount === 0){
+        gchLeft.style.display = 'none';
+        gchRight.style.display = 'flex';
+    }
+    if(galCount === 1){
+        gchLeft.style.display = 'flex';
+        gchRight.style.display = 'flex';
+    }
+    if(galCount === 2){
+        gchLeft.style.display = 'flex';
+        gchRight.style.display = 'none';
+    }
 });
 
-gallery.addEventListener('mouseleave', (e)=>{
+galleryImages.addEventListener('mouseleave', (e)=>{
     gchRight.style.display = 'none';
     gchLeft.style.display = 'none';
 });
 
 gchRight.addEventListener('mouseenter', (e)=>{
-    gchRight.style.display = 'flex';
-    gchLeft.style.display = 'flex';
+    if(galCount === 0){
+        gchLeft.style.display = 'none';
+        gchRight.style.display = 'flex';
+    }
+    if(galCount === 1){
+        gchLeft.style.display = 'flex';
+        gchRight.style.display = 'flex';
+    }
+    if(galCount === 2){
+        gchLeft.style.display = 'flex';
+        gchRight.style.display = 'none';
+    }
 });
 
 gchRight.addEventListener('mouseleave', (e)=>{
@@ -1207,8 +1301,18 @@ gchRight.addEventListener('mouseleave', (e)=>{
 });
 
 gchLeft.addEventListener('mouseenter', (e)=>{
-    gchRight.style.display = 'flex';
-    gchLeft.style.display = 'flex';
+    if(galCount === 0){
+        gchLeft.style.display = 'none';
+        gchRight.style.display = 'flex';
+    }
+    if(galCount === 1){
+        gchLeft.style.display = 'flex';
+        gchRight.style.display = 'flex';
+    }
+    if(galCount === 2){
+        gchLeft.style.display = 'flex';
+        gchRight.style.display = 'none';
+    }
 });
 
 gchLeft.addEventListener('mouseleave', (e)=>{
@@ -1216,19 +1320,29 @@ gchLeft.addEventListener('mouseleave', (e)=>{
     gchLeft.style.display = 'none';
 });
 
-video.addEventListener('mouseenter', (e)=>{
-    vchRight.style.display = 'flex';
-    vchLeft.style.display = 'flex';
+videos.addEventListener('mouseenter', (e)=>{
+    if(vidCount === 0){
+        vchLeft.style.display = 'none';
+        vchRight.style.display = 'flex';
+    }else{
+        vchRight.style.display = 'none';
+        vchLeft.style.display = 'flex';
+    }
 });
 
-video.addEventListener('mouseleave', (e)=>{
+videos.addEventListener('mouseleave', (e)=>{
     vchRight.style.display = 'none';
     vchLeft.style.display = 'none';
 });
 
 vchRight.addEventListener('mouseenter', (e)=>{
-    vchRight.style.display = 'flex';
-    vchLeft.style.display = 'flex';
+    if(vidCount === 0){
+        vchLeft.style.display = 'none';
+        vchRight.style.display = 'flex';
+    }else{
+        vchRight.style.display = 'none';
+        vchLeft.style.display = 'flex';
+    }
 });
 
 vchRight.addEventListener('mouseleave', (e)=>{
@@ -1237,8 +1351,13 @@ vchRight.addEventListener('mouseleave', (e)=>{
 });
 
 vchLeft.addEventListener('mouseenter', (e)=>{
-    vchRight.style.display = 'flex';
-    vchLeft.style.display = 'flex';
+    if(vidCount === 0){
+        vchLeft.style.display = 'none';
+        vchRight.style.display = 'flex';
+    }else{
+        vchRight.style.display = 'none';
+        vchLeft.style.display = 'flex';
+    }
 });
 
 vchLeft.addEventListener('mouseleave', (e)=>{
