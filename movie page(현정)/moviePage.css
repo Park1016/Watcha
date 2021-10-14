@@ -58,6 +58,11 @@ html {
   color: white;
   margin-right: 3rem;
 }
+
+.logo:hover {
+  cursor: pointer;
+}
+
 .nav2 {
   margin-right: 9rem;
   justify-content: flex-end;
@@ -117,6 +122,10 @@ html {
   margin-right: 2rem;
 }
 
+.logoText p:hover {
+  cursor: pointer;
+}
+
 .logoText p:nth-child(1) {
   width: 3rem;
 }
@@ -154,6 +163,7 @@ html {
 
 .scrollNav {
   background: #fff;
+  border: 1px solid var(--line-Gray);
 }
 
 .scrollLogo span:nth-child(1) {
@@ -174,6 +184,48 @@ html {
 .scrollText {
   text-shadow: none;
   color: #7e7e7e;
+}
+
+/* footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 5.5rem;
+  background: #fff;
+  border-top: 1px solid var(--medium-Gray);
+  color: var(--medium-Gray);
+}
+
+.footer div {
+  margin: 0 7vw;
+  width: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer div:hover {
+  cursor: pointer;
+}
+
+.footer div > i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer div > p {
+  font-size: 1.2rem;
+}
+
+.active {
+  color: black;
 }
 
 /* .mdWantToSeeMore, */
@@ -2188,6 +2240,14 @@ html {
   .nav {
     display: none;
   }
+
+  .footer {
+    display: flex;
+  }
+
+  .section2 {
+    margin-bottom: 3rem;
+  }
 }
 
 @media screen and (max-width: 520px) {
@@ -2208,6 +2268,15 @@ html {
   }
   .RadTextContent {
     transform: translateY(1rem);
+  }
+  .footer div {
+    margin: 0 6vw;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .footer div {
+    margin: 0 5vw;
   }
 }
 

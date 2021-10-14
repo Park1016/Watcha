@@ -8,6 +8,12 @@ const logo = document.querySelector('.logo')
 const navProfile = document.querySelector('.navProfile');
 const logoText = document.querySelector('.logoText');
 
+//footer
+const footer1 = document.querySelector('.footer1');
+const footer2 = document.querySelector('.footer2');
+const footer3 = document.querySelector('.footer3');
+const footer4 = document.querySelector('.footer4');
+
 // chevron
 const rightArrow = document.querySelectorAll('.fa-chevron-right');
 const leftArrow = document.querySelectorAll('.fa-chevron-left');
@@ -331,6 +337,25 @@ function onStarClick(e){
     onStar(e, true);
     star1.classList.add('fix');
     // starText.innerHTML = '별점 취소하기';
+}
+
+//footer
+function onFooter(e){
+    const target = e.target;
+    if(target.classList.contains(footer1) || target.classList.contains(footer2) || target.classList.contains(footer3) || target.classList.contains(footer4)){
+        removeActive();
+        target.classList.add('active');
+        return;
+    }
+    removeActive();
+    target.parentElement.classList.add('active');
+}
+
+function removeActive(){
+    footer1.classList.remove('active');
+    footer2.classList.remove('active');
+    footer3.classList.remove('active');
+    footer4.classList.remove('active');
 }
 
 
@@ -800,6 +825,43 @@ body.addEventListener('click', (e)=>{
                 break;
             case 'star5':
                 onStar(e);
+                break;
+
+            case 'footer1':
+                onFooter(e);
+                break;
+            case 'footer2':
+                onFooter(e);
+                break;
+            case 'footer3':
+                onFooter(e);
+                break;
+            case 'footer4':
+                onFooter(e);
+                break;
+            case 'footerText1':
+                onFooter(e);
+                break;
+            case 'footerText2':
+                onFooter(e);
+                break;
+            case 'footerText3':
+                onFooter(e);
+                break;
+            case 'footerText4':
+                onFooter(e);
+                break;
+            case 'footerHome':
+                onFooter(e);
+                break;
+            case 'footerSearch':
+                onFooter(e);
+                break;
+            case 'footerStar':
+                onFooter(e);
+                break;
+            case 'footerUser':
+                onFooter(e);
                 break;
         }
     }
