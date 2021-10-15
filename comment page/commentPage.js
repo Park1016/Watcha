@@ -1,11 +1,11 @@
 ﻿'use strict';
-import * as srcLike from '/movie page(현정)/src/like.js';
+import * as srcLike from "../like.js";
 
 let thumbsUp = document.querySelectorAll('.fa-thumbs-up');
 let faComments = document.querySelectorAll('.fa-comment');
 let numOfLikes = document.querySelectorAll('.numOfLikes');
 let numOfComments = document.querySelectorAll('.numOfComments');
-       
+
 // addEventListener
 for(const thumb of thumbsUp){
     thumb.addEventListener('click', (e)=>{

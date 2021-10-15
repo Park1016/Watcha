@@ -1,16 +1,15 @@
 ﻿'use strict'
-import * as srcColor from '/movie page(현정)/src/color.js'
-
+// import * as srcColor from "./color.js";
 
 export function onLikeBtn(e){
     const target = e.target;
     if(target.style.color == 'rgb(255, 47, 110)'){
-        target.style.color = srcColor.darkGray;
+        target.style.color = 'rgb(120,120,120)';
         let likeNumbers = parseInt(target.nextElementSibling.innerText)-1;
         target.nextElementSibling.innerText = likeNumbers;      
         return;
     }
-    target.style.color = srcColor.hotPink;
+    target.style.color = 'rgb(255,47,110)';
     let likeNumbers = parseInt(target.nextElementSibling.innerText)+1;
     target.nextElementSibling.innerText = likeNumbers;
 }
@@ -18,12 +17,12 @@ export function onLikeBtn(e){
 export function onNumOfLikes(e){
     const target = e.target;
     if(target.previousElementSibling.style.color == 'rgb(255, 47, 110)'){
-        target.previousElementSibling.style.color = srcColor.darkGray;
+        target.previousElementSibling.style.color = 'rgb(120,120,120)';
         let likeNumbers = parseInt(target.innerText)-1;
         target.innerText = likeNumbers;      
         return;
     }   
-    target.previousElementSibling.style.color = srcColor.hotPink;
+    target.previousElementSibling.style.color = 'rgb(255,47,110)';
     let likeNumbers = parseInt(target.innerText)+1;
     target.innerText = likeNumbers;
 }

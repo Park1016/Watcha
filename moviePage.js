@@ -1,6 +1,6 @@
 ﻿'use strict';
-import * as srcLike from '/movie page(현정)/src/like.js';
-import * as srcColor from '/movie page(현정)/src/color.js';
+import * as srcLike from "./like.js";
+import * as srcColor from "./color.js";
 
 //nav
 const nav = document.querySelector('.nav')
@@ -877,11 +877,11 @@ function onCommentModal(e){
                                                 </span>
                                                 <span class="ccTopRight">
                                                     <i class="fas fa-star"></i>
-                                                    <span class="starScope">3.0</span>
+                                                    <span class="starScope">5.0</span>
                                                 </span>
                                             </div>
                                             <div class="ccText">
-                                                <a href="comment page/commentPage.html" class="ccTextInner">
+                                                <a href="./comment page/commentPage.html" class="ccTextInner">
                                                     ${text}
                                                 </a>
                                             </div>
@@ -971,6 +971,7 @@ function onSearchBox(){
     }, 500)
     searchBox.style.width = '0';
     searchBox.style.visibility = 'hidden';
+    searchBoxInput.value = '';
 }
 
 
@@ -1747,6 +1748,7 @@ window.addEventListener('scroll', ()=>{
             searchBox.classList.add('scrollBox');
             navEst.classList.add('scrollEst');
             navSearch.classList.add('scrollSearch');
+            searchBoxInput.classList.add('scrollInput');
         }, 200);
     } else {
         setTimeout(()=>{
@@ -1757,6 +1759,7 @@ window.addEventListener('scroll', ()=>{
             searchBox.classList.remove('scrollBox');
             navEst.classList.remove('scrollEst');
             navSearch.classList.remove('scrollSearch');
+            searchBoxInput.classList.remove('scrollInput');
         }, 200);
     }
 })

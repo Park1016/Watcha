@@ -1,5 +1,5 @@
-﻿@import url("/movie page(현정)/css/default.css");
-@import url("/movie page(현정)/css/color.css");
+﻿@import url("./../css/default.css");
+@import url("./../css/color.css");
 
 html {
   font-size: 67%;
@@ -362,7 +362,7 @@ li,
   justify-content: space-between;
 }
 
-.connetToMypage {
+.connectToMypage {
   display: flex;
   flex-direction: row;
   align-items: center;
