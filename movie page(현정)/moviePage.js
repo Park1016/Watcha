@@ -946,15 +946,18 @@ function onSearch(){
     searchBox.style.width = '28rem';
     searchBox.style.visibility = 'visible';
     logoText.style.display = 'none';
-    searchBoxInput.focus();
+    setTimeout(()=>{
+        searchBoxInput.focus();
+    }, 510)
 }
 
 function onSearchBox(){
-    if(body.clientWidth > 880){
+    if(body.clientWidth > 896){
         return;
     }
     searchBox.style.width = '0';
     searchBox.style.visibility = 'hidden';
+    // searchBoxInput.style.display = 'none';
     logoText.style.display = 'flex';
     navSearch.style.display = 'block';
 }
