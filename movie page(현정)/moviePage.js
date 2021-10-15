@@ -66,6 +66,7 @@ const faBanMark = document.querySelector('.fa-ban-mark');
 const ccThumbs = document.querySelectorAll('.ccThumb');
 const noneMembetFatimes = document.querySelector('noneMembetFatimes');
 const star = document.querySelectorAll('.fa-star');
+const stars = document.querySelector('.stars');
 
 //modal.button
 const markModal = document.querySelector('.markModal');
@@ -574,6 +575,9 @@ function onStarLeave(e){
 }
 
 function onStarClick(e){
+    if(e.target.classList.contains('stars')){
+        return;
+    }
     if(star1.classList.contains('fix')){
         section2LeftTopContainer.style.display = 'none';
         if(afterCommentContainer.style.display !== 'flex'){
@@ -764,7 +768,7 @@ function showBookMark(){
 function showPlus(){
     fullWatchingEye.style.display = 'none';
     emptyBookMark.style.display = 'none';
-    plusLater.style.display = 'inline';
+    plusLater.style.display = 'inline-block';
 }
 
 function onEmptyBookMarkModal(){
@@ -782,9 +786,13 @@ function onEmptyBookMarkModal(){
 
 
 function onMarkBtn(){
-    if(emptyBookMark.style.display == 'none'
-    & fullWatchingEye.style.display == 'none'
-    & markNoThanksText.style.display == 'none'){
+    if((emptyBookMark.style.display == 'none'
+    && fullWatchingEye.style.display == 'none'
+    && markNoThanksText.style.display == 'none') ||
+    emptyBookMark.style.display == ''
+    && fullWatchingEye.style.display == ''
+    && markNoThanksText.style.display == ''
+    ){ 
         onEmptyBookMarkModal();
         return;
     }
@@ -817,7 +825,7 @@ function onFullWatchingEyeModal(){
 }
 
 function onFaBanModal() {
-    if(mdNoThanksText.style.color == 'black'){
+    if(mdNoThanksText.style.color == 'black' || mdNoThanksText.style.color == ''){
         faBanModal.style.color = '#ff2f6e';
         mdNoThanksText.style.color = '#ff2f6e';
         fullWatchingEyeModal.style.display = 'none';
@@ -1747,11 +1755,9 @@ window.addEventListener('scroll', ()=>{
     }
 })
 
-for(let item of star){
-    item.addEventListener('click', (e)=>{onStarClick(e)});
-    item.addEventListener('mouseenter', (e)=>{onStar(e)});
-    item.addEventListener('mouseleave', (e)=>{onStarLeave(e)})
-}
+stars.addEventListener('click', (e)=>{onStarClick(e)});
+stars.addEventListener('mouseenter', (e)=>{onStar(e)});
+stars.addEventListener('mouseleave', (e)=>{onStarLeave(e)})
 
 window.onload = function() {
     scrollTo(0,0);

@@ -959,8 +959,7 @@ html {
   border-right: 1px var(--dark-Pink) solid;
 }
 
-.mark:hover > .plusFirst,
-.mark:hover > .plusLater {
+.mark:hover > .fa-plus {
   transform: rotate(0.25turn);
 }
 
