@@ -1178,14 +1178,11 @@ body.addEventListener('click', (e)=>{
             case 'navSearch':
                 onSearch();
                 break;
-            // case 'searchBox':
-            //     onSearchBox();
-            //     break;
         }
     }
 })
 
-searchBoxInput.addEventListener('blur', ()=>{console.log('?'); onSearchBox()});
+searchBoxInput.addEventListener('blur', ()=>{onSearchBox()});
 
 window.addEventListener('resize', () => {
     if(body.clientWidth < 896 && body.clientWidth > 700){
@@ -1194,7 +1191,7 @@ window.addEventListener('resize', () => {
         navEst.style.display = 'none';
         logoText.style.display = 'flex';
         navSearch.style.display = 'block';
-        navStar.style.display = 'block';
+        // navStar.style.display = 'block';
     }
     if(body.clientWidth > 896){
         searchBox.style.width = '28rem';
@@ -1202,51 +1199,13 @@ window.addEventListener('resize', () => {
         logoText.style.display = 'flex';
         navSearch.style.display = 'none';
         navEst.style.display = 'block';
-        navStar.style.display = 'none';
+        // navStar.style.display = 'none';
     }
 })
 
-// window.addEventListener('mouseenter', (e)=>{
-//     const targets = e.target.classList.value.split(" ");
-//     console.log(targets);
-//     for(const target of targets){
-//         switch(target){
-//             case 'commentContentSpace':
-//                 onCommentHover(e);
-//                 break;
-//             case 'commentContentList':
-//                 onCommentHover(e);
-//                 break;
-//         }
-//     }
+// container.addEventListener('click', ()=>{
+
 // })
-
-
-// arrow
-// productionUl.addEventListener('mouseenter', (e)=>{
-//     console.log(window.getComputedStyle(productionUl.firstElementChild).visibility);
-//     if(window.getComputedStyle(productionUl).visibility === "visible"){
-//         console.log(productionUl.scrollWidth, productionUl.clientWidth);
-//         apchRight.style.display = 'flex';
-//         apchLeft.style.display = 'none';
-//     }
-//     if(window.getComputedStyle(productionUl.lastElementChild).visibility === "visible"){
-//         console.log(window.getComputedStyle(productionUl.lastElementChild).visibility);
-//         apchLeft.style.display = 'flex';
-//         apchRight.style.display = 'none';
-//     }
-//     if(window.getComputedStyle(productionUl.firstElementChild).visibility !== "visible" &&
-//     window.getComputedStyle(productionUl.lastElementChild).visibility !== "visible"){
-//         apchRight.style.display = 'flex';
-//         apchLeft.style.display = 'flex';
-//     }
-//     if(window.getComputedStyle(productionUl.firstElementChild).visibility === "visible" &&
-//     window.getComputedStyle(productionUl.lastElementChild).visibility === "visible"){
-//         apchRight.style.display = 'none';
-//         apchLeft.style.display = 'none';
-//     }
-// });
-
 
 productionUl.addEventListener('mouseenter', (e)=>{
     if(productCount === 0){

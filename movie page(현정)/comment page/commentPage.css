@@ -101,14 +101,30 @@ html {
 
 .nav2 > i {
   margin-left: 2rem;
+}
+
+.navSearch {
   font-size: 3rem;
+  color: #babac3;
+}
+
+.navStar {
+  font-size: 3rem;
+}
+
+.navProfile {
+  margin-left: 2rem;
+  font-size: 2.5rem;
+  color: #babac3;
+  border-radius: 50%;
+  /* transform: translateY(0.2rem); */
 }
 
 .nav2 > p {
   margin-left: 2rem;
 }
 
-.navSearch {
+.allComments {
   color: #babac3;
   display: none;
 }
@@ -129,12 +145,6 @@ html {
   cursor: pointer;
 }
 
-.navProfile {
-  color: #babac3;
-  /* border: 1px solid #babac3; */
-  /* border-radius: 50%; */
-}
-
 .logo span:nth-child(1) {
   margin-right: 0.5rem;
   font-weight: bold;
@@ -151,6 +161,7 @@ html {
   color: #bec1c0;
   text-shadow: 1px 1px 1px black;
   font-size: 1.4rem;
+  transition: all 0.5s;
 }
 
 .logoText p {
@@ -161,17 +172,21 @@ html {
   cursor: pointer;
 }
 
-.logoText p:nth-child(1) {
+.logoMovie {
   width: 3rem;
 }
 
-.logoText p:nth-child(2) {
+.logoTv {
   width: 7rem;
 }
 
-.logoText p:nth-child(3) {
+.logoBook {
   width: 2rem;
   margin: 0;
+}
+
+.navSearch {
+  display: none;
 }
 
 .searchBox {
@@ -184,6 +199,8 @@ html {
   border: 1px solid #babac3;
   font-size: 1.3rem;
   margin: 0;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: hidden;
 }
 
 .searchBox > i {
@@ -195,7 +212,7 @@ html {
   width: 25rem;
   letter-spacing: 0;
   background: transparent;
-  caret-color: black;
+  caret-color: var(--dark-Gray);
 }
 
 .searchBox > input::placeholder {
@@ -218,8 +235,9 @@ html {
 }
 
 .scrollPro {
-  color: #f8f8f8;
-  border: 0.5px solid #f8f8f8;
+  color: #babac3;
+  background: #f8f8f8;
+  transform: translateY(0.15rem);
 }
 
 .scrollText {
@@ -244,6 +262,12 @@ html {
   text-shadow: none;
   color: #78787e;
 }
+
+.scrollSearch {
+  color: #babac3;
+}
+
+/* nav 끝 */
 
 .fa-arrow-left {
   font-size: 2rem;
@@ -372,6 +396,7 @@ li,
   font-size: 1.5rem;
   background-color: #ffffff;
   border-bottom: 1px solid #e3e3e3;
+  color: black;
   width: 5rem;
   height: 2.5rem;
   border-radius: 20px;
@@ -384,6 +409,7 @@ li,
 
 .commentText {
   margin-bottom: 1rem;
+  color: black;
 }
 
 .thirdLi {
@@ -456,8 +482,20 @@ li,
   color: black;
 }
 
-@media screen and (max-width: 950px) {
-  .searchBox,
+@media screen and (max-width: 1080px) {
+  .nav1 {
+    margin-left: 3rem;
+  }
+  .nav2 {
+    margin-right: 3rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .searchBox {
+    width: 0;
+    visibility: hidden;
+  }
   .navEst {
     display: none;
   }
@@ -465,12 +503,13 @@ li,
   .navStar {
     display: block;
   }
-  .nav2 > i {
+  .navSearch,
+  .navStar {
     font-size: 2rem;
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 750px) {
   .nav {
     display: none;
   }
