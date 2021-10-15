@@ -850,8 +850,8 @@ function onCommentModal(e){
                                         <div class="commentContent">
                                             <div class="ccTop">
                                                 <span class="ccTopLeft">
-                                                    <img class="ccTopImg" src="https://picsum.photos/200/200/" alt="이미지가 없습니다">
-                                                    <span class="ccTopName">이름</span>
+                                                    <img class="ccTopImg" src="https://picsum.photos/200/200/?random=2" alt="이미지가 없습니다">
+                                                    <span class="ccTopName">내가 작성한 댓글</span>
                                                 </span>
                                                 <span class="ccTopRight">
                                                     <i class="fas fa-star"></i>
@@ -864,7 +864,7 @@ function onCommentModal(e){
                                                 </a>
                                             </div>
                                             <div class="ccNumOfLikeComment">
-                                                <span class="ccNumOfLike">
+                                                <span class="ccNumOfLike ccNumAfter">
                                                     <i class="fas fa-thumbs-up ccThumb"></i>
                                                     <span class="numOfthumbsUp">0</span>
                                                 </span>
