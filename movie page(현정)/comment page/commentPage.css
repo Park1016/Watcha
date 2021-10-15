@@ -410,6 +410,9 @@ li,
 .commentText {
   margin-bottom: 1rem;
   color: black;
+  font-size: 1.3rem;
+  letter-spacing: -0.1px;
+  line-height: 24px;
 }
 
 .thirdLi {

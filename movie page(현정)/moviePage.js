@@ -414,6 +414,9 @@ function onSimilarSeeMoreBtn(){
 
 // 별점
 function onStar(e, t){
+    if(e.target.classList.contains('navStar')){
+        return;
+    }
     if(star1.classList.contains('fix')){
         cancelStar.style.display = 'block';
         if(body.clientWidth < 696){
@@ -525,6 +528,9 @@ function onStar(e, t){
 }
 
 function onStarLeave(e){
+    if(e.target.classList.contains('navStar')){
+        return;
+    }
     if(star1.classList.contains('fix')){
         cancelStar.style.display = 'none';
         return;
@@ -1756,8 +1762,12 @@ window.addEventListener('scroll', ()=>{
 })
 
 stars.addEventListener('click', (e)=>{onStarClick(e)});
-stars.addEventListener('mouseenter', (e)=>{onStar(e)});
-stars.addEventListener('mouseleave', (e)=>{onStarLeave(e)})
+
+for(let item of star){
+    item.addEventListener('mouseenter', (e)=>{onStar(e)});
+    item.addEventListener('mouseleave', (e)=>{onStarLeave(e)})
+}
+
 
 window.onload = function() {
     scrollTo(0,0);
