@@ -9,6 +9,7 @@ const navProfile = document.querySelector('.navProfile');
 const logoText = document.querySelector('.logoText');
 const searchBox = document.querySelector('.searchBox');
 const navEst = document.querySelector('.navEst');
+const navSearch = document.querySelector('.navSearch');
 
 //footer
 const footer1 = document.querySelector('.footer1');
@@ -33,6 +34,9 @@ const clchLeft = document.querySelector('.clchLeft');
 const chevron = document.querySelectorAll('.chevron');
 const RgvchRight = document.querySelector('.RgvchRight');
 const RgvchLeft = document.querySelector('.RgvchLeft');
+
+// 기본 정도 더 보기
+const seeMoreOverview = document.querySelector('.seeMoreOverview');
 
 // 슬라이드 container
 const appearanceProduction = document.querySelector('.appearanceProduction');
@@ -929,9 +933,9 @@ function onEditComment(e){
     check = true;
 }
 
-// function onCommentHover(e){
-//     console.log(e.target);
-// }
+function onOverView(){
+
+}
 
 
 // addEventListener
@@ -1147,6 +1151,10 @@ body.addEventListener('click', (e)=>{
             case 'alertOK':
                 onDeleteComment();
                 cancelAlert.style.display = 'none';
+                break;
+
+            case 'seeMoreOverview':
+                onOverView();
                 break;
         }
     }
@@ -1726,6 +1734,7 @@ window.addEventListener('scroll', ()=>{
             logoText.classList.add('scrollText');
             searchBox.classList.add('scrollBox');
             navEst.classList.add('scrollEst');
+            navSearch.classList.add('scrollSearch');
         }, 200);
     } else {
         setTimeout(()=>{
@@ -1735,6 +1744,7 @@ window.addEventListener('scroll', ()=>{
             logoText.classList.remove('scrollText');
             searchBox.classList.remove('scrollBox');
             navEst.classList.remove('scrollEst');
+            navSearch.classList.remove('scrollSearch');
         }, 200);
     }
 })

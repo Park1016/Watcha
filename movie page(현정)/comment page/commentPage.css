@@ -5,6 +5,54 @@ html {
   font-size: 67%;
 }
 
+/* 기본정보 */
+.OVcontents {
+  background: #fff;
+  width: 100vw;
+  height: calc(100vh - 5rem);
+  transform: translateY(9rem);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.OVUl {
+  transform: translateY(1rem);
+  width: 65rem;
+  background: #fff;
+}
+
+.OVLi {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.4rem;
+  background: #fff;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.OVLi p:nth-child(1) {
+  width: 30%;
+  color: #787878;
+}
+
+.OVLastLi {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 8rem;
+}
+
+.OVLastLi p:nth-child(1) {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 760px) {
+  .OVUl {
+    width: 90vw;
+  }
+}
+
 /* nav */
 .nav {
   width: 100vw;
@@ -441,5 +489,11 @@ li,
   }
   .commentBox {
     width: 92.5vw;
+  }
+  .OVcontents {
+    transform: translateY(4rem);
+  }
+  .OVLastLi {
+    height: 10rem;
   }
 }

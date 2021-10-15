@@ -7,127 +7,93 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="commentPage.css">
-    <script defer type="module" src="commentPage.js"></script>
-    <title>코멘트 페이지</title>
+    <!-- <link rel="stylesheet" href="overView.css"> -->
+    <link rel="stylesheet" href="./../comment page/commentPage.css">
+    <script defer type="module" src="./../moviePage.js"></script>
+    <title>기본 정보 페이지</title>
 </head>
 <body>
     <section class="container">
+        <nav class="nav">
+            <div class="nav1">
+                <a href="./../moviePage.html" class="logo scrollLogo"><span>HJPARK</span><span>PEDIA</span></a>
+                <div class="logoText scrollText">
+                    <p>영화</p>
+                    <p>TV 프로그램</p>
+                    <p>책</p>
+                </div>
+            </div>
+            <div class="nav2">
+                <p class="searchBox scrollBox">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요" />
+                </p>
+                <p class="navEst scrollEst">평가하기</p>
+                <i class="fas fa-search navSearch"></i>
+                <i class="fas fa-star navStar"></i>
+                <i class="fas fa-user-circle navProfile"></i>
+            </div>
+        </nav>
         <section class="commentTop">
             <a href="/movie page(현정)/moviePage.html">
                 <i class="fas fa-arrow-left"></i>
             </a>
-            <div class="commentTopText">코멘트</div>
+            <div class="commentTopText">기본 정보</div>
         </section>
-        <section class="allComments">
-            <div class="commentBox">
-                <ul class="commentUl">
-                    <li class="firstLi">
-                        <a href="#" class="connetToMypage">
-                            <div class="photoAndName">
-                                <img class="photo" src="https://picsum.photos/seed/picsum/200/200" alt="사진이 없습니다">
-                                <span class="name">이름</span>
-                            </div>
-                        </a>
-                        <div class="rate">★4.0</div>
-                    </li>
-                    <li class="secondLi">
-                        <span class="commentText">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Cumque repudiandae ad maiores recusandae necessitatibus
-                            adipisci quos dolor architecto libero repellendus?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Cumque repudiandae ad maiores recusandae necessitatibus
-                            adipisci quos dolor architecto libero repellendus?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Cumque repudiandae ad maiores recusandae necessitatibus
-                            adipisci quos dolor architecto libero repellendus?
-                        </span>
-                    </li>
-                    <li class="thirdLi">
-                            <i class="fas fa-thumbs-up"></i>
-                            <span class="numOfLikes">271</span>
-                            <i class="fas fa-comment test1"></i>
-                            <span class="numOfComments">2</span>
-                    </li>
-                    <!-- <li class="fourthLi">
-                        <button class="like">좋아요</button>
-                    </li> -->
-                </ul>
-            </div>
-
-            <div class="commentBox">
-                <ul class="commentUl">
-                    <li class="firstLi">
-                        <a href="#" class="connetToMypage">
-                            <div class="photoAndName">
-                                <img class="photo" src="https://picsum.photos/seed/picsum/200/200" alt="사진이 없습니다">
-                                <span class="name">이름</span>
-                            </div>
-                        </a>
-                        <div class="rate">★4.0</div>
-                    </li>
-                    <li class="secondLi">
-                        <span class="commentText">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Cumque repudiandae ad maiores recusandae necessitatibus
-                            adipisci quos dolor architecto libero repellendus?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Cumque repudiandae ad maiores recusandae necessitatibus
-                            adipisci quos dolor architecto libero repellendus?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Cumque repudiandae ad maiores recusandae necessitatibus
-                            adipisci quos dolor architecto libero repellendus?
-                        </span>
-                    </li>
-                    <li class="thirdLi">
-                        <i class="fas fa-thumbs-up"></i>
-                        <span class="numOfLikes">271</span>
-                        <i class="fas fa-comment test2"></i>
-                        <span class="numOfComments">2</span>
-                    </li>
-                    <!-- <li class="fourthLi">
-                        <button class="like">좋아요</button>
-                    </li> -->
-                </ul>
-            </div>
-
-            <div class="commentBox">
-                <ul class="commentUl">
-                    <li class="firstLi">
-                        <a href="#" class="connetToMypage">
-                            <div class="photoAndName">
-                                <img class="photo" src="https://picsum.photos/seed/picsum/200/200" alt="사진이 없습니다">
-                                <span class="name">이름</span>
-                            </div>
-                        </a>
-                        <div class="rate">★4.0</div>
-                    </li>
-                    <li class="secondLi">
-                        <span class="commentText">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Cumque repudiandae ad maiores recusandae necessitatibus
-                            adipisci quos dolor architecto libero repellendus?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Cumque repudiandae ad maiores recusandae necessitatibus
-                            adipisci quos dolor architecto libero repellendus?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Cumque repudiandae ad maiores recusandae necessitatibus
-                            adipisci quos dolor architecto libero repellendus?
-                        </span>
-                    </li>
-                    <li class="thirdLi">
-                        <i class="fas fa-thumbs-up"></i>
-                        <span class="numOfLikes">271</span>
-                        <i class="fas fa-comment"></i>
-                        <span class="numOfComments">2</span>
-                    </li>
-                    <!-- <li class="fourthLi">
-                        <button class="like">좋아요</button>
-                    </li> -->
-                </ul>
-            </div>
+        <section class="OVcontents">
+            <ul class="OVUl">
+                <li class="OVLi">
+                    <p>원제</p>
+                    <p>Gravity</p>
+                </li>
+                <li class="OVLi">
+                    <p>제작 연도</p>
+                    <p>2013</p>
+                </li>
+                <li class="OVLi">
+                    <p>국가</p>
+                    <p>미국, 영국</p>
+                </li>
+                <li class="OVLi">
+                    <p>장르</p>
+                    <p>SF/드라마/스릴러</p>
+                </li>
+                <li class="OVLi">
+                    <p>상영시간</p>
+                    <p>1시간 30분</p>
+                </li>
+                <li class="OVLi">
+                    <p>연령 등급</p>
+                    <p>12세 관람가</p>
+                </li>
+                <li class="OVLi OVLastLi">
+                    <p>내용</p>
+                    <p>
+                        허블 우주망원경을 수리하기 위해 우주를 탐사하던 라이언 스톤 박사는
+                        폭파된 인공위성의 잔해와 부딪히면서
+                        소리도 산소도 없는 우주 한 가운데에 홀로 남겨지는데…
+                    </p>
+                </li>
+            </ul>
         </section>
+        <nav class="footer">
+            <div class="active footer1">
+                <i class="fas fa-home footerHome"></i>
+                <p class="footerText1">홈</p>
+            </div>
+            <div class="footer2">
+                <i class="fas fa-search footerSearch"></i>
+                <p class="footerText2">검색</p>
+            </div>
+            <div class="footer3">
+                <i class="fas fa-star footerStar"></i>
+                <p class="footerText3">평가</p>
+            </div>
+            <div class="footer4">
+                <i class="fas fa-user-alt footerUser"></i>
+                <p class="footerText4">나의 왓챠</p>
+            </div>
+        </nav>
     </section>
 </body>
 </html>

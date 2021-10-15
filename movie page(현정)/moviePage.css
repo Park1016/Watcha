@@ -210,6 +210,10 @@ html {
   margin: 0;
 }
 
+.navSearch {
+  display: none;
+}
+
 .searchBox {
   width: 28rem;
   height: 3.5rem;
@@ -279,6 +283,10 @@ html {
 .scrollEst {
   text-shadow: none;
   color: #78787e;
+}
+
+.scrollSearch {
+  color: #babac3;
 }
 
 /* footer */
