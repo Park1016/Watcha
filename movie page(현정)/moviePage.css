@@ -187,6 +187,7 @@ html {
   color: #bec1c0;
   text-shadow: 1px 1px 1px black;
   font-size: 1.4rem;
+  transition: all 0.5s;
 }
 
 .logoText p {
@@ -197,15 +198,15 @@ html {
   cursor: pointer;
 }
 
-.logoText p:nth-child(1) {
+.logoMovie {
   width: 3rem;
 }
 
-.logoText p:nth-child(2) {
+.logoTv {
   width: 7rem;
 }
 
-.logoText p:nth-child(3) {
+.logoBook {
   width: 2rem;
   margin: 0;
 }
@@ -224,6 +225,7 @@ html {
   border: 1px solid #babac3;
   font-size: 1.3rem;
   margin: 0;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .searchBox > i {
@@ -235,7 +237,7 @@ html {
   width: 25rem;
   letter-spacing: 0;
   background: transparent;
-  caret-color: black;
+  caret-color: var(--dark-Gray);
 }
 
 .searchBox > input::placeholder {
@@ -2259,8 +2261,12 @@ html {
   }
 }
 
-@media screen and (max-width: 880px) {
-  .searchBox,
+@media screen and (max-width: 900px) {
+  .searchBox {
+    width: 0;
+    /* display: none; */
+    visibility: hidden;
+  }
   .navEst {
     display: none;
   }

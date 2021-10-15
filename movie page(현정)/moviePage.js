@@ -7,7 +7,11 @@ const nav = document.querySelector('.nav')
 const logo = document.querySelector('.logo')
 const navProfile = document.querySelector('.navProfile');
 const logoText = document.querySelector('.logoText');
+const logoMovie = document.querySelector('.logoMovie');
+const logoTv = document.querySelector('.logoTv');
+const logoBook = document.querySelector('.logoBook');
 const searchBox = document.querySelector('.searchBox');
+const searchBoxInput = document.querySelector('.searchBoxInput');
 const navEst = document.querySelector('.navEst');
 const navSearch = document.querySelector('.navSearch');
 
@@ -937,6 +941,24 @@ function onOverView(){
 
 }
 
+function onSearch(){
+    navSearch.style.display = 'none';
+    searchBox.style.width = '28rem';
+    searchBox.style.visibility = 'visible';
+    logoText.style.display = 'none';
+    searchBoxInput.focus();
+}
+
+function onSearchBox(){
+    if(body.clientWidth > 880){
+        return;
+    }
+    searchBox.style.width = '0';
+    searchBox.style.visibility = 'hidden';
+    logoText.style.display = 'flex';
+    navSearch.style.display = 'block';
+}
+
 
 // addEventListener
 body.addEventListener('click', (e)=>{
@@ -1156,16 +1178,37 @@ body.addEventListener('click', (e)=>{
             case 'seeMoreOverview':
                 onOverView();
                 break;
+
+            case 'navSearch':
+                onSearch();
+                break;
+            // case 'searchBox':
+            //     onSearchBox();
+            //     break;
         }
     }
 })
 
-// window.addEventListener('resize', () => {
-//     console.log(body.clientWidth);
-//     if(body.clientWidth < 700){
-//         afterCommentText.style.alignItems = 'center';
-//     }
-// })
+searchBoxInput.addEventListener('blur', ()=>{console.log('?'); onSearchBox()});
+
+window.addEventListener('resize', () => {
+    if(body.clientWidth < 896 && body.clientWidth > 700){
+        searchBox.style.width = '0';
+        searchBox.style.visibility = 'hidden';
+        navEst.style.display = 'none';
+        logoText.style.display = 'flex';
+        navSearch.style.display = 'block';
+        navStar.style.display = 'block';
+    }
+    if(body.clientWidth > 896){
+        searchBox.style.width = '28rem';
+        searchBox.style.visibility = 'visible';
+        logoText.style.display = 'flex';
+        navSearch.style.display = 'none';
+        navEst.style.display = 'block';
+        navStar.style.display = 'none';
+    }
+})
 
 // window.addEventListener('mouseenter', (e)=>{
 //     const targets = e.target.classList.value.split(" ");

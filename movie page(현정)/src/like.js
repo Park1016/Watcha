@@ -31,11 +31,11 @@ export function onNumOfLikes(e){
 
 export function onCommentBtn(e){
     const target = e.target;
-    console.log(target);
+    // console.log(target);
 }
 
 
 export function onNumOfComment(e){
     const target = e.target;
-    console.log(target);
+    // console.log(target);
 }
