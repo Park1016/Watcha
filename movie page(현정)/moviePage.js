@@ -937,15 +937,11 @@ function onEditComment(e){
     check = true;
 }
 
-function onOverView(){
-
-}
-
 function onSearch(){
     navSearch.style.display = 'none';
+    logoText.style.display = 'none';
     searchBox.style.width = '28rem';
     searchBox.style.visibility = 'visible';
-    logoText.style.display = 'none';
     setTimeout(()=>{
         searchBoxInput.focus();
     }, 510)
@@ -955,11 +951,12 @@ function onSearchBox(){
     if(body.clientWidth > 896){
         return;
     }
+    setTimeout(()=>{
+        logoText.style.display = 'flex';
+        navSearch.style.display = 'block';
+    }, 500)
     searchBox.style.width = '0';
     searchBox.style.visibility = 'hidden';
-    // searchBoxInput.style.display = 'none';
-    logoText.style.display = 'flex';
-    navSearch.style.display = 'block';
 }
 
 
@@ -1176,10 +1173,6 @@ body.addEventListener('click', (e)=>{
             case 'alertOK':
                 onDeleteComment();
                 cancelAlert.style.display = 'none';
-                break;
-
-            case 'seeMoreOverview':
-                onOverView();
                 break;
 
             case 'navSearch':
