@@ -483,12 +483,14 @@ function onStar(e, t){
     }
     const target = e.target.lastElementChild;
     if(!target){return};
+    const mystar = document.querySelector('.mystar');
     if(target.className === 'star1'){
         star1.parentElement.classList.remove('far');
         star1.parentElement.classList.add('fas');
         if(t){
             star1.classList.add('one');
             starText.innerHTML = '싫어요';
+            mystar.innerText = '1.0';
             localStorage.setItem('star', '1.0');
         }
     }
@@ -500,6 +502,7 @@ function onStar(e, t){
         if(t){
             star1.classList.add('two');
             starText.innerHTML = '별로예요';
+            mystar.innerText = '2.0';
             localStorage.setItem('star', '2.0');
         }
     }
@@ -513,6 +516,7 @@ function onStar(e, t){
         if(t){
             star1.classList.add('three');
             starText.innerHTML = '보통이에요';
+            mystar.innerText = '3.0';
             localStorage.setItem('star', '3.0');
         }
     }
@@ -528,6 +532,7 @@ function onStar(e, t){
         if(t){
             star1.classList.add('four');
             starText.innerHTML = '재밌어요';
+            mystar.innerText = '4.0';
             localStorage.setItem('star', '4.0');
         }
     }
@@ -545,6 +550,7 @@ function onStar(e, t){
         if(t){
             star1.classList.add('five');
             starText.innerHTML = '최고예요!';
+            mystar.innerText = '5.0';
             localStorage.setItem('star', '5.0');
         }
     }
@@ -632,6 +638,8 @@ function onStarClick(e){
         star4.parentElement.classList.add('far');
         star5.parentElement.classList.remove('fas');
         star5.parentElement.classList.add('far');
+
+        localStorage.setItem('prevStar', localStorage.getItem('star'));
         localStorage.removeItem('star');
         return;
     }
@@ -680,6 +688,7 @@ function fabanCancel(){
     markBtnGrayToPinkColorChange();
     markWantSeeText.style.display = 'inline';
     plusFirst.style.display = 'inline';
+    localStorage.setItem('ban', false);
 }
 
 function noneFabanMark(){
@@ -770,6 +779,10 @@ function eyeGrayToBlueColorChange(){
 
     markWantSeeText.style.display = 'none';
     markWatchingText.style.display = 'inline';
+
+    localStorage.setItem('eye', true);
+    localStorage.setItem('ban', false);
+    localStorage.setItem('book', false);
     
     noneFabanMark();
     fullToemptyBookMarkChange();
@@ -807,6 +820,9 @@ function onEmptyBookMarkModal(){
         onfullBookMarkModal();
         return;
     }
+    localStorage.setItem('book', true);
+    localStorage.setItem('ban', false);
+    localStorage.setItem('eye', false);
     noneFabanMark();
     noneFullWatchingEyeModal();
     showBookMark();
@@ -831,6 +847,7 @@ function onMarkBtn(){
 }
 
 function onfullBookMarkModal(){
+    localStorage.setItem('book', false);
     noneFabanMark();
     onMdCancelBtn();
     markBtnGrayToPinkColorChange();
@@ -851,6 +868,7 @@ function onFullWatchingEyeModal(){
     noneFullWatchingEyeModal();
     markBtnGrayToPinkColorChange();
     onMdCancelBtn();
+    localStorage.setItem('eye', false);
     fullWatchingEye.style.display = 'none';
     plusFirst.style.display = 'inline';
 }
@@ -866,6 +884,9 @@ function onFaBanModal() {
         faBanModalColorChange();
         showFabanMark();
         onMdCancelBtn();
+        localStorage.setItem('ban', true);
+        localStorage.setItem('book', false);
+        localStorage.setItem('eye', false);
         return;
     }else{
         mdNoThanksText.style.color = 'black';
@@ -1041,7 +1062,11 @@ function localText(text, star){
     commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
     
     afterCommentContainer.style.display = 'flex';
-    afterCommentContainer.style.marginTop = '4rem';
+    if(body.clientWidth > 695){
+        afterCommentContainer.style.marginTop = '4rem';
+    }else{
+        afterCommentContainer.style.marginTop = '0';
+    }
     afterCommentText.innerText = text;
     section2LeftContainer.style.marginTop = '1rem';
 
@@ -1351,6 +1376,11 @@ window.addEventListener('resize', () => {
         navSearch.style.display = 'none';
         navEst.style.display = 'block';
         // navStar.style.display = 'none';
+    }
+    if(body.clientWidth > 695){
+        afterCommentContainer.style.marginTop = '4rem';
+    } else {
+        afterCommentContainer.style.marginTop = '0';
     }
 })
 
@@ -1909,19 +1939,13 @@ for(let item of star){
     item.addEventListener('mouseenter', (e)=>{onStar(e)});
 }
 
-
-// window.onload = function() {
-//     scrollTo(0,0);
-// }
-
-
 window.addEventListener('DOMContentLoaded', () => {
     scrollTo(0,0);
     const text = localStorage.getItem('text');
     const star = localStorage.getItem('star');
-    if(!text && !star){
-        return;
-    }
+    const book = localStorage.getItem('book');
+    const ban = localStorage.getItem('ban');
+    const eye = localStorage.getItem('eye');
     if(text && star){
         localText(text, star);  
         localStar(star);
@@ -1930,7 +1954,16 @@ window.addEventListener('DOMContentLoaded', () => {
         localStar(star, true);
     }
     if(text && !star){
-        localText(text, '5.0');
+        localText(text, localStorage.getItem('prevStar'));
+    }
+    if(book === 'true'){
+        onEmptyBookMarkModal();
+    }
+    if(eye === 'true'){
+        eyeGrayToBlueColorChange();
+    }
+    if(ban === 'true'){
+        onFaBanModal();
     }
 })
 
