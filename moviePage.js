@@ -2,6 +2,14 @@
 import * as srcLike from "./like.js";
 import * as srcColor from "./color.js";
 
+// document.cookie = "cookie1=soo; SameSite=Lax";
+// document.cookie = "user=phj";
+// document.cookie = "user=phj; SameSite=None; Secure";
+// Set-Cookie: widget_session=abc123; SameSite=None; Secure
+document.cookie = "_gid=GA1.2.1424189941.1634263702; SameSite=None; Secure";
+document.cookie = "_ga=GA1.2.2041708025.1634263702; SameSite=None; Secure";
+console.log(document.cookie);
+
 //nav
 const nav = document.querySelector('.nav')
 const logo = document.querySelector('.logo')
