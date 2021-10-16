@@ -421,55 +421,65 @@ function onSimilarSeeMoreBtn(){
 }
 
 // 별점
+
+function setStarHover(){
+    cancelStar.style.display = 'block';
+    if(body.clientWidth < 696){
+        if(star1.classList.contains('one')){
+            cancelStar.style.left = '0.9rem';
+            return;
+        }
+        if(star1.classList.contains('two')){
+            cancelStar.style.left = '4.2rem';
+            return;
+        }
+        if(star1.classList.contains('three')){
+            cancelStar.style.left = '7.4rem';
+            return;
+        }
+        if(star1.classList.contains('four')){
+            cancelStar.style.left = '10.7rem';
+            return;
+        }
+        if(star1.classList.contains('five')){
+            cancelStar.style.left = '13.9rem';
+            return;
+        }
+    } else {
+        if(star1.classList.contains('one')){
+            cancelStar.style.left = '0';
+            return;
+        }
+        if(star1.classList.contains('two')){
+            cancelStar.style.left = '4rem';
+            return;
+        }
+        if(star1.classList.contains('three')){
+            cancelStar.style.left = '8.5rem';
+            return;
+        }
+        if(star1.classList.contains('four')){
+            cancelStar.style.left = '13rem';
+            return;
+        }
+        if(star1.classList.contains('five')){
+            cancelStar.style.left = '17.5rem';
+            return;
+        }
+    }
+}
+
 function onStar(e, t){
     if(e.target.classList.contains('navStar')){
         return;
     }
+    if(star1.classList.contains('local')){
+        setStarHover();
+        return;
+    }
     if(star1.classList.contains('fix')){
-        cancelStar.style.display = 'block';
-        if(body.clientWidth < 696){
-            if(star1.classList.contains('one')){
-                cancelStar.style.left = '0.9rem';
-                return;
-            }
-            if(star1.classList.contains('two')){
-                cancelStar.style.left = '4.2rem';
-                return;
-            }
-            if(star1.classList.contains('three')){
-                cancelStar.style.left = '7.4rem';
-                return;
-            }
-            if(star1.classList.contains('four')){
-                cancelStar.style.left = '10.7rem';
-                return;
-            }
-            if(star1.classList.contains('five')){
-                cancelStar.style.left = '13.9rem';
-                return;
-            }
-        } else {
-            if(star1.classList.contains('one')){
-                cancelStar.style.left = '0';
-                return;
-            }
-            if(star1.classList.contains('two')){
-                cancelStar.style.left = '4rem';
-                return;
-            }
-            if(star1.classList.contains('three')){
-                cancelStar.style.left = '8.5rem';
-                return;
-            }
-            if(star1.classList.contains('four')){
-                cancelStar.style.left = '13rem';
-                return;
-            }
-            if(star1.classList.contains('five')){
-                cancelStar.style.left = '17.5rem';
-                return;
-            }
-        }
+        setStarHover();
+        return;
     }
     const target = e.target.lastElementChild;
     if(!target){return};
@@ -479,6 +489,7 @@ function onStar(e, t){
         if(t){
             star1.classList.add('one');
             starText.innerHTML = '싫어요';
+            localStorage.setItem('star', '1.0');
         }
     }
     if(target.className === 'star2'){
@@ -489,6 +500,7 @@ function onStar(e, t){
         if(t){
             star1.classList.add('two');
             starText.innerHTML = '별로예요';
+            localStorage.setItem('star', '2.0');
         }
     }
     if(target.className === 'star3'){
@@ -501,6 +513,7 @@ function onStar(e, t){
         if(t){
             star1.classList.add('three');
             starText.innerHTML = '보통이에요';
+            localStorage.setItem('star', '3.0');
         }
     }
     if(target.className === 'star4'){
@@ -515,6 +528,7 @@ function onStar(e, t){
         if(t){
             star1.classList.add('four');
             starText.innerHTML = '재밌어요';
+            localStorage.setItem('star', '4.0');
         }
     }
     if(target.className === 'star5'){
@@ -531,6 +545,7 @@ function onStar(e, t){
         if(t){
             star1.classList.add('five');
             starText.innerHTML = '최고예요!';
+            localStorage.setItem('star', '5.0');
         }
     }
 }
@@ -589,6 +604,7 @@ function onStarLeave(e){
 }
 
 function onStarClick(e){
+    star1.classList.remove('local');
     if(e.target.classList.contains('stars')){
         return;
     }
@@ -616,6 +632,7 @@ function onStarClick(e){
         star4.parentElement.classList.add('far');
         star5.parentElement.classList.remove('fas');
         star5.parentElement.classList.add('far');
+        localStorage.removeItem('star');
         return;
     }
     if(afterCommentContainer.style.display !== 'flex'){
@@ -875,6 +892,7 @@ function onCommentModal(e){
     section2LeftContainer.style.marginTop = '1rem';
     afterCommentText.innerText = text;
     localStorage.setItem('text', text);
+    let star = localStorage.getItem('star');
     if(!check){
         const commentContentList = `<li class="commentContentList">
                                         <div class="commentContent">
@@ -885,7 +903,7 @@ function onCommentModal(e){
                                                 </span>
                                                 <span class="ccTopRight">
                                                     <i class="fas fa-star"></i>
-                                                    <span class="starScope">5.0</span>
+                                                    <span class="starScope mystar">${star}</span>
                                                 </span>
                                             </div>
                                             <div class="ccText">
@@ -909,7 +927,9 @@ function onCommentModal(e){
     }
     if(check){
         check = false;
+        const mystar = document.querySelector('.mystar');
         commentContentSpace.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = text;
+        mystar.innerText = star;
     }
     commentTextarea.value = '';
     text = '';
@@ -918,13 +938,7 @@ function onCommentModal(e){
     mdCommentContainer.style.display = 'none';
     section2LeftTopContainer.style.display = 'none';
     afterCommentContainer.style.display = 'flex';
-    if(afterCommentText.childNodes[0].parentElement.scrollHeight > 74){
-        afterCommentText.classList.add('beforeAfter');
-        afterCommentText.style.alignItems = 'flex-start';
-    }else{
-        afterCommentText.classList.remove('beforeAfter');
-        afterCommentText.style.alignItems = 'center';
-    }
+    textAlign();
 }
 
 
@@ -941,6 +955,7 @@ function onCommentTextarea(e){
 }
 
 function onDeleteComment(e){
+    localStorage.removeItem('text');
     mdCommentText.innerText = '코멘트 작성하기';
     afterCommentContainer.style.display = 'none';
     section2LeftTopContainer.style.display = 'none';
@@ -980,6 +995,119 @@ function onSearchBox(){
     searchBox.style.width = '0';
     searchBox.style.visibility = 'hidden';
     searchBoxInput.value = '';
+}
+
+function textAlign(){
+    if(afterCommentText.childNodes[0].parentElement.scrollHeight > 74){
+        afterCommentText.classList.add('beforeAfter');
+        afterCommentText.style.alignItems = 'flex-start';
+    }else{
+        afterCommentText.classList.remove('beforeAfter');
+        afterCommentText.style.alignItems = 'center';
+    }
+}
+
+function localText(text, star){
+    const commentContentList = `
+    <li class="commentContentList">
+        <div class="commentContent">
+            <div class="ccTop">
+                <span class="ccTopLeft">
+                    <img class="ccTopImg" src="https://picsum.photos/200/200/?random=2" alt="이미지가 없습니다">
+                    <span class="ccTopName">내가 작성한 댓글</span>
+                </span>
+                <span class="ccTopRight">
+                    <i class="fas fa-star"></i>
+                    <span class="starScope mystar">${star}</span>
+                </span>
+            </div>
+            <div class="ccText">
+                <a href="./comment page/commentPage.html" class="ccTextInner">
+                    ${text}
+                </a>
+            </div>
+            <div class="ccNumOfLikeComment">
+                <span class="ccNumOfLike ccNumAfter">
+                    <i class="fas fa-thumbs-up ccThumb"></i>
+                    <span class="numOfthumbsUp">0</span>
+                </span>
+                <span class="ccNumOfComment">
+                    <i class="fas fa-comment ccNum"></i>
+                    <span class="ccComment">0</span>
+                </span>
+            </div>
+        </div>
+    </li>`;
+    commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
+    
+    afterCommentContainer.style.display = 'flex';
+    afterCommentContainer.style.marginTop = '4rem';
+    afterCommentText.innerText = text;
+    section2LeftContainer.style.marginTop = '1rem';
+
+    textAlign();
+};
+
+function localStar(star, check){
+    star1.classList.add('local');
+    star1.classList.add('fix');
+    if(check){
+        section2LeftTopContainer.style.display = 'flex';
+        section2LeftContainer.style.marginTop = '1rem';
+    }
+    if(star === '1.0'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        star1.classList.add('one');
+        starText.innerHTML = '싫어요';
+    }
+    if(star === '2.0'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        star2.parentElement.classList.remove('far');
+        star2.parentElement.classList.add('fas');
+        star1.classList.add('two');
+        starText.innerHTML = '별로예요';
+    }
+    if(star === '3.0'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        star2.parentElement.classList.remove('far');
+        star2.parentElement.classList.add('fas');
+        star3.parentElement.classList.remove('far');
+        star3.parentElement.classList.add('fas');
+        star1.classList.add('three');
+        starText.innerHTML = '보통이에요';
+    }
+    if(star === '4.0'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        star2.parentElement.classList.remove('far');
+        star2.parentElement.classList.add('fas');
+        star3.parentElement.classList.remove('far');
+        star3.parentElement.classList.add('fas');
+        star4.parentElement.classList.remove('far');
+        star4.parentElement.classList.add('fas');
+        star1.classList.add('four');
+        starText.innerHTML = '재밌어요';
+    }
+    if(star === '5.0'){
+        star1.parentElement.classList.remove('far');
+        star1.parentElement.classList.add('fas');
+        star2.parentElement.classList.remove('far');
+        star2.parentElement.classList.add('fas');
+        star3.parentElement.classList.remove('far');
+        star3.parentElement.classList.add('fas');
+        star4.parentElement.classList.remove('far');
+        star4.parentElement.classList.add('fas');
+        star5.parentElement.classList.remove('far');
+        star5.parentElement.classList.add('fas');
+        star1.classList.add('five');
+        starText.innerHTML = '최고예요!';
+    }
+    textAlign();
+    const mystar = document.querySelector('.mystar');
+    mystar.innerText = star;
 }
 
 
@@ -1775,12 +1903,34 @@ window.addEventListener('scroll', ()=>{
 stars.addEventListener('click', (e)=>{onStarClick(e)});
 
 for(let item of star){
+    if(!(star1.classList.contains('local'))){
+        item.addEventListener('mouseleave', (e)=>{onStarLeave(e)});
+    }
     item.addEventListener('mouseenter', (e)=>{onStar(e)});
-    item.addEventListener('mouseleave', (e)=>{onStarLeave(e)})
 }
 
 
-window.onload = function() {
+// window.onload = function() {
+//     scrollTo(0,0);
+// }
+
+
+window.addEventListener('DOMContentLoaded', () => {
     scrollTo(0,0);
-}
+    const text = localStorage.getItem('text');
+    const star = localStorage.getItem('star');
+    if(!text && !star){
+        return;
+    }
+    if(text && star){
+        localText(text, star);  
+        localStar(star);
+    }
+    if(!text && star){
+        localStar(star, true);
+    }
+    if(text && !star){
+        localText(text, '5.0');
+    }
+})
 
