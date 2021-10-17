@@ -469,28 +469,37 @@ function setStarHover(){
     }
 }
 
+function removeStar(){
+    star1.classList.remove('five');
+    star1.classList.remove('four');
+    star1.classList.remove('three');
+    star1.classList.remove('two');
+    star1.classList.remove('one');
+}
+
 function onStar(e, t){
     if(e.target.classList.contains('navStar')){
         return;
     }
-    if(star1.classList.contains('local')){
-        setStarHover();
-        return;
-    }
-    if(star1.classList.contains('fix')){
+    if(star1.classList.contains('local') || star1.classList.contains('fix')){
         setStarHover();
         return;
     }
     const target = e.target.lastElementChild;
     if(!target){return};
+    const myCc = document.querySelector('.myCc');
     const mystar = document.querySelector('.mystar');
     if(target.className === 'star1'){
         star1.parentElement.classList.remove('far');
         star1.parentElement.classList.add('fas');
         if(t){
+            removeStar();
+            if(myCc){myCc.style.display = 'flex';}
             star1.classList.add('one');
             starText.innerHTML = '싫어요';
-            mystar.innerText = '1.0';
+            if(mystar){
+                mystar.innerText = '1.0';
+            }
             localStorage.setItem('star', '1.0');
         }
     }
@@ -500,9 +509,13 @@ function onStar(e, t){
         star2.parentElement.classList.remove('far');
         star2.parentElement.classList.add('fas');
         if(t){
+            removeStar();
+            if(myCc){myCc.style.display = 'flex';}
             star1.classList.add('two');
             starText.innerHTML = '별로예요';
-            mystar.innerText = '2.0';
+            if(mystar){
+                mystar.innerText = '2.0';
+            }
             localStorage.setItem('star', '2.0');
         }
     }
@@ -514,9 +527,13 @@ function onStar(e, t){
         star3.parentElement.classList.remove('far');
         star3.parentElement.classList.add('fas');
         if(t){
+            removeStar();
             star1.classList.add('three');
+            if(myCc){myCc.style.display = 'flex';}
             starText.innerHTML = '보통이에요';
-            mystar.innerText = '3.0';
+            if(mystar){
+                mystar.innerText = '3.0';
+            }
             localStorage.setItem('star', '3.0');
         }
     }
@@ -530,9 +547,13 @@ function onStar(e, t){
         star4.parentElement.classList.remove('far');
         star4.parentElement.classList.add('fas');
         if(t){
+            removeStar();
             star1.classList.add('four');
+            if(myCc){myCc.style.display = 'flex';}
             starText.innerHTML = '재밌어요';
-            mystar.innerText = '4.0';
+            if(mystar){
+                mystar.innerText = '4.0';
+            }
             localStorage.setItem('star', '4.0');
         }
     }
@@ -548,9 +569,13 @@ function onStar(e, t){
         star5.parentElement.classList.remove('far');
         star5.parentElement.classList.add('fas');
         if(t){
+            removeStar();
             star1.classList.add('five');
+            if(myCc){myCc.style.display = 'flex';}
             starText.innerHTML = '최고예요!';
-            mystar.innerText = '5.0';
+            if(mystar){
+                mystar.innerText = '5.0';
+            }
             localStorage.setItem('star', '5.0');
         }
     }
@@ -610,6 +635,7 @@ function onStarLeave(e){
 }
 
 function onStarClick(e){
+    const myCc = document.querySelector('.myCc');
     star1.classList.remove('local');
     if(e.target.classList.contains('stars')){
         return;
@@ -620,11 +646,7 @@ function onStarClick(e){
             section2LeftContainer.style.marginTop = '4rem';
         }
         star1.classList.remove('fix');
-        star1.classList.remove('one');
-        star1.classList.remove('two');
-        star1.classList.remove('three');
-        star1.classList.remove('four');
-        star1.classList.remove('five');
+        removeStar();
         cancelStar.style.left = '-0.5rem';
         cancelStar.style.display = 'none';
         starText.innerHTML = '평가하기';
@@ -638,6 +660,7 @@ function onStarClick(e){
         star4.parentElement.classList.add('far');
         star5.parentElement.classList.remove('fas');
         star5.parentElement.classList.add('far');
+        if(myCc){myCc.style.display= 'none';}
 
         localStorage.setItem('prevStar', localStorage.getItem('star'));
         localStorage.removeItem('star');
@@ -922,7 +945,7 @@ function onCommentModal(e){
                                                     <img class="ccTopImg" src="https://picsum.photos/200/200/?random=2" alt="이미지가 없습니다">
                                                     <span class="ccTopName">내가 작성한 댓글</span>
                                                 </span>
-                                                <span class="ccTopRight">
+                                                <span class="ccTopRight myCc">
                                                     <i class="fas fa-star"></i>
                                                     <span class="starScope mystar">${star}</span>
                                                 </span>
@@ -933,9 +956,9 @@ function onCommentModal(e){
                                                 </a>
                                             </div>
                                             <div class="ccNumOfLikeComment">
-                                                <span class="ccNumOfLike ccNumAfter">
-                                                    <i class="fas fa-thumbs-up ccThumb"></i>
-                                                    <span class="numOfthumbsUp">0</span>
+                                                <span class="ccNumOfLike ccNumAfter like2">
+                                                    <i class="fas fa-thumbs-up ccThumb thumb2"></i>
+                                                    <span class="numOfthumbsUp thumb2Num">0</span>
                                                 </span>
                                                 <span class="ccNumOfComment">
                                                     <i class="fas fa-comment ccNum"></i>
@@ -946,6 +969,17 @@ function onCommentModal(e){
                                     </li>`;
         commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
     }
+
+    localStorage.setItem('like2', false);
+
+    const myCc = document.querySelector('.myCc');
+
+    if(!star && myCc){
+        myCc.style.display = 'none';
+    } else {
+        myCc.style.display = 'flex';
+    }
+
     if(check){
         check = false;
         const mystar = document.querySelector('.mystar');
@@ -979,11 +1013,16 @@ function onDeleteComment(e){
     localStorage.removeItem('text');
     mdCommentText.innerText = '코멘트 작성하기';
     afterCommentContainer.style.display = 'none';
-    section2LeftTopContainer.style.display = 'none';
     mdCommentTopText.innerText = '코멘트 작성';
-    section2LeftContainer.style.marginTop = '4rem';
     afterCommentText.innerHTML = '';
     commentContentSpace.firstElementChild.remove();
+    if(localStorage.getItem('star')){
+        section2LeftTopContainer.style.display = 'flex';
+        section2LeftContainer.style.marginTop = '1rem';
+    }else{
+        section2LeftTopContainer.style.display = 'none';
+        section2LeftContainer.style.marginTop = '4rem';
+    }
 }
 
 function onDeleteCheck(){
@@ -1037,7 +1076,7 @@ function localText(text, star){
                     <img class="ccTopImg" src="https://picsum.photos/200/200/?random=2" alt="이미지가 없습니다">
                     <span class="ccTopName">내가 작성한 댓글</span>
                 </span>
-                <span class="ccTopRight">
+                <span class="ccTopRight myCc">
                     <i class="fas fa-star"></i>
                     <span class="starScope mystar">${star}</span>
                 </span>
@@ -1048,9 +1087,9 @@ function localText(text, star){
                 </a>
             </div>
             <div class="ccNumOfLikeComment">
-                <span class="ccNumOfLike ccNumAfter">
-                    <i class="fas fa-thumbs-up ccThumb"></i>
-                    <span class="numOfthumbsUp">0</span>
+                <span class="ccNumOfLike ccNumAfter like2">
+                    <i class="fas fa-thumbs-up ccThumb thumb2"></i>
+                    <span class="numOfthumbsUp thumb2Num">0</span>
                 </span>
                 <span class="ccNumOfComment">
                     <i class="fas fa-comment ccNum"></i>
@@ -1059,18 +1098,29 @@ function localText(text, star){
             </div>
         </div>
     </li>`;
-    commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
-    
-    afterCommentContainer.style.display = 'flex';
-    if(body.clientWidth > 695){
-        afterCommentContainer.style.marginTop = '4rem';
-    }else{
-        afterCommentContainer.style.marginTop = '0';
-    }
-    afterCommentText.innerText = text;
-    section2LeftContainer.style.marginTop = '1rem';
 
-    textAlign();
+    localStorage.setItem('like2', false);
+    
+    if(commentContentSpace){
+        commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
+        const myCc = document.querySelector('.myCc');
+        if(!star && myCc){
+            myCc.style.display = 'none';
+        } else {
+            myCc.style.display = 'flex';
+        }
+        
+        afterCommentContainer.style.display = 'flex';
+        if(body.clientWidth > 695){
+            afterCommentContainer.style.marginTop = '4rem';
+        }else{
+            afterCommentContainer.style.marginTop = '0';
+        }
+        afterCommentText.innerText = text;
+        section2LeftContainer.style.marginTop = '1rem';
+    
+        textAlign();
+    }
 };
 
 function localStar(star, check){
@@ -1083,6 +1133,7 @@ function localStar(star, check){
     if(star === '1.0'){
         star1.parentElement.classList.remove('far');
         star1.parentElement.classList.add('fas');
+        removeStar();
         star1.classList.add('one');
         starText.innerHTML = '싫어요';
     }
@@ -1091,6 +1142,7 @@ function localStar(star, check){
         star1.parentElement.classList.add('fas');
         star2.parentElement.classList.remove('far');
         star2.parentElement.classList.add('fas');
+        removeStar();
         star1.classList.add('two');
         starText.innerHTML = '별로예요';
     }
@@ -1101,6 +1153,7 @@ function localStar(star, check){
         star2.parentElement.classList.add('fas');
         star3.parentElement.classList.remove('far');
         star3.parentElement.classList.add('fas');
+        removeStar();
         star1.classList.add('three');
         starText.innerHTML = '보통이에요';
     }
@@ -1113,6 +1166,7 @@ function localStar(star, check){
         star3.parentElement.classList.add('fas');
         star4.parentElement.classList.remove('far');
         star4.parentElement.classList.add('fas');
+        removeStar();
         star1.classList.add('four');
         starText.innerHTML = '재밌어요';
     }
@@ -1127,12 +1181,13 @@ function localStar(star, check){
         star4.parentElement.classList.add('fas');
         star5.parentElement.classList.remove('far');
         star5.parentElement.classList.add('fas');
+        removeStar();
         star1.classList.add('five');
         starText.innerHTML = '최고예요!';
     }
     textAlign();
     const mystar = document.querySelector('.mystar');
-    mystar.innerText = star;
+    if(mystar){mystar.innerText = star;}
 }
 
 
@@ -1388,518 +1443,555 @@ window.addEventListener('resize', () => {
 
 // })
 
-productionUl.addEventListener('mouseenter', (e)=>{
-    if(productCount === 0){
-        apchLeft.style.display = 'none';
-    }else{
-        apchLeft.style.display = 'flex';
-    }
-    if(body.clientWidth > 696){
-        if(productCount === 2){
-            apchRight.style.display = 'none';
+if(productionUl){
+    productionUl.addEventListener('mouseenter', (e)=>{
+        if(productCount === 0){
+            apchLeft.style.display = 'none';
         }else{
-            apchRight.style.display = 'flex';
+            apchLeft.style.display = 'flex';
         }
-    } else {
-        if(productCount === 4){
-            apchRight.style.display = 'none';
-        }else{
-            apchRight.style.display = 'flex';
-        }
-    }
-});
-
-productionUl.addEventListener('mouseleave', (e)=>{
-    apchRight.style.display = 'none';
-    apchLeft.style.display = 'none';
-});
-
-apchRight.addEventListener('mouseenter', (e)=>{
-    if(productCount === 0){
-        apchLeft.style.display = 'none';
-    }else{
-        apchLeft.style.display = 'flex';
-    }
-    if(body.clientWidth > 696){
-        if(productCount === 2){
-            apchRight.style.display = 'none';
-        }else{
-            apchRight.style.display = 'flex';
-        }
-    } else {
-        if(productCount === 4){
-            apchRight.style.display = 'none';
-        }else{
-            apchRight.style.display = 'flex';
-        }
-    }
-});
-
-apchRight.addEventListener('mouseleave', (e)=>{
-    apchRight.style.display = 'none';
-    apchLeft.style.display = 'none';
-});
-
-apchLeft.addEventListener('mouseenter', (e)=>{
-    if(productCount === 0){
-        apchLeft.style.display = 'none';
-    }else{
-        apchLeft.style.display = 'flex';
-    }
-    if(body.clientWidth > 696){
-        if(productCount === 2){
-            apchRight.style.display = 'none';
-        }else{
-            apchRight.style.display = 'flex';
-        }
-    } else {
-        if(productCount === 4){
-            apchRight.style.display = 'none';
-        }else{
-            apchRight.style.display = 'flex';
-        }
-    }
-});
-
-apchLeft.addEventListener('mouseleave', (e)=>{
-    apchRight.style.display = 'none';
-    apchLeft.style.display = 'none';
-});
-
-commentContentSpace.addEventListener('mouseenter', (e)=>{
-    if(body.clientWidth > 696){
-        if(commentContentSpace.childElementCount === 3){
-            return;
-        }
-        if(comCount === 1){
-            ccchRight.style.display = 'none';
-        }else{
-            ccchRight.style.display = 'flex';
-        }
-        if(comCount === 0){
-            ccchLeft.style.display = 'none';
-        }else{
-            ccchLeft.style.display = 'flex';
-        }
-    } else {
-        if(commentContentSpace.childElementCount === 4){
-            if(comCount === 2){
-                ccchRight.style.display = 'none';
-                ccchLeft.style.display = 'flex';
+        if(body.clientWidth > 696){
+            if(productCount === 2){
+                apchRight.style.display = 'none';
+            }else{
+                apchRight.style.display = 'flex';
             }
-            if(comCount === 1){
-                ccchLeft.style.display = 'flex';
-                ccchRight.style.display = 'flex';
-            }
-            if(comCount === 0){
-                ccchLeft.style.display = 'none';
-                ccchRight.style.display = 'flex';
-            }
-            return;
-        }
-        if(commentContentSpace.childElementCount === 3){
-            if(comCount === 1){
-                ccchRight.style.display = 'none';
-                ccchLeft.style.display = 'flex';
-            }
-            if(comCount === 0){
-                ccchLeft.style.display = 'none';
-                ccchRight.style.display = 'flex';
-            }
-            return;
-        }
-    }
-});
-
-commentContentSpace.addEventListener('mouseleave', (e)=>{
-    ccchRight.style.display = 'none';
-    ccchLeft.style.display = 'none';
-});
-
-ccchRight.addEventListener('mouseenter', (e)=>{
-    if(body.clientWidth > 696){
-        if(commentContentSpace.childElementCount === 3){
-            return;
-        }
-        if(comCount === 1){
-            ccchRight.style.display = 'none';
-        }else{
-            ccchRight.style.display = 'flex';
-        }
-        if(comCount === 0){
-            ccchLeft.style.display = 'none';
-        }else{
-            ccchLeft.style.display = 'flex';
-        }
-    } else {
-        if(commentContentSpace.childElementCount === 4){
-            if(comCount === 2){
-                ccchRight.style.display = 'none';
-                ccchLeft.style.display = 'flex';
-            }
-            if(comCount === 1){
-                ccchLeft.style.display = 'flex';
-                ccchRight.style.display = 'flex';
-            }
-            if(comCount === 0){
-                ccchLeft.style.display = 'none';
-                ccchRight.style.display = 'flex';
-            }
-            return;
-        }
-        if(commentContentSpace.childElementCount === 3){
-            if(comCount === 1){
-                ccchRight.style.display = 'none';
-                ccchLeft.style.display = 'flex';
-            }
-            if(comCount === 0){
-                ccchLeft.style.display = 'none';
-                ccchRight.style.display = 'flex';
-            }
-            return;
-        }
-    }
-});
-
-ccchRight.addEventListener('mouseleave', (e)=>{
-    ccchRight.style.display = 'none';
-    ccchLeft.style.display = 'none';
-});
-
-ccchLeft.addEventListener('mouseenter', (e)=>{
-    if(body.clientWidth > 696){
-        if(commentContentSpace.childElementCount === 3){
-            return;
-        }
-        if(comCount === 1){
-            ccchRight.style.display = 'none';
-        }else{
-            ccchRight.style.display = 'flex';
-        }
-        if(comCount === 0){
-            ccchLeft.style.display = 'none';
-        }else{
-            ccchLeft.style.display = 'flex';
-        }
-    } else {
-        if(commentContentSpace.childElementCount === 4){
-            if(comCount === 2){
-                ccchRight.style.display = 'none';
-                ccchLeft.style.display = 'flex';
-            }
-            if(comCount === 1){
-                ccchLeft.style.display = 'flex';
-                ccchRight.style.display = 'flex';
-            }
-            if(comCount === 0){
-                ccchLeft.style.display = 'none';
-                ccchRight.style.display = 'flex';
-            }
-            return;
-        }
-        if(commentContentSpace.childElementCount === 3){
-            if(comCount === 1){
-                ccchRight.style.display = 'none';
-                ccchLeft.style.display = 'flex';
-            }
-            if(comCount === 0){
-                ccchLeft.style.display = 'none';
-                ccchRight.style.display = 'flex';
-            }
-            return;
-        }
-    }
-});
-
-ccchLeft.addEventListener('mouseleave', (e)=>{
-    ccchRight.style.display = 'none';
-    ccchLeft.style.display = 'none';
-});
-
-RgalleryImages.addEventListener('mouseenter', (e)=>{
-    if(body.clientWidth > 696){
-        if(lchCount === 0){
-            RgvchLeft.style.display = 'none';
-            RgvchRight.style.display = 'flex';
-        }else{
-            RgvchRight.style.display = 'none';
-            RgvchLeft.style.display = 'flex';
-        }
-    } else {
-        if(lchCount === 0){
-            RgvchLeft.style.display = 'none';
-            RgvchRight.style.display = 'flex';
-        }
-        if(lchCount === 1){
-            RgvchRight.style.display = 'flex';
-            RgvchLeft.style.display = 'flex';
-        }
-        if(lchCount === 2){
-            RgvchRight.style.display = 'none';
-            RgvchLeft.style.display = 'flex';
-        }
-    }
-});
-
-RgalleryImages.addEventListener('mouseleave', (e)=>{
-    RgvchRight.style.display = 'none';
-    RgvchLeft.style.display = 'none';
-});
-
-RgvchRight.addEventListener('mouseenter', (e)=>{
-    if(body.clientWidth > 696){
-        if(lchCount === 0){
-            RgvchLeft.style.display = 'none';
-            RgvchRight.style.display = 'flex';
-        }else{
-            RgvchRight.style.display = 'none';
-            RgvchLeft.style.display = 'flex';
-        }
-    } else {
-        if(lchCount === 0){
-            RgvchLeft.style.display = 'none';
-            RgvchRight.style.display = 'flex';
-        }
-        if(lchCount === 1){
-            RgvchRight.style.display = 'flex';
-            RgvchLeft.style.display = 'flex';
-        }
-        if(lchCount === 2){
-            RgvchRight.style.display = 'none';
-            RgvchLeft.style.display = 'flex';
-        }
-    }
-});
-
-RgvchRight.addEventListener('mouseleave', (e)=>{
-    RgvchRight.style.display = 'none';
-    RgvchLeft.style.display = 'none';
-});
-
-RgvchLeft.addEventListener('mouseenter', (e)=>{
-    if(body.clientWidth > 696){
-        if(lchCount === 0){
-            RgvchLeft.style.display = 'none';
-            RgvchRight.style.display = 'flex';
-        }else{
-            RgvchRight.style.display = 'none';
-            RgvchLeft.style.display = 'flex';
-        }
-    } else {
-        if(lchCount === 0){
-            RgvchLeft.style.display = 'none';
-            RgvchRight.style.display = 'flex';
-        }
-        if(lchCount === 1){
-            RgvchRight.style.display = 'flex';
-            RgvchLeft.style.display = 'flex';
-        }
-        if(lchCount === 2){
-            RgvchRight.style.display = 'none';
-            RgvchLeft.style.display = 'flex';
-        }
-    }
-});
-
-RgvchLeft.addEventListener('mouseleave', (e)=>{
-    RgvchRight.style.display = 'none';
-    RgvchLeft.style.display = 'none';
-});
-
-collectionContentUl.addEventListener('mouseenter', (e)=>{
-    if(body.clientWidth > 696){
-        if(colCount === 0){
-            clchLeft.style.display = 'none';
-            clchRight.style.display = 'flex';
         } else {
-            clchRight.style.display = 'none';
-            clchLeft.style.display = 'flex';
+            if(productCount === 4){
+                apchRight.style.display = 'none';
+            }else{
+                apchRight.style.display = 'flex';
+            }
         }
-    } else {
-        if(colCount === 0){
-            clchLeft.style.display = 'none';
-            clchRight.style.display = 'flex';
-        } 
-        if(colCount === 1 || colCount === 2){
-            clchRight.style.display = 'flex';
-            clchLeft.style.display = 'flex';
-        }
-        if(colCount === 3){
-            clchRight.style.display = 'none';
-            clchLeft.style.display = 'flex';
-        }
-    }
-});
+    });
 
-collectionContentUl.addEventListener('mouseleave', (e)=>{
-    clchRight.style.display = 'none';
-    clchLeft.style.display = 'none';
-});
+    productionUl.addEventListener('mouseleave', (e)=>{
+        apchRight.style.display = 'none';
+        apchLeft.style.display = 'none';
+    });
+}
 
-clchRight.addEventListener('mouseenter', (e)=>{
-    if(body.clientWidth > 696){
-        if(colCount === 0){
-            clchLeft.style.display = 'none';
-            clchRight.style.display = 'flex';
+if(apchRight){
+    apchRight.addEventListener('mouseenter', (e)=>{
+        if(productCount === 0){
+            apchLeft.style.display = 'none';
+        }else{
+            apchLeft.style.display = 'flex';
+        }
+        if(body.clientWidth > 696){
+            if(productCount === 2){
+                apchRight.style.display = 'none';
+            }else{
+                apchRight.style.display = 'flex';
+            }
         } else {
-            clchRight.style.display = 'none';
-            clchLeft.style.display = 'flex';
+            if(productCount === 4){
+                apchRight.style.display = 'none';
+            }else{
+                apchRight.style.display = 'flex';
+            }
         }
-    } else {
-        if(colCount === 0){
-            clchLeft.style.display = 'none';
-            clchRight.style.display = 'flex';
-        } 
-        if(colCount === 1 || colCount === 2){
-            clchRight.style.display = 'flex';
-            clchLeft.style.display = 'flex';
-        }
-        if(colCount === 3){
-            clchRight.style.display = 'none';
-            clchLeft.style.display = 'flex';
-        }
-    }
-});
+    });
+    
+    apchRight.addEventListener('mouseleave', (e)=>{
+        apchRight.style.display = 'none';
+        apchLeft.style.display = 'none';
+    });
+}
 
-clchRight.addEventListener('mouseleave', (e)=>{
-    clchRight.style.display = 'none';
-    clchLeft.style.display = 'none';
-});
-
-clchLeft.addEventListener('mouseenter', (e)=>{
-    if(body.clientWidth > 696){
-        if(colCount === 0){
-            clchLeft.style.display = 'none';
-            clchRight.style.display = 'flex';
+if(apchLeft){
+    apchLeft.addEventListener('mouseenter', (e)=>{
+        if(productCount === 0){
+            apchLeft.style.display = 'none';
+        }else{
+            apchLeft.style.display = 'flex';
+        }
+        if(body.clientWidth > 696){
+            if(productCount === 2){
+                apchRight.style.display = 'none';
+            }else{
+                apchRight.style.display = 'flex';
+            }
         } else {
-            clchRight.style.display = 'none';
-            clchLeft.style.display = 'flex';
+            if(productCount === 4){
+                apchRight.style.display = 'none';
+            }else{
+                apchRight.style.display = 'flex';
+            }
         }
-    } else {
-        if(colCount === 0){
-            clchLeft.style.display = 'none';
-            clchRight.style.display = 'flex';
-        } 
-        if(colCount === 1 || colCount === 2){
-            clchRight.style.display = 'flex';
-            clchLeft.style.display = 'flex';
+    });
+    
+    apchLeft.addEventListener('mouseleave', (e)=>{
+        apchRight.style.display = 'none';
+        apchLeft.style.display = 'none';
+    });
+}
+
+if(commentContentSpace){
+    commentContentSpace.addEventListener('mouseenter', (e)=>{
+        if(body.clientWidth > 696){
+            if(commentContentSpace.childElementCount === 3){
+                return;
+            }
+            if(comCount === 1){
+                ccchRight.style.display = 'none';
+            }else{
+                ccchRight.style.display = 'flex';
+            }
+            if(comCount === 0){
+                ccchLeft.style.display = 'none';
+            }else{
+                ccchLeft.style.display = 'flex';
+            }
+        } else {
+            if(commentContentSpace.childElementCount === 4){
+                if(comCount === 2){
+                    ccchRight.style.display = 'none';
+                    ccchLeft.style.display = 'flex';
+                }
+                if(comCount === 1){
+                    ccchLeft.style.display = 'flex';
+                    ccchRight.style.display = 'flex';
+                }
+                if(comCount === 0){
+                    ccchLeft.style.display = 'none';
+                    ccchRight.style.display = 'flex';
+                }
+                return;
+            }
+            if(commentContentSpace.childElementCount === 3){
+                if(comCount === 1){
+                    ccchRight.style.display = 'none';
+                    ccchLeft.style.display = 'flex';
+                }
+                if(comCount === 0){
+                    ccchLeft.style.display = 'none';
+                    ccchRight.style.display = 'flex';
+                }
+                return;
+            }
         }
-        if(colCount === 3){
-            clchRight.style.display = 'none';
-            clchLeft.style.display = 'flex';
+    });
+    
+    commentContentSpace.addEventListener('mouseleave', (e)=>{
+        ccchRight.style.display = 'none';
+        ccchLeft.style.display = 'none';
+    });
+}
+
+if(ccchRight){
+    ccchRight.addEventListener('mouseenter', (e)=>{
+        if(body.clientWidth > 696){
+            if(commentContentSpace.childElementCount === 3){
+                return;
+            }
+            if(comCount === 1){
+                ccchRight.style.display = 'none';
+            }else{
+                ccchRight.style.display = 'flex';
+            }
+            if(comCount === 0){
+                ccchLeft.style.display = 'none';
+            }else{
+                ccchLeft.style.display = 'flex';
+            }
+        } else {
+            if(commentContentSpace.childElementCount === 4){
+                if(comCount === 2){
+                    ccchRight.style.display = 'none';
+                    ccchLeft.style.display = 'flex';
+                }
+                if(comCount === 1){
+                    ccchLeft.style.display = 'flex';
+                    ccchRight.style.display = 'flex';
+                }
+                if(comCount === 0){
+                    ccchLeft.style.display = 'none';
+                    ccchRight.style.display = 'flex';
+                }
+                return;
+            }
+            if(commentContentSpace.childElementCount === 3){
+                if(comCount === 1){
+                    ccchRight.style.display = 'none';
+                    ccchLeft.style.display = 'flex';
+                }
+                if(comCount === 0){
+                    ccchLeft.style.display = 'none';
+                    ccchRight.style.display = 'flex';
+                }
+                return;
+            }
         }
-    }
-});
+    });
+    
+    ccchRight.addEventListener('mouseleave', (e)=>{
+        ccchRight.style.display = 'none';
+        ccchLeft.style.display = 'none';
+    });
+}
 
-clchLeft.addEventListener('mouseleave', (e)=>{
-    clchRight.style.display = 'none';
-    clchLeft.style.display = 'none';
-});
+if(ccchLeft){
+    ccchLeft.addEventListener('mouseenter', (e)=>{
+        if(body.clientWidth > 696){
+            if(commentContentSpace.childElementCount === 3){
+                return;
+            }
+            if(comCount === 1){
+                ccchRight.style.display = 'none';
+            }else{
+                ccchRight.style.display = 'flex';
+            }
+            if(comCount === 0){
+                ccchLeft.style.display = 'none';
+            }else{
+                ccchLeft.style.display = 'flex';
+            }
+        } else {
+            if(commentContentSpace.childElementCount === 4){
+                if(comCount === 2){
+                    ccchRight.style.display = 'none';
+                    ccchLeft.style.display = 'flex';
+                }
+                if(comCount === 1){
+                    ccchLeft.style.display = 'flex';
+                    ccchRight.style.display = 'flex';
+                }
+                if(comCount === 0){
+                    ccchLeft.style.display = 'none';
+                    ccchRight.style.display = 'flex';
+                }
+                return;
+            }
+            if(commentContentSpace.childElementCount === 3){
+                if(comCount === 1){
+                    ccchRight.style.display = 'none';
+                    ccchLeft.style.display = 'flex';
+                }
+                if(comCount === 0){
+                    ccchLeft.style.display = 'none';
+                    ccchRight.style.display = 'flex';
+                }
+                return;
+            }
+        }
+    });
+    
+    ccchLeft.addEventListener('mouseleave', (e)=>{
+        ccchRight.style.display = 'none';
+        ccchLeft.style.display = 'none';
+    });
+}
 
-galleryImages.addEventListener('mouseenter', (e)=>{
-    if(galCount === 0){
-        gchLeft.style.display = 'none';
-        gchRight.style.display = 'flex';
-    }
-    if(galCount === 1){
-        gchLeft.style.display = 'flex';
-        gchRight.style.display = 'flex';
-    }
-    if(galCount === 2){
-        gchLeft.style.display = 'flex';
+if(RgalleryImages){
+    RgalleryImages.addEventListener('mouseenter', (e)=>{
+        if(body.clientWidth > 696){
+            if(lchCount === 0){
+                RgvchLeft.style.display = 'none';
+                RgvchRight.style.display = 'flex';
+            }else{
+                RgvchRight.style.display = 'none';
+                RgvchLeft.style.display = 'flex';
+            }
+        } else {
+            if(lchCount === 0){
+                RgvchLeft.style.display = 'none';
+                RgvchRight.style.display = 'flex';
+            }
+            if(lchCount === 1){
+                RgvchRight.style.display = 'flex';
+                RgvchLeft.style.display = 'flex';
+            }
+            if(lchCount === 2){
+                RgvchRight.style.display = 'none';
+                RgvchLeft.style.display = 'flex';
+            }
+        }
+    });
+    
+    RgalleryImages.addEventListener('mouseleave', (e)=>{
+        RgvchRight.style.display = 'none';
+        RgvchLeft.style.display = 'none';
+    });
+}
+
+if(RgvchRight){
+    RgvchRight.addEventListener('mouseenter', (e)=>{
+        if(body.clientWidth > 696){
+            if(lchCount === 0){
+                RgvchLeft.style.display = 'none';
+                RgvchRight.style.display = 'flex';
+            }else{
+                RgvchRight.style.display = 'none';
+                RgvchLeft.style.display = 'flex';
+            }
+        } else {
+            if(lchCount === 0){
+                RgvchLeft.style.display = 'none';
+                RgvchRight.style.display = 'flex';
+            }
+            if(lchCount === 1){
+                RgvchRight.style.display = 'flex';
+                RgvchLeft.style.display = 'flex';
+            }
+            if(lchCount === 2){
+                RgvchRight.style.display = 'none';
+                RgvchLeft.style.display = 'flex';
+            }
+        }
+    });
+    
+    RgvchRight.addEventListener('mouseleave', (e)=>{
+        RgvchRight.style.display = 'none';
+        RgvchLeft.style.display = 'none';
+    });
+}
+
+if(RgvchLeft){
+    RgvchLeft.addEventListener('mouseenter', (e)=>{
+        if(body.clientWidth > 696){
+            if(lchCount === 0){
+                RgvchLeft.style.display = 'none';
+                RgvchRight.style.display = 'flex';
+            }else{
+                RgvchRight.style.display = 'none';
+                RgvchLeft.style.display = 'flex';
+            }
+        } else {
+            if(lchCount === 0){
+                RgvchLeft.style.display = 'none';
+                RgvchRight.style.display = 'flex';
+            }
+            if(lchCount === 1){
+                RgvchRight.style.display = 'flex';
+                RgvchLeft.style.display = 'flex';
+            }
+            if(lchCount === 2){
+                RgvchRight.style.display = 'none';
+                RgvchLeft.style.display = 'flex';
+            }
+        }
+    });
+    
+    RgvchLeft.addEventListener('mouseleave', (e)=>{
+        RgvchRight.style.display = 'none';
+        RgvchLeft.style.display = 'none';
+    });
+}
+
+if(collectionContentUl){
+    collectionContentUl.addEventListener('mouseenter', (e)=>{
+        if(body.clientWidth > 696){
+            if(colCount === 0){
+                clchLeft.style.display = 'none';
+                clchRight.style.display = 'flex';
+            } else {
+                clchRight.style.display = 'none';
+                clchLeft.style.display = 'flex';
+            }
+        } else {
+            if(colCount === 0){
+                clchLeft.style.display = 'none';
+                clchRight.style.display = 'flex';
+            } 
+            if(colCount === 1 || colCount === 2){
+                clchRight.style.display = 'flex';
+                clchLeft.style.display = 'flex';
+            }
+            if(colCount === 3){
+                clchRight.style.display = 'none';
+                clchLeft.style.display = 'flex';
+            }
+        }
+    });
+    
+    collectionContentUl.addEventListener('mouseleave', (e)=>{
+        clchRight.style.display = 'none';
+        clchLeft.style.display = 'none';
+    });
+}
+
+if(clchRight){
+    clchRight.addEventListener('mouseenter', (e)=>{
+        if(body.clientWidth > 696){
+            if(colCount === 0){
+                clchLeft.style.display = 'none';
+                clchRight.style.display = 'flex';
+            } else {
+                clchRight.style.display = 'none';
+                clchLeft.style.display = 'flex';
+            }
+        } else {
+            if(colCount === 0){
+                clchLeft.style.display = 'none';
+                clchRight.style.display = 'flex';
+            } 
+            if(colCount === 1 || colCount === 2){
+                clchRight.style.display = 'flex';
+                clchLeft.style.display = 'flex';
+            }
+            if(colCount === 3){
+                clchRight.style.display = 'none';
+                clchLeft.style.display = 'flex';
+            }
+        }
+    });
+    
+    clchRight.addEventListener('mouseleave', (e)=>{
+        clchRight.style.display = 'none';
+        clchLeft.style.display = 'none';
+    });
+}
+
+if(clchLeft){
+    clchLeft.addEventListener('mouseenter', (e)=>{
+        if(body.clientWidth > 696){
+            if(colCount === 0){
+                clchLeft.style.display = 'none';
+                clchRight.style.display = 'flex';
+            } else {
+                clchRight.style.display = 'none';
+                clchLeft.style.display = 'flex';
+            }
+        } else {
+            if(colCount === 0){
+                clchLeft.style.display = 'none';
+                clchRight.style.display = 'flex';
+            } 
+            if(colCount === 1 || colCount === 2){
+                clchRight.style.display = 'flex';
+                clchLeft.style.display = 'flex';
+            }
+            if(colCount === 3){
+                clchRight.style.display = 'none';
+                clchLeft.style.display = 'flex';
+            }
+        }
+    });
+    
+    clchLeft.addEventListener('mouseleave', (e)=>{
+        clchRight.style.display = 'none';
+        clchLeft.style.display = 'none';
+    });
+}
+
+
+if(galleryImages){
+    galleryImages.addEventListener('mouseenter', (e)=>{
+        if(galCount === 0){
+            gchLeft.style.display = 'none';
+            gchRight.style.display = 'flex';
+        }
+        if(galCount === 1){
+            gchLeft.style.display = 'flex';
+            gchRight.style.display = 'flex';
+        }
+        if(galCount === 2){
+            gchLeft.style.display = 'flex';
+            gchRight.style.display = 'none';
+        }
+    });
+    
+    galleryImages.addEventListener('mouseleave', (e)=>{
         gchRight.style.display = 'none';
-    }
-});
-
-galleryImages.addEventListener('mouseleave', (e)=>{
-    gchRight.style.display = 'none';
-    gchLeft.style.display = 'none';
-});
-
-gchRight.addEventListener('mouseenter', (e)=>{
-    if(galCount === 0){
         gchLeft.style.display = 'none';
-        gchRight.style.display = 'flex';
-    }
-    if(galCount === 1){
-        gchLeft.style.display = 'flex';
-        gchRight.style.display = 'flex';
-    }
-    if(galCount === 2){
-        gchLeft.style.display = 'flex';
+    });
+}
+
+if(gchRight){
+    gchRight.addEventListener('mouseenter', (e)=>{
+        if(galCount === 0){
+            gchLeft.style.display = 'none';
+            gchRight.style.display = 'flex';
+        }
+        if(galCount === 1){
+            gchLeft.style.display = 'flex';
+            gchRight.style.display = 'flex';
+        }
+        if(galCount === 2){
+            gchLeft.style.display = 'flex';
+            gchRight.style.display = 'none';
+        }
+    });
+    
+    gchRight.addEventListener('mouseleave', (e)=>{
         gchRight.style.display = 'none';
-    }
-});
-
-gchRight.addEventListener('mouseleave', (e)=>{
-    gchRight.style.display = 'none';
-    gchLeft.style.display = 'none';
-});
-
-gchLeft.addEventListener('mouseenter', (e)=>{
-    if(galCount === 0){
         gchLeft.style.display = 'none';
-        gchRight.style.display = 'flex';
-    }
-    if(galCount === 1){
-        gchLeft.style.display = 'flex';
-        gchRight.style.display = 'flex';
-    }
-    if(galCount === 2){
-        gchLeft.style.display = 'flex';
+    });
+}
+
+if(gchLeft){
+    gchLeft.addEventListener('mouseenter', (e)=>{
+        if(galCount === 0){
+            gchLeft.style.display = 'none';
+            gchRight.style.display = 'flex';
+        }
+        if(galCount === 1){
+            gchLeft.style.display = 'flex';
+            gchRight.style.display = 'flex';
+        }
+        if(galCount === 2){
+            gchLeft.style.display = 'flex';
+            gchRight.style.display = 'none';
+        }
+    });
+    
+    gchLeft.addEventListener('mouseleave', (e)=>{
         gchRight.style.display = 'none';
-    }
-});
+        gchLeft.style.display = 'none';
+    });
+}
 
-gchLeft.addEventListener('mouseleave', (e)=>{
-    gchRight.style.display = 'none';
-    gchLeft.style.display = 'none';
-});
-
-videos.addEventListener('mouseenter', (e)=>{
-    if(vidCount === 0){
-        vchLeft.style.display = 'none';
-        vchRight.style.display = 'flex';
-    }else{
+if(videos){
+    videos.addEventListener('mouseenter', (e)=>{
+        if(vidCount === 0){
+            vchLeft.style.display = 'none';
+            vchRight.style.display = 'flex';
+        }else{
+            vchRight.style.display = 'none';
+            vchLeft.style.display = 'flex';
+        }
+    });
+    
+    videos.addEventListener('mouseleave', (e)=>{
         vchRight.style.display = 'none';
-        vchLeft.style.display = 'flex';
-    }
-});
-
-videos.addEventListener('mouseleave', (e)=>{
-    vchRight.style.display = 'none';
-    vchLeft.style.display = 'none';
-});
-
-vchRight.addEventListener('mouseenter', (e)=>{
-    if(vidCount === 0){
         vchLeft.style.display = 'none';
-        vchRight.style.display = 'flex';
-    }else{
+    });
+}
+
+if(vchRight){
+    vchRight.addEventListener('mouseenter', (e)=>{
+        if(vidCount === 0){
+            vchLeft.style.display = 'none';
+            vchRight.style.display = 'flex';
+        }else{
+            vchRight.style.display = 'none';
+            vchLeft.style.display = 'flex';
+        }
+    });
+    
+    vchRight.addEventListener('mouseleave', (e)=>{
         vchRight.style.display = 'none';
-        vchLeft.style.display = 'flex';
-    }
-});
-
-vchRight.addEventListener('mouseleave', (e)=>{
-    vchRight.style.display = 'none';
-    vchLeft.style.display = 'none';
-});
-
-vchLeft.addEventListener('mouseenter', (e)=>{
-    if(vidCount === 0){
         vchLeft.style.display = 'none';
-        vchRight.style.display = 'flex';
-    }else{
-        vchRight.style.display = 'none';
-        vchLeft.style.display = 'flex';
-    }
-});
+    });
+}
 
-vchLeft.addEventListener('mouseleave', (e)=>{
-    vchRight.style.display = 'none';
-    vchLeft.style.display = 'none';
-});
+if(vchLeft){
+    vchLeft.addEventListener('mouseenter', (e)=>{
+        if(vidCount === 0){
+            vchLeft.style.display = 'none';
+            vchRight.style.display = 'flex';
+        }else{
+            vchRight.style.display = 'none';
+            vchLeft.style.display = 'flex';
+        }
+    });
+    
+    vchLeft.addEventListener('mouseleave', (e)=>{
+        vchRight.style.display = 'none';
+        vchLeft.style.display = 'none';
+    });
+}
 
 window.addEventListener('scroll', ()=>{
     if(window.scrollY !== 0){
@@ -1930,13 +2022,15 @@ window.addEventListener('scroll', ()=>{
     }
 })
 
-stars.addEventListener('click', (e)=>{onStarClick(e)});
+if(stars){stars.addEventListener('click', (e)=>{onStarClick(e)});}
 
-for(let item of star){
-    if(!(star1.classList.contains('local'))){
-        item.addEventListener('mouseleave', (e)=>{onStarLeave(e)});
+if(star && star1){
+    for(let item of star){
+        if(!(star1.classList.contains('local'))){
+            item.addEventListener('mouseleave', (e)=>{onStarLeave(e)});
+        }
+        item.addEventListener('mouseenter', (e)=>{onStar(e)});
     }
-    item.addEventListener('mouseenter', (e)=>{onStar(e)});
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -1946,6 +2040,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const book = localStorage.getItem('book');
     const ban = localStorage.getItem('ban');
     const eye = localStorage.getItem('eye');
+
     if(text && star){
         localText(text, star);  
         localStar(star);
@@ -1954,7 +2049,7 @@ window.addEventListener('DOMContentLoaded', () => {
         localStar(star, true);
     }
     if(text && !star){
-        localText(text, localStorage.getItem('prevStar'));
+        localText(text, false);
     }
     if(book === 'true'){
         onEmptyBookMarkModal();
@@ -1965,5 +2060,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if(ban === 'true'){
         onFaBanModal();
     }
+
+    srcLike.localLike();
 })
 
