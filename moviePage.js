@@ -970,7 +970,7 @@ function onCommentModal(e){
         commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
     }
 
-    localStorage.setItem('like2', false);
+    // localStorage.setItem('like2', false);
 
     const myCc = document.querySelector('.myCc');
 
@@ -1099,7 +1099,7 @@ function localText(text, star){
         </div>
     </li>`;
 
-    localStorage.setItem('like2', false);
+    // localStorage.setItem('like2', false);
     
     if(commentContentSpace){
         commentContentSpace.insertAdjacentHTML('afterbegin', commentContentList);
