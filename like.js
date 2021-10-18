@@ -83,6 +83,5 @@ export function localLike(){
     if(thumb2 && like2 === 'true'){
         thumb2.style.color = 'rgb(255,47,110)';
         thumb2Num.innerText = parseInt(thumb2Num.innerText)+1;
-        console.log(thumb2Num.innerText);
     }
 }

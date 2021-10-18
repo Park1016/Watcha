@@ -8,7 +8,7 @@ import * as srcColor from "./color.js";
 // Set-Cookie: widget_session=abc123; SameSite=None; Secure
 document.cookie = "_gid=GA1.2.1424189941.1634263702; SameSite=None; Secure";
 document.cookie = "_ga=GA1.2.2041708025.1634263702; SameSite=None; Secure";
-console.log(document.cookie);
+// console.log(document.cookie);
 
 //nav
 const nav = document.querySelector('.nav')
@@ -22,6 +22,7 @@ const searchBox = document.querySelector('.searchBox');
 const searchBoxInput = document.querySelector('.searchBoxInput');
 const navEst = document.querySelector('.navEst');
 const navSearch = document.querySelector('.navSearch');
+const navStar = document.querySelector('.navStar');
 
 //footer
 const footer1 = document.querySelector('.footer1');
@@ -1416,26 +1417,28 @@ body.addEventListener('click', (e)=>{
 searchBoxInput.addEventListener('blur', ()=>{onSearchBox()});
 
 window.addEventListener('resize', () => {
-    if(body.clientWidth < 896 && body.clientWidth > 700){
-        searchBox.style.width = '0';
-        searchBox.style.visibility = 'hidden';
-        navEst.style.display = 'none';
-        logoText.style.display = 'flex';
-        navSearch.style.display = 'block';
-        // navStar.style.display = 'block';
-    }
-    if(body.clientWidth > 896){
-        searchBox.style.width = '28rem';
-        searchBox.style.visibility = 'visible';
-        logoText.style.display = 'flex';
-        navSearch.style.display = 'none';
-        navEst.style.display = 'block';
-        // navStar.style.display = 'none';
-    }
-    if(body.clientWidth > 695){
-        afterCommentContainer.style.marginTop = '4rem';
-    } else {
-        afterCommentContainer.style.marginTop = '0';
+    if(section2LeftContainer){
+        // if(body.clientWidth < 896 && body.clientWidth > 700){
+        //     searchBox.style.width = '0';
+        //     searchBox.style.visibility = 'hidden';
+        //     navEst.style.display = 'none';
+        //     logoText.style.display = 'flex';
+        //     navSearch.style.display = 'block';
+        //     navStar.style.display = 'block';
+        // }
+        // if(body.clientWidth > 896){
+        //     searchBox.style.width = '28rem';
+        //     searchBox.style.visibility = 'visible';
+        //     logoText.style.display = 'flex';
+        //     navSearch.style.display = 'none';
+        //     navEst.style.display = 'block';
+        //     navStar.style.display = 'none';
+        // }
+        if(body.clientWidth > 695){
+            afterCommentContainer.style.marginTop = '4rem';
+        } else {
+            afterCommentContainer.style.marginTop = '0';
+        }
     }
 })
 
@@ -2035,32 +2038,34 @@ if(star && star1){
 
 window.addEventListener('DOMContentLoaded', () => {
     scrollTo(0,0);
-    const text = localStorage.getItem('text');
-    const star = localStorage.getItem('star');
-    const book = localStorage.getItem('book');
-    const ban = localStorage.getItem('ban');
-    const eye = localStorage.getItem('eye');
-
-    if(text && star){
-        localText(text, star);  
-        localStar(star);
+    if(section2LeftContainer){
+        const text = localStorage.getItem('text');
+        const star = localStorage.getItem('star');
+        const book = localStorage.getItem('book');
+        const ban = localStorage.getItem('ban');
+        const eye = localStorage.getItem('eye');
+    
+        if(text && star){
+            localText(text, star);  
+            localStar(star);
+        }
+        if(!text && star){
+            localStar(star, true);
+        }
+        if(text && !star){
+            localText(text, false);
+        }
+        if(book === 'true'){
+            onEmptyBookMarkModal();
+        }
+        if(eye === 'true'){
+            eyeGrayToBlueColorChange();
+        }
+        if(ban === 'true'){
+            onFaBanModal();
+        }
+    
+        srcLike.localLike();
     }
-    if(!text && star){
-        localStar(star, true);
-    }
-    if(text && !star){
-        localText(text, false);
-    }
-    if(book === 'true'){
-        onEmptyBookMarkModal();
-    }
-    if(eye === 'true'){
-        eyeGrayToBlueColorChange();
-    }
-    if(ban === 'true'){
-        onFaBanModal();
-    }
-
-    srcLike.localLike();
 })
 

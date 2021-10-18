@@ -198,6 +198,7 @@ html {
   text-shadow: 1px 1px 1px black;
   font-size: 1.4rem;
   transition: all 0.5s;
+  width: 18rem;
 }
 
 .logoText p {
@@ -235,7 +236,7 @@ html {
   border: 1px solid #babac3;
   font-size: 1.3rem;
   margin: 0;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.5s;
   overflow: hidden;
 }
 
@@ -2292,12 +2293,25 @@ html {
     width: 20rem;
   }
 }
-
+/* @media screen and (max-width: 910px) {
+  .navEst {
+    display: none;
+  }
+  .navSearch,
+  .navStar {
+    display: block;
+  }
+  .navSearch,
+  .navStar {
+    font-size: 2rem;
+  }
+} */
 @media screen and (max-width: 900px) {
-  .searchBox {
+  .searchBox,
+  .searchBoxInput {
     width: 0;
-    /* display: none; */
     visibility: hidden;
+    margin: 0;
   }
   .navEst {
     display: none;
