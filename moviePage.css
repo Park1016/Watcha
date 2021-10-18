@@ -142,6 +142,7 @@ html {
 
 .navSearch {
   font-size: 3rem;
+  text-shadow: 1px 1px 1px black;
 }
 
 .navStar {
@@ -308,6 +309,7 @@ html {
 
 .scrollSearch {
   color: #babac3;
+  text-shadow: none;
 }
 
 /* footer */
@@ -2307,8 +2309,7 @@ html {
   }
 } */
 @media screen and (max-width: 900px) {
-  .searchBox,
-  .searchBoxInput {
+  .searchBox {
     width: 0;
     visibility: hidden;
     margin: 0;
