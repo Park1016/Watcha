@@ -38,7 +38,7 @@ https://www.youtube.com/watch?v=1O_ha26ba_8
 #### 보고싶어요 버튼입니다. 초기상태에서 좌측의 '보고싶어요'를 누르면 바로 찜이 됩니다.<br/> 그 외의 경우에는 모달창이 뜨면서 여러 상태를 선택/취소할 수 있습니다.
 ![watcha-보고싶어요버튼](https://user-images.githubusercontent.com/76847993/137989932-97780bd1-1057-4266-99f9-8e82203fc25c.gif)
 
-#### 별점입니다.<br />마우스를 hover하면 별점이 채워집니다. 클릭하면 별점이 확정됩니다. 확정된 상태에서 클릭하면 별점이 취소됩니다.
+#### 별점입니다.<br />마우스를 hover하면 별점이 채워집니다. 클릭하면 별점이 확정됩니다. 확정된 상태에서 클릭하면 별점이 취소됩니다.<br/> 별점에 따라 별점 좌측상단의 문구도 바뀝니다.
 ![watcha-별점](https://user-images.githubusercontent.com/76847993/137990007-20146b90-169c-4d54-8e0c-9be1d75f64b2.gif)
 
 #### 댓글
@@ -79,8 +79,6 @@ https://www.youtube.com/watch?v=1O_ha26ba_8
 <br>
 
 ## 3. 기술 스택 <a id="3"></a>
-
-#####언어<br/>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=black">
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=black">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
