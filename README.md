@@ -1,6 +1,6 @@
 ﻿# 왓챠피디아 클론 랜딩페이지
 
-🎞 왓챠피디아 웹사이트에서 content페이지를 클론한 랜딩페이지입니다.
+🎞 왓챠피디아 웹사이트에서 content페이지를 클론한 랜딩페이지입니다.<br />
 html, css, vanilla javaScript로 만들었으며 일체의 어떠한 라이브러리도 사용하지 않았습니다.
 
 배포 주소 : https://park1016.github.io/Watcha/
