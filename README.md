@@ -12,7 +12,6 @@ html, css, vanilla javaScript로 만들었으며 일체의 어떠한 라이브�
 1. [배포 주소](#1)
 2. [프로젝트 기능 설명](#2)
 3. [기술 스택](#3)
-4. [아쉬운 점 / 개선할 점](#4)
 
 <br>
 
@@ -85,31 +84,3 @@ https://www.youtube.com/watch?v=1O_ha26ba_8
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 
 <br>
-
-## 4. 아쉬운 점 / 개선할 점 <a id="4"></a>
-
-<table class="table">
-  <tr>
-    <td class="title left">아쉬운 점</td>
-    <td class="title right">개선할 점</td>
-  </tr>
-  <tr>
-    <td>역할 분배를 페이지별로 했더니 특정 사람에게 너무 많은 역할이 주어졌습니다.</td>
-    <td>기능별로 역할 분배를 해야겠다고 느꼈습니다.</td>
-  </tr>
-  <tr>
-    <td>리덕스의 action이 너무 많아진 느낌입니다.</td>
-    <td>중복되는 부분을 깔끔히 정리해야겠습니다.</td>
-  </tr>
-  <tr>
-    <td>데이터를 정의할 때 어떤 type의 값을 넣을건지를 정확히 정하지 않아 나중에 수정할 일이 많았습니다.</td>
-    <td>데이터 정의를 보다 정확하게 해야겠습니다.</td>
-  </tr>
-  <tr>
-    <td>firebase와 redux상태간의 정확한 정리가 없어 헷갈리는 일이 많았습니다.	</td>
-    <td>상태 정리를 명확하게 해야겠습니다.</td>
-  </tr>
-  <tr>
-    <td>코드리뷰가 적극적으로 이루어지지 않았던 것 같습니다. 제가 짠 코드가 괜찮은 코드인지 아닌지를 판단하기 어려웠고, 팀원이 짠 코드를 제대로 파악하기 힘들었습니다.</td>
-    <td>서로간의 코드를 적극적으로 검토하고 리뷰해야겠습니다.</td>
-  </tr>
